@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CollectableItems : MonoBehaviour
 {
-    [SerializedField] public string ItemName;
-    [SerializedField] public string ItemBuffName;
-    [SerializedField] public string ItemBuffValue;
+    [SerializeField] public string ItemName;
+    [SerializeField] public string ItemBuffName;
+    [SerializeField] public string ItemBuffValue;
 }

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/manoir/GameInputs.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Manoir/GameInputs.inputactions'
 
 using System;
 using System.Collections;

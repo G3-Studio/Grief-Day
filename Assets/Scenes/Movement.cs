@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.Json;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,15 +14,17 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private GameInputs inputs;
     private InputAction movement;
-    private List itemList;
+    private List<string> itemList;
     private dynamic itemDictionary;
+    private float oldHorizontal;
+    private bool isLeft = true;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         inputs = new GameInputs();
-        string json = System.IO.File.ReadAllText("CollectableItems.json");
-        itemDictionary = JsonConvert.DeserializeObject(json);
+        string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
+        itemDictionary = UnityEngine.JsonUtility.ToJson(json);
     }
 
     private void OnEnable()
@@ -46,12 +47,19 @@ public class Movement : MonoBehaviour
     {
         Vector2 axisInput = movement.ReadValue<Vector2>();
         float horizontalInput = axisInput.x;
+        oldHorizontal = horizontalInput;
         float verticalInput = axisInput.y;
         rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y);
-        if(horizontalInput > 0){
-            transform.rotate(new Vector3(0, 180, 0));
-        }else{
-            transform.rotate(new Vector3(0, 0, 0));
+        UnityEngine.Debug.Log(horizontalInput);
+        if(horizontalInput == 1.0f && isLeft){
+            isLeft = false;
+            transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+            UnityEngine.Debug.Log(1);
+        }
+        if(horizontalInput == -1.0f && !isLeft){
+            isLeft = true;
+            transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
+            UnityEngine.Debug.Log(-1);
         }
         
     }
@@ -66,13 +74,13 @@ public class Movement : MonoBehaviour
     public void AddItemEffect()
     {
         foreach(string name in itemList){
-            foreach(object o in itemDictionary){
+            foreach(dynamic o in itemDictionary){
                 if(o.name == name){
-                    switch (o.buff["name"])
+                    switch (o.buff.name)
                     {
                         case "PV":
-                            health += o.buff["value"];
-                            maxHealth += o.buff["value"];
+                            health += o.buff.value;
+                            maxHealth += o.buff.value;
                             break;
                         default:
                             break;

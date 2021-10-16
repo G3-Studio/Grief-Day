@@ -438,18 +438,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1000
   isPlayer1: 1
-<<<<<<< Updated upstream
 --- !u!1 &1495049863
 GameObject:
-=======
---- !u!60 &614377535
-PolygonCollider2D:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495049866}
@@ -527,60 +521,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 614377530}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.2578225, y: 0.8101811}
-      - {x: 0.24684978, y: 0.93862975}
-      - {x: 0.22072029, y: 0.9433937}
-      - {x: 0.19506168, y: 0.97210133}
-      - {x: 0.16004491, y: 1.0144272}
-      - {x: 0.11927843, y: 1.039121}
-      - {x: 0.12695146, y: 1.160009}
-      - {x: 0.10128188, y: 1.1646413}
-      - {x: 0.0777235, y: 1.2028699}
-      - {x: 0.042568922, y: 1.2325218}
-      - {x: 0.03756857, y: 1.2424551}
-      - {x: -0.05884409, y: 1.2620283}
-      - {x: -0.06569338, y: 1.2275201}
-      - {x: -0.080542564, y: 1.2157626}
-      - {x: -0.13460636, y: 1.1315709}
-      - {x: -0.1312828, y: 1.046257}
-      - {x: -0.1747601, y: 0.9791312}
-      - {x: -0.21464324, y: 0.940708}
-      - {x: -0.22140718, y: 0.88108623}
-      - {x: -0.19143152, y: 0.83996916}
-      - {x: -0.23083615, y: 0.7635856}
-      - {x: -0.2715826, y: 0.6892311}
-      - {x: -0.25542474, y: 0.47244525}
-      - {x: -0.25302672, y: 0.41171402}
-      - {x: -0.2948897, y: 0.35401067}
-      - {x: -0.22313833, y: 0.20574218}
-      - {x: -0.32985878, y: 0.035109818}
-      - {x: 0.19713879, y: 0.04514128}
-      - {x: 0.2797017, y: 0.05748427}
-      - {x: 0.28602982, y: 0.42684302}
-      - {x: 0.37677836, y: 0.576673}
-      - {x: 0.5023117, y: 0.7735519}
-      - {x: 0.32275963, y: 0.7716589}
->>>>>>> Stashed changes
 --- !u!1 &1932406542
 GameObject:
   m_ObjectHideFlags: 0

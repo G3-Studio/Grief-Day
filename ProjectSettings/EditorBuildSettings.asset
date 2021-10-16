@@ -12,13 +12,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 340b8cc966ea02940a4b5d9ee3436523
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 4b3e66b682ffef640967ef2a5b5eb13c
+    path: Assets/Scenes/Manoir.unity
+    guid: 957ce5629297d014c9b0d7dc34629414
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/Fighting.unity
     guid: 823e9c4513fe8b24f8e2f78d7a8f2ec7
   - enabled: 1
-    path: Assets/Scenes/Charaters.unity
+    path: Assets/Scenes/Vrac.unity
     guid: 0e00adfe8f3b81049b9847c49ff84099
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 4b3e66b682ffef640967ef2a5b5eb13c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 036414de5e83950459ac49a7b8e2240e, type: 2}

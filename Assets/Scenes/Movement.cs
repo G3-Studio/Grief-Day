@@ -6,9 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField]
-    public float speed = 20.0f;
-    public bool isPlayer1 = true;
+    [SerializeField] public float speed = 20.0f;
+    [SerializeField] public bool isPlayer1 = true;
 
     private Rigidbody2D rb;
     private GameInputs inputs;
@@ -36,11 +35,11 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector2 axisInput = movement.ReadValue<Vector2>();
         float horizontalInput = axisInput.x;
         float verticalInput = axisInput.y;
-        rb.velocity = new Vector2(horizontalInput * speed * Time.fixedDeltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y);
     }
 }

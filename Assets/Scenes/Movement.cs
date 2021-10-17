@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
         float horizontalInput = axisInput.x;
         oldHorizontal = horizontalInput;
         float verticalInput = axisInput.y;
-        rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime*100, rb.velocity.y);
         UnityEngine.Debug.Log(horizontalInput);
         if(horizontalInput == 1.0f && isLeft){
             isLeft = false;

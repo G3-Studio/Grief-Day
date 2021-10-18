@@ -50,16 +50,13 @@ public class Movement : MonoBehaviour
         oldHorizontal = horizontalInput;
         float verticalInput = axisInput.y;
         rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime*100, rb.velocity.y);
-        UnityEngine.Debug.Log(horizontalInput);
         if(horizontalInput == 1.0f && isLeft){
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
-            UnityEngine.Debug.Log(1);
         }
         if(horizontalInput == -1.0f && !isLeft){
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
-            UnityEngine.Debug.Log(-1);
         }
         
     }

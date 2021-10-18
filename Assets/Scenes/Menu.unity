@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 993402829}
   - component: {fileID: 993402830}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,11 +1159,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5f7a30eb33b082f4495033f83c6cf58c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3d24b09ef35a2bc418e4243f9dc41122, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

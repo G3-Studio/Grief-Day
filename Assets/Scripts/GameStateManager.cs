@@ -79,7 +79,7 @@ public class GameStateManager : MonoBehaviour
         } else if (timerInSeconds >= tradingTiming && timerInSeconds < depressionTiming) {
             gamePhase = "trading";
             nextPhase = "depression";
-            timeUntilNextPhase = depressionPhaseDuration - timerInSeconds;
+            timeUntilNextPhase = depressionTiming - timerInSeconds;
         } else if (timerInSeconds >= depressionTiming) {
             gamePhase = "depression";
         }

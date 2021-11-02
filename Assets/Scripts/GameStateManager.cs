@@ -15,18 +15,19 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] int overviewPhaseDuration = 5;
     [SerializeField] int denyPhaseDuration = 90;
     [SerializeField] int angerPhaseDuration = 30;
-    [SerializeField] int tradingPhaseDuration = 90;
+    [SerializeField] int bargainingPhaseDuration = 90;
     [SerializeField] int depressionPhaseDuration = 60;
 
     int overviewTiming;
     int denyTiming;
     int angerTiming;
-    int tradingTiming;
+    int bargainingTiming;
     int depressionTiming;
     int timeUntilNextPhase;
 
-    string gamePhase = "overview"; // map overview, with glowing items
-    string nextPhase = "deny";
+    string gamePhase; 
+    string nextPhase;
+    string[] phaseIndex = new string[5] {"overview", "deny", "anger", "bargaining", "depression"};
 
 
     void Start() {
@@ -34,8 +35,8 @@ public class GameStateManager : MonoBehaviour
         overviewTiming = 0;
         denyTiming = overviewTiming + overviewPhaseDuration;
         angerTiming = denyTiming + denyPhaseDuration;
-        tradingTiming = angerTiming + angerPhaseDuration;
-        depressionTiming = tradingTiming + tradingPhaseDuration;
+        bargainingTiming = angerTiming + angerPhaseDuration;
+        depressionTiming = bargainingTiming + bargainingPhaseDuration;
 
     }
     void Update()
@@ -64,27 +65,36 @@ public class GameStateManager : MonoBehaviour
 
     void ManageGameState()
     {
+        int index;
         if(timerInSeconds < denyTiming) {
+            index = 0; // overview
             timeUntilNextPhase = denyTiming - timerInSeconds;
 
-        } else if(timerInSeconds >= denyTiming && timerInSeconds < angerTiming) {
-            gamePhase = "deny";
-            nextPhase = "anger";
+        } else if(timerInSeconds < angerTiming) {
+            index = 1; // deny
             timeUntilNextPhase = angerTiming - timerInSeconds;
 
-        } else if (timerInSeconds >= angerTiming && timerInSeconds < tradingTiming) {
-            gamePhase = "anger";
-            nextPhase = "trading";
-            timeUntilNextPhase = tradingTiming - timerInSeconds;
-        } else if (timerInSeconds >= tradingTiming && timerInSeconds < depressionTiming) {
-            gamePhase = "trading";
-            nextPhase = "depression";
-            timeUntilNextPhase = depressionPhaseDuration - timerInSeconds;
-        } else if (timerInSeconds >= depressionTiming) {
-            gamePhase = "depression";
+        } else if (timerInSeconds < bargainingTiming) {
+            index = 2; // anger
+            timeUntilNextPhase = bargainingTiming - timerInSeconds;
+
+        } else if (timerInSeconds < depressionTiming) {
+            index = 3; // bargaining
+            timeUntilNextPhase = depressionTiming - timerInSeconds;
+
+        } else {
+            index = 4; // depression
         }
 
-        nextPhaseDisplay.text = "Next phase :\n" + nextPhase + " in " + timeUntilNextPhase.ToString() + " seconds";
+        gamePhase = phaseIndex[index];
+
+        if (index != 4) {
+            nextPhase = phaseIndex[index+1];
+            nextPhaseDisplay.text = "Next phase :\n" + nextPhase + " in " + timeUntilNextPhase.ToString() + " seconds";
+        } else {
+            nextPhaseDisplay.text = "";
+        }
+
 
         Debug.Log(timerInSeconds);
         Debug.Log(gamePhase);

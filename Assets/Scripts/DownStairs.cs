@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DownStairs : MonoBehaviour
 {
-    [SerializeField] public Transform target1;
-    [SerializeField] public Transform camera1;
-    [SerializeField] public Transform target2;
-    [SerializeField] public Transform camera2;
+    [SerializeField] public Transform target1;  // The position of the 1st player 
+    [SerializeField] public Transform camera1;  // The position of the 1st camera
+    [SerializeField] public Transform target2;  // The position of the 2nd player 
+    [SerializeField] public Transform camera2;  // The position of the 2nd camera
 
-    private bool isTriggered = false;
+    private bool isTriggered = false;  // True whenever the player is in a trigger zone
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)  // Turn isTriggered on when entering a trigger zone
     {
-        Debug.Log("Trigger");
         isTriggered = true;
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)  // Turn isTriggered off when exiting a trigger zone
     {
-        Debug.Log("Not anymore");
         isTriggered = false;
     }
     void Update()
     {
-        if (isTriggered == true)
+        if (isTriggered == true)  // check if the player is in... WAIT, it's totally bugged
         {
             if (Input.GetKeyDown(KeyCode.S))
             {

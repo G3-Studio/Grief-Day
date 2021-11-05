@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
 
 public class GameStateManager : MonoBehaviour
 {
-    
     float rawTimerValue;
 
     int timerInSeconds;

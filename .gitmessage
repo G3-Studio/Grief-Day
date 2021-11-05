@@ -1,0 +1,14 @@
+# First, write the title here. 
+Title : 
+
+#### Write the body from this line ####
+# Explain *what* and *why* you commited, not *how*.
+
+# Then, include an emply line, and list the different parts of your commit, and follow the rules : 
+# 1.Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+
+# At the end: Include Co-authored-by for all contributors. 

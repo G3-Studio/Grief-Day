@@ -74,7 +74,6 @@ public class GameStateManager : MonoBehaviour
             index = 1; // deny
             timeUntilNextPhase = angerTiming - timerInSeconds;
 
-<<<<<<< HEAD
         } else if (timerInSeconds < bargainingTiming) {
             index = 2; // anger
             timeUntilNextPhase = bargainingTiming - timerInSeconds;
@@ -94,18 +93,6 @@ public class GameStateManager : MonoBehaviour
             nextPhaseDisplay.text = "Next phase :\n" + nextPhase + " in " + timeUntilNextPhase.ToString() + " seconds";
         } else {
             nextPhaseDisplay.text = "";
-=======
-        } else if (timerInSeconds >= angerTiming && timerInSeconds < tradingTiming) {
-            gamePhase = "anger";
-            nextPhase = "trading";
-            timeUntilNextPhase = tradingTiming - timerInSeconds;
-        } else if (timerInSeconds >= tradingTiming && timerInSeconds < depressionTiming) {
-            gamePhase = "trading";
-            nextPhase = "depression";
-            timeUntilNextPhase = depressionTiming - timerInSeconds;
-        } else if (timerInSeconds >= depressionTiming) {
-            gamePhase = "depression";
->>>>>>> cbec0b550bc8ebc8b0e765b79b79aa3de1905c42
         }
 
 

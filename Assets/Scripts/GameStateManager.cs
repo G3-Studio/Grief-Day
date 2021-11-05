@@ -73,7 +73,6 @@ public class GameStateManager : MonoBehaviour
         } else if(timerInSeconds < angerTiming) {
             index = 1; // deny
             timeUntilNextPhase = angerTiming - timerInSeconds;
-
         } else if (timerInSeconds < bargainingTiming) {
             index = 2; // anger
             timeUntilNextPhase = bargainingTiming - timerInSeconds;

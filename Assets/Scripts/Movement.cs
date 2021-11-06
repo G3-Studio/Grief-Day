@@ -12,21 +12,26 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private GameInputs inputs;
     private InputAction movement;
-    private List<string> itemList;
-    private dynamic itemDictionary;
     private float oldHorizontal;
     private bool isLeft = true;
+
+    // variables for CollectableItems
+    private List<string> itemList;
+    private dynamic itemDictionary;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         inputs = new GameInputs();
+
+        // Open JSON file & load content in itemDictionnary
         string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
         itemDictionary = UnityEngine.JsonUtility.ToJson(json);
     }
 
     private void OnEnable()
     {
+        // Check which player is currently selected and check for the movement inputs
         if(isPlayer1){
             movement = inputs.Player1.Move;
         }else{
@@ -43,11 +48,14 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Apply movement
         Vector2 axisInput = movement.ReadValue<Vector2>();
         float horizontalInput = axisInput.x;
         oldHorizontal = horizontalInput;
         float verticalInput = axisInput.y;
         rb.velocity = new Vector2(horizontalInput * speed * Time.deltaTime*100, rb.velocity.y);
+
+        // Rotate the player model left or right depending on the input
         if(horizontalInput == 1.0f && isLeft){
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
@@ -56,7 +64,6 @@ public class Movement : MonoBehaviour
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
         }
-        
     }
 
     // Collect item when walking on it 

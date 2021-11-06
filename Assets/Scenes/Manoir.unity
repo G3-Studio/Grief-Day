@@ -1883,9 +1883,9 @@ GameObject:
   - component: {fileID: 614377533}
   - component: {fileID: 614377534}
   - component: {fileID: 614377535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4694,9 +4694,9 @@ GameObject:
   - component: {fileID: 1932406546}
   - component: {fileID: 1932406545}
   - component: {fileID: 1932406547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4875,7 +4875,7 @@ MonoBehaviour:
   overviewPhaseDuration: 5
   denyPhaseDuration: 90
   angerPhaseDuration: 30
-  tradingPhaseDuration: 90
+  bargainingPhaseDuration: 90
   depressionPhaseDuration: 60
 --- !u!4 &1933223582
 Transform:

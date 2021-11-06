@@ -20,6 +20,20 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
+      
+      # # Return License
+      # - name: Return license
+      #   uses: game-ci/unity-return-license@v1
+      #   if: always()
+
+      # Test License Activation
+      - name: Unity - Activate
+        id: activateLicence
+        uses: game-ci/unity-activate@v1.3
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
       # Test
       - name: Run tests

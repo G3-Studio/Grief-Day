@@ -58,3 +58,5 @@ jobs:
         with:
           name: Build
           path: build
+      - name: Unity - Return License
+        uses: game-ci/unity-return-license@v1.1

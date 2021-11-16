@@ -36,7 +36,9 @@ jobs:
       - uses: game-ci/unity-test-runner@v2
         id: testRunner
         env:
-          production
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
@@ -48,7 +50,9 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
       - uses: game-ci/unity-builder@v2
         env:
-          production
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
@@ -57,4 +61,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Build
-          path: build/${{ matrix.targetPlatform }}
+          path: build

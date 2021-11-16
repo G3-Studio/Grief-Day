@@ -1,7 +1,7 @@
 name: Unity Actions 😎
 
 on: [pull_request]
-environment: production
+
 jobs:
   buildAndTestForSomePlatforms:
     name: Build for ${{ matrix.targetPlatform }}
@@ -36,9 +36,7 @@ jobs:
       - uses: game-ci/unity-test-runner@v2
         id: testRunner
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          production
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
@@ -50,9 +48,7 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
       - uses: game-ci/unity-builder@v2
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          production
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}

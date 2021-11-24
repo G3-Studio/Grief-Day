@@ -70,23 +70,22 @@ public class Movement : MonoBehaviour
     public void CollectItem(string name)
     {
         itemList.Add(name);
+        AddItemEffect(name);
     }
 
     // Add effect according to item
-    public void AddItemEffect()
+    public void AddItemEffect(string name)
     {
-        foreach(string name in itemList){
-            foreach(dynamic o in itemDictionary){
-                if(o.name == name){
-                    switch (o.buff.name)
-                    {
-                        case "PV":
-                            health += o.buff.value;
-                            maxHealth += o.buff.value;
-                            break;
-                        default:
-                            break;
-                    }
+        foreach(dynamic o in itemDictionary){
+            if(o.name == name){
+                switch (o.buff.name)
+                {
+                    case "PV":
+                        health += o.buff.value;
+                        maxHealth += o.buff.value;
+                        break;
+                    default:
+                        break;
                 }
             }
         }

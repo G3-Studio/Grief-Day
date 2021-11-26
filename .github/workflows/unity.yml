@@ -38,17 +38,17 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
       
-#       - uses: game-ci/unity-test-runner@v2
-#         id: testRunner
-#         with:
-#           projectPath: ${{ matrix.projectPath }}
-#           unityVersion: ${{ matrix.unityVersion }}
-#           githubToken: ${{ secrets.GITHUB_TOKEN }}
-#       - uses: actions/upload-artifact@v2
-#         if: always()
-#         with:
-#           name: Test results (all modes)
-#           path: ${{ steps.testRunner.outputs.artifactsPath }}
+      - uses: game-ci/unity-test-runner@v2
+        id: testRunner
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results (all modes)
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
       - uses: game-ci/unity-builder@v2
         with:

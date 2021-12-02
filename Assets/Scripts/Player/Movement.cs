@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] public float speed = 20.0f;
-    [SerializeField] public bool isPlayer1 = true;
     [SerializeField] public int health = 200;
     [SerializeField] public int maxHealth = 200;
 
+    private bool isPlayer1 = false;
     private Rigidbody2D rb;
     private GameInputs inputs;
     private InputAction movement;
@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         inputs = new GameInputs();
+        isPlayer1 = this.gameObject.name == "Player 1";
 
         // Open JSON file & load content in itemDictionnary
         string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");

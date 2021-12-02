@@ -133,30 +133,13 @@ GameObject:
   m_Component:
   - component: {fileID: 30150342}
   - component: {fileID: 30150341}
-  - component: {fileID: 30150340}
   m_Layer: 0
-  m_Name: DownStairTrigger
-  m_TagString: Untagged
+  m_Name: F1DownStair
+  m_TagString: ColliderDownStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &30150340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30150339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153d9283f848a014ba51d90c9b99ad28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
 --- !u!61 &30150341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,8 +174,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30150339}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.240883, y: 0.72649956, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.98, y: 0.59, z: -26.808235}
+  m_LocalScale: {x: 1.625, y: 0.0147127425, z: 1}
   m_Children: []
   m_Father: {fileID: 1699731588}
   m_RootOrder: 1
@@ -979,10 +962,9 @@ GameObject:
   m_Component:
   - component: {fileID: 313015800}
   - component: {fileID: 313015802}
-  - component: {fileID: 313015801}
   m_Layer: 0
-  m_Name: DownStairTrigger (2)
-  m_TagString: Untagged
+  m_Name: F2DownStair
+  m_TagString: ColliderDownStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -995,28 +977,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313015799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.46, y: 6.33, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.91, y: 6.22, z: -26.808235}
+  m_LocalScale: {x: 1, y: 0.006172813, z: 1}
   m_Children: []
   m_Father: {fileID: 1699731588}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &313015801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313015799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153d9283f848a014ba51d90c9b99ad28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
 --- !u!61 &313015802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1469,10 +1435,9 @@ GameObject:
   m_Component:
   - component: {fileID: 391115423}
   - component: {fileID: 391115425}
-  - component: {fileID: 391115424}
   m_Layer: 0
-  m_Name: StairTrigger (2)
-  m_TagString: Untagged
+  m_Name: F2UpStair
+  m_TagString: ColliderUpStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1485,29 +1450,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391115422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.21, y: 0.6416378, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.085, y: 0.586, z: -26.808235}
+  m_LocalScale: {x: 1, y: 0.006172813, z: 1}
   m_Children: []
   m_Father: {fileID: 1699731588}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &391115424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391115422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da1d33c0614204397cf3608dd04f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
-  notTrigger: {fileID: 0}
 --- !u!61 &391115425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2125,6 +2073,7 @@ GameObject:
   - component: {fileID: 614377533}
   - component: {fileID: 614377534}
   - component: {fileID: 614377535}
+  - component: {fileID: 614377536}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -2228,11 +2177,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 614377530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629e9093fe1eefd46868939fbd896fbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  isPlayer1: 1
   health: 200
   maxHealth: 200
 --- !u!61 &614377535
@@ -2261,6 +2209,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.80408216, y: 1.1987184}
   m_EdgeRadius: 0
+--- !u!114 &614377536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede839d8426f4d24c9f5f3d5da587736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &673268096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,10 +3700,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1323823901}
   - component: {fileID: 1323823903}
-  - component: {fileID: 1323823902}
   m_Layer: 0
-  m_Name: StairTrigger (1)
-  m_TagString: Untagged
+  m_Name: F3UpStair
+  m_TagString: ColliderUpStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3756,29 +3715,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323823900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.740883, y: 6.34, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -19.317, y: 6.207, z: -26.808235}
+  m_LocalScale: {x: 1, y: 0.005580685, z: 1}
   m_Children: []
   m_Father: {fileID: 1699731588}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1323823902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323823900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da1d33c0614204397cf3608dd04f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
-  notTrigger: {fileID: 0}
 --- !u!61 &1323823903
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3931,10 +3873,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1471717876}
   - component: {fileID: 1471717878}
-  - component: {fileID: 1471717877}
   m_Layer: 0
-  m_Name: DownStairTrigger (1)
-  m_TagString: Untagged
+  m_Name: F3DownStair
+  m_TagString: ColliderDownStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3947,28 +3888,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471717875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.240883, y: 12.028362, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.657, y: 11.796, z: -26.808235}
+  m_LocalScale: {x: 1, y: 0.01399394, z: 1}
   m_Children: []
   m_Father: {fileID: 1699731588}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1471717877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471717875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153d9283f848a014ba51d90c9b99ad28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
 --- !u!61 &1471717878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4005,31 +3930,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1472371141}
   - component: {fileID: 1472371140}
-  - component: {fileID: 1472371139}
   m_Layer: 0
-  m_Name: StairTrigger
-  m_TagString: Untagged
+  m_Name: F1UpStair
+  m_TagString: ColliderUpStair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1472371139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472371138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da1d33c0614204397cf3608dd04f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target1: {fileID: 614377532}
-  camera1: {fileID: 183988524}
-  target2: {fileID: 1932406544}
-  camera2: {fileID: 2094781209}
-  notTrigger: {fileID: 0}
 --- !u!61 &1472371140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4064,8 +3971,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472371138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.740883, y: -4.961862, z: -26.808235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -20.675, y: -5.021, z: -26.808235}
+  m_LocalScale: {x: 1.6747235, y: 0.0118925385, z: 0.5455403}
   m_Children: []
   m_Father: {fileID: 1699731588}
   m_RootOrder: 0
@@ -4595,10 +4502,10 @@ Transform:
   m_Children:
   - {fileID: 1472371141}
   - {fileID: 30150342}
-  - {fileID: 1323823901}
-  - {fileID: 1471717876}
   - {fileID: 391115423}
   - {fileID: 313015800}
+  - {fileID: 1323823901}
+  - {fileID: 1471717876}
   m_Father: {fileID: 1442347820}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5009,9 +4916,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1932406544}
   - component: {fileID: 1932406543}
-  - component: {fileID: 1932406546}
   - component: {fileID: 1932406545}
   - component: {fileID: 1932406547}
+  - component: {fileID: 1932406548}
+  - component: {fileID: 1932406546}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -5115,13 +5023,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932406542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629e9093fe1eefd46868939fbd896fbf, type: 3}
+  m_Script: {fileID: 11500000, guid: ede839d8426f4d24c9f5f3d5da587736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  isPlayer1: 0
-  health: 200
-  maxHealth: 200
 --- !u!60 &1932406547
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5159,6 +5063,21 @@ PolygonCollider2D:
       - {x: 0.4688307, y: 0.6629407}
       - {x: 0.50228393, y: 0.7076527}
       - {x: 0.4330933, y: 0.7567713}
+--- !u!114 &1932406548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  health: 200
+  maxHealth: 200
 --- !u!1 &1957677851
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,13 +5342,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992437541}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.0025135947, z: -0, w: 0.9999969}
   m_LocalPosition: {x: -15.369999, y: 0.2241, z: 105.60809}
   m_LocalScale: {x: 1.3554, y: 1.3748, z: 1}
   m_Children: []
   m_Father: {fileID: 1112439194}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.288, z: 0}
 --- !u!212 &1992437543
 SpriteRenderer:
   m_ObjectHideFlags: 0

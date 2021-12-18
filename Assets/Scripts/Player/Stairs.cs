@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Stairs : MonoBehaviour
 {    
     // Declare the travel combinations, with [origin], [target]
-    private Dictionary<string, string> stairCouplesDictionnary = new Dictionary<string, string>()
+    private readonly Dictionary<string, string> stairCouplesDictionnary = new Dictionary<string, string>()
     {
         {"F1UpStair","F1DownStair"},
         {"F1DownStair","F1UpStair"},
@@ -17,7 +17,7 @@ public class Stairs : MonoBehaviour
     private GameObject upStairTarget; // If the player is in a upStairTrigger, this will be the target gameObject
     private GameObject downStairTarget; // If the player is in a downStairTrigger, this will be the target gameObject
 
-    private bool isPlayer1 = false;
+    private bool isPlayer1;
     private GameInputs inputs;
 
     private void Awake() {

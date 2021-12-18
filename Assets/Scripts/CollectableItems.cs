@@ -7,7 +7,7 @@ public class CollectableItems : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player"){
-            collision.gameObject.GetComponent<Movement>().CollectItem(ItemName);
+            collision.gameObject.GetComponent<Player>().CollectItem(ItemName);
             Destroy(this);
         }
     }

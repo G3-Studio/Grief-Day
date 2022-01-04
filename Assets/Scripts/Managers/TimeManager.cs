@@ -3,16 +3,16 @@ using System;
 
 public class TimeManager : MonoBehaviour
 {
-    public static TimeManager Instance;
+    public static TimeManager Instance { get; private set; }
     private float rawTimer = 0f;
-    public int timerSeconds = 0;
+    public int timerSeconds { get; private set; } = 0;
     // Start is called before the first frame update
-    void Awake() {
+    private void Awake() {
         Instance = this;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         rawTimer += Time.deltaTime;  // the raw timer value, a complicated float
 

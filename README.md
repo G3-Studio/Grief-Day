@@ -1,3 +1,3 @@
-Grief Day by G³ Studio
+Grief's Day by G³ Studio
 
 Our first game 

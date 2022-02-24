@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   buildAndTestForSomePlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+    name: Testing
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

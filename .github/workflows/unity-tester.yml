@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - Grief-Day
+          - ./
         unityVersion:
           - 2021.2.12f1
         targetPlatform:

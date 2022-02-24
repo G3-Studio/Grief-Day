@@ -2074,6 +2074,7 @@ GameObject:
   - component: {fileID: 614377534}
   - component: {fileID: 614377535}
   - component: {fileID: 614377536}
+  - component: {fileID: 614377537}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -2181,8 +2182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  health: 200
-  maxHealth: 200
+  player: {fileID: 614377537}
 --- !u!61 &614377535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2221,6 +2221,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede839d8426f4d24c9f5f3d5da587736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614377537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb37e66c8184b639af37114f668885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  maxHealth: 200
 --- !u!1 &673268096
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,6 +4934,7 @@ GameObject:
   - component: {fileID: 1932406547}
   - component: {fileID: 1932406548}
   - component: {fileID: 1932406546}
+  - component: {fileID: 1932406549}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -5076,6 +5091,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  player: {fileID: 1932406549}
+--- !u!114 &1932406549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb37e66c8184b639af37114f668885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   health: 200
   maxHealth: 200
 --- !u!1 &1957677851

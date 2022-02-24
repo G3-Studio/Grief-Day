@@ -9,7 +9,7 @@ public class NextPhaseText : MonoBehaviour
     private List<int> stateTimingList = new List<int>();
 
 
-    void Awake() {
+    private void Awake() {
         timerDisplay = gameObject.GetComponent<TextMeshProUGUI>();  // Define the timerDisplay object
 
         // Create a list containing State Change timing values, sorted
@@ -20,7 +20,7 @@ public class NextPhaseText : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         int index = -1;
         // If in Overview phase, the next phase timing is at stateTimingList[0], so set index at 0, and do the same for the others
@@ -41,7 +41,7 @@ public class NextPhaseText : MonoBehaviour
             timerDisplay.text = "";
         } else {
             int timeUntilNextPhase = stateTimingList[index] - TimeManager.Instance.timerSeconds;
-            timerDisplay.text = GameManager.Instance.stateOrder[index+1].ToString() + " in " + TimeSpan.FromSeconds(timeUntilNextPhase).ToString(@"mm\:ss");
+            timerDisplay.text = GameManager.Instance.stateOrder[index+1] + " in " + TimeSpan.FromSeconds(timeUntilNextPhase).ToString(@"mm\:ss");
         }
     }
 }

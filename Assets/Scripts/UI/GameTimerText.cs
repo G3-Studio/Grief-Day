@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Globalization;
 
 public class GameTimerText : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameTimerText : MonoBehaviour
         timerDisplay = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
+    private void Update()
     {
         int timerSeconds = TimeManager.Instance.timerSeconds;  // get the timer in seconds from TimeManager
         TimeSpan time = TimeSpan.FromSeconds(timerSeconds);  // transform it into a TimeSpan

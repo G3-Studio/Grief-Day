@@ -12,7 +12,7 @@ jobs:
         projectPath:
           - grief-day
         unityVersion:
-          - 2021.1.28f1
+          - 2021.2.12f1
         targetPlatform:
           #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
@@ -53,6 +53,10 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
       - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
@@ -62,5 +66,7 @@ jobs:
         with:
           name: Build
           path: build
-      - name: Unity - Return License
-        uses: game-ci/unity-return-license@v1.1
+
+      - name: Return license
+        uses: game-ci/unity-return-license@v1
+        if: always()

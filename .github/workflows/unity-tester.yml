@@ -46,6 +46,6 @@ jobs:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-      - name: Return license
-        uses: game-ci/unity-return-license@v1
-        if: always()
+      # - name: Return license
+      #   uses: game-ci/unity-return-license@v1
+      #   if: always()

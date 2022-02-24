@@ -1,4 +1,4 @@
-name: Unity Actions 😎
+name: Unity Actions - Builder 😎
 
 on: [pull_request]
 
@@ -51,21 +51,6 @@ jobs:
         with:
           name: Test results (all modes)
           path: ${{ steps.testRunner.outputs.artifactsPath }}
-
-      - uses: game-ci/unity-builder@v2
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ matrix.targetPlatform }}
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Build
-          path: build
 
       - name: Return license
         uses: game-ci/unity-return-license@v1

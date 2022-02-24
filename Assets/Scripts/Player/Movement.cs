@@ -4,23 +4,27 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed = 20.0f;
-    [SerializeField] private Player player;
     
     private Rigidbody2D rb;
     private GameInputs inputs;
     private InputAction movement;
     private bool isLeft = true;
+    private bool isPlayer1;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         inputs = new GameInputs();
+
+        isPlayer1 = (gameObject.name == "Player 1") ? true : false;
+
+        Debug.Log(isPlayer1);
     }
 
     private void OnEnable()
     {
         // Check which player is currently selected and check for the movement inputs
-        if(player.isPlayer1){
+        if(isPlayer1){
             movement = inputs.Player1.Move;
         }else{
             movement = inputs.Player2.Move;

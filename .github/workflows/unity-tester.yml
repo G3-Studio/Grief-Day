@@ -47,5 +47,5 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
       - name: Return license
-        uses: game-ci/unity-return-license@v1
+        uses: game-ci/unity-return-license@main
         if: always()

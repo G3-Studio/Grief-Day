@@ -29,9 +29,6 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
       
-      - name: Unity - Activate
-        uses: game-ci/unity-activate@v1.3
-      
       - uses: game-ci/unity-test-runner@v2
         id: testRunner
         env:

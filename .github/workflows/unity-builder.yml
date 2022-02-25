@@ -79,6 +79,8 @@ jobs:
           name: Build
       - name: Zip build
         run: |
+          cd ../../Grief-Day/Grief-Day
+          ls
           pushd build/StandaloneWindows64
           zip -r ../../StandaloneWindows64.zip .
           popd

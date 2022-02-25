@@ -81,15 +81,11 @@ jobs:
         run: |
           cd ../../Grief-Day/Grief-Day
           ls
-          pushd build/StandaloneWindows64
-          zip -r ../../StandaloneWindows64.zip .
-          popd
-          pushd build/StandaloneLinux64
+          
+          pushd StandaloneLinux64
           zip -r ../../StandaloneLinux64.zip .
           popd
-          pushd build/StandaloneOSX
-          zip -r ../../StandaloneOSX.zip .
-          popd
+          
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -98,4 +94,6 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            StandaloneWindows64.zip
+            
+            StandaloneLinux64.zip
+            

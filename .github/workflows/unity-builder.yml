@@ -15,22 +15,22 @@ jobs:
       max-parallel: 1
       matrix:
         os: 
-          - windows-2019
+          - ubuntu-latest
         projectPath: 
           - ./
         unityVersion: 
           - 2021.2.12f1
         targetPlatform: 
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-        include:
-          - os: ubuntu-latest
-            targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
-            projectPath: ./
-            unityVersion: 2021.2.12f1
-          - os: macos-latest
-            targetPlatform: StandaloneOSX # Build a MacOS 64-bit standalone.
-            projectPath: ./
-            unityVersion: 2021.2.12f1
+          - StandaloneLinux64 # Build a Windows 64-bit standalone.
+        # include:
+        #   - os: ubuntu-latest
+        #     targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
+        #     projectPath: ./
+        #     unityVersion: 2021.2.12f1
+        #   - os: macos-latest
+        #     targetPlatform: StandaloneOSX # Build a MacOS 64-bit standalone.
+        #     projectPath: ./
+        #     unityVersion: 2021.2.12f1
           
     steps:
       - uses: actions/checkout@v2
@@ -73,15 +73,11 @@ jobs:
         run: |
           cd ../../Grief-Day/Grief-Day
           ls
-          pushd StandaloneWindows64
-          zip -r ../StandaloneWindows64.zip .
-          popd
+
           pushd StandaloneLinux64
           zip -r ../StandaloneLinux64.zip .
           popd
-          pushd StandaloneOSX
-          zip -r ../StandaloneOSX.zip .
-          popd
+
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -90,6 +86,5 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            StandaloneWindows64.zip
+
             StandaloneLinux64.zip
-            StandaloneOSX.zip

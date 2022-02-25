@@ -1,6 +1,10 @@
 name: Unity Actions - Builder 😎
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+      - dev
 
 jobs:
   # buildAndTestForLinuxBasedPlatforms:
@@ -99,6 +103,15 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            *
       - uses: actions/upload-artifact@v2
         with:
           name: Build

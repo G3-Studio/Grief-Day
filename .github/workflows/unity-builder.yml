@@ -67,7 +67,7 @@ jobs:
 
   buildForWindowsBasedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: windows-latest
+    runs-on: windows-2019
     strategy:
       fail-fast: false
       matrix:
@@ -111,7 +111,7 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            *
+            build/*
       - uses: actions/upload-artifact@v2
         with:
           name: Build

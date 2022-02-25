@@ -35,12 +35,12 @@ jobs:
           lfs: true
       - uses: actions/cache@v2
         with:
-          path: ${{ matrix.projectPath }}/Library
+          path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}
             Library-
-            
+
       - uses: game-ci/unity-builder@main
         env:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}

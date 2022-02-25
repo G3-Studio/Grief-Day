@@ -36,11 +36,11 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{ hashFiles(matrix.projectPath) }}
+          key: Library-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-
-            Library-${{ matrix.projectPath }}-
+            Library-${{ matrix.targetPlatform }}
             Library-
+            
       - uses: game-ci/unity-builder@main
         env:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
@@ -57,6 +57,7 @@ jobs:
           path: build
 
   release:
+    needs: [build]
     name: "Create Github Release"
     runs-on: ubuntu-latest
     steps:

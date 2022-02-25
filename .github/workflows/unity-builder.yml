@@ -66,10 +66,11 @@ jobs:
     name: "Create Github Release"
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
       - name: Zip build
         run: |
-          cd build
-          ls
           pushd build/StandaloneWindows64
           zip -r ../../StandaloneWindows64.zip .
           popd

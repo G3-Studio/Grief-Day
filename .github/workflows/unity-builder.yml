@@ -25,14 +25,19 @@ jobs:
         include:
           - os: ubuntu-latest
             targetPlatform: StandaloneLinux64
+            projectPath: ./
+            unityVersion: 2021.2.12f1
           - os: macos-latest
             targetPlatform: StandaloneOSX
+            projectPath: ./
+            unityVersion: 2021.2.12f1
           
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           lfs: true
+
       - uses: actions/cache@v2
         with:
           path: Library

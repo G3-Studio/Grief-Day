@@ -17,8 +17,6 @@ public class Movement : MonoBehaviour
         inputs = new GameInputs();
 
         isPlayer1 = (gameObject.name == "Player 1") ? true : false;
-
-        Debug.Log(isPlayer1);
     }
 
     private void OnEnable()

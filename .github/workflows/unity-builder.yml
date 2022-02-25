@@ -111,7 +111,7 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            *
+            build/*
       - uses: actions/upload-artifact@v2
         with:
           name: Build

@@ -44,10 +44,10 @@ public class Stairs : MonoBehaviour
 
     private void Interact() {
         if(upStairTarget != null) {  // The player will go upstairs
-            this.gameObject.transform.position = upStairTarget.GetComponent<Collider2D>().bounds.center;
+            this.gameObject.transform.position = new Vector3 (upStairTarget.GetComponent<Collider2D>().transform.position.x, upStairTarget.GetComponent<Collider2D>().transform.position.y - upStairTarget.GetComponent<Collider2D>().bounds.size.y / 2.05f, upStairTarget.GetComponent<Collider2D>().transform.position.z);
         } else if (downStairTarget != null) {  // The player will go downstair
-            this.gameObject.transform.position = downStairTarget.GetComponent<Collider2D>().bounds.center;
-        }
+            this.gameObject.transform.position = new Vector3 (downStairTarget.GetComponent<Collider2D>().transform.position.x, downStairTarget.GetComponent<Collider2D>().transform.position.y - downStairTarget.GetComponent<Collider2D>().bounds.size.y / 2.05f, downStairTarget.GetComponent<Collider2D>().transform.position.z);;
+        }        
     }
 
     // When entering a collider, check if it's a ColliderUpStair or a ColliderDownStair, and set the teleport target accordingly

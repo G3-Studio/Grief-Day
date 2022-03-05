@@ -1,17 +1,20 @@
 
+using System;
+using System.Windows.Forms.DataVisualization.Charting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    private static TimeSpan STUN_TIME = new TimeSpan(0, 0, 1);
     private Rigidbody2D rb;
     private GameInputs inputs;
     private InputAction movement;
     private InputAction jump;
-    public bool canMove = true;
     private bool isLeft = true;
     private bool isPlayer1;
     bool Grounded, Stuck;
+    private DateTime stunedAt;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Movement : MonoBehaviour
         inputs = new GameInputs();
 
         isPlayer1 = (gameObject.name == "Player 1");
+        stunedAt = DateTime.MinValue;
     }
 
     private void OnEnable()
@@ -44,12 +48,13 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (!canMove) return;
-        // Apply movement
-        Vector2 axisInput = movement.ReadValue<Vector2>();
-        float horizontalInput = axisInput.x;
+    void Update() {
+        float horizontalInput = 0;
+        if (this.stunedAt + STUN_TIME < DateTime.Now) {
+            // Apply movement
+            Vector2 axisInput = movement.ReadValue<Vector2>();
+            horizontalInput = axisInput.x;
+        }
 
         rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * gameObject.GetComponent<Player>().speed * Time.deltaTime*100 : 0, rb.velocity.y);
 
@@ -58,7 +63,8 @@ public class Movement : MonoBehaviour
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
         }
-        if(horizontalInput < 0f && !isLeft){
+
+        if (horizontalInput < 0f && !isLeft) {
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
         }
@@ -106,8 +112,7 @@ public class Movement : MonoBehaviour
     }
 
     void DoJump(InputAction.CallbackContext context){
-        if (!canMove) return;
-        if(IsGrounded()){
+        if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
         }
     }

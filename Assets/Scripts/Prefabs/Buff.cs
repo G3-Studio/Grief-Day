@@ -15,6 +15,13 @@ public class Buff : MonoBehaviour
 
     void Start() {
         buff = buffList[Random.Range(0, buffList.Count)];
+        if (buff.buff.name == "pv") {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        } else if (buff.buff.name == "speed") {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        } else if (buff.buff.name == "attack") {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
 }

@@ -30,17 +30,12 @@ public class PlayerEffectUI : MonoBehaviour
     }
 
     public void Update(Inventory inventory) {
-        ReloadSkills(inventory);
-        ReloadBuffs(inventory);
-    }
-
-    private void ReloadBuffs(Inventory inventory) {
         ReloadSlot(1, inventory.GetBuffInSlot(0)?.name);
         ReloadSlot(2, inventory.GetBuffInSlot(1)?.name);
         ReloadSlot(3, inventory.GetSkillInSlot(0)?.name);
         ReloadSlot(4, inventory.GetSkillInSlot(1)?.name);
     }
-    
+
     private void ReloadSlot(int slotIndex, string spriteName) {
         Image slot = this.gameObject.transform.GetChild(3).GetChild(0).GetComponent<Image>();
         if (spriteName != null) {

@@ -30,13 +30,13 @@ public class SelectSkill : MonoBehaviour
 
     private void Interact()
     {
-        if (!selectedShrine) return;
-        // TODO: add skill to player
-        GameObject.Find("ItemSpawner").GetComponent<ItemChoosing>();
-    }
-    void Start()
-    {
-        
+        if (!selectedShrine) {
+            Debug.Log("Interact : failed");
+            return;
+        }
+        gameObject.GetComponent<Player>().inventory.AddSkill(selectedShrine.GetComponent<Shrine>().skill);
+        Destroy(selectedShrine);
+        GameObject.Find("ItemSpawner").GetComponent<ItemChoosing>().skillSelected();
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Shrine") {

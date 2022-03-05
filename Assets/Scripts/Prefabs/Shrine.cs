@@ -16,7 +16,6 @@ public class Shrine : MonoBehaviour
     }
 
     private void Start() {
-        Debug.Log(skill.name);
     }
 
     

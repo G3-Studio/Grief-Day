@@ -14,9 +14,6 @@ public class StatsUI : MonoBehaviour
     }
 
     public void UpdatePV(int health, int maxHealth) {
-        Debug.Log(this.gameObject.transform);
-        Debug.Log(this.gameObject.transform.GetChild(1));
-        Debug.Log(this.gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>());
         this.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PV : " + health + "/" + maxHealth;
     }
     

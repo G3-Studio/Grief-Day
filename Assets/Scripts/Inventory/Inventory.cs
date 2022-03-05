@@ -41,7 +41,6 @@ public class Inventory
 
     public void AddSkill(JsonUtils.CollectableItemJson.Skill skill) {
         skills[skillCount++] = skill;
-        Debug.Log("Added skill : "+ skill.name);
     }
 
     public bool HasSkill(JsonUtils.CollectableItemJson.Skill searchedSkill) {

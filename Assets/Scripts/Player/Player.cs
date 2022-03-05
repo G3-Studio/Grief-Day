@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] private int attack = 10;
+    [SerializeField] private GameObject effectUI;
 
     public bool isPlayer1 { get; private set; }
 
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
         itemDictionary = UnityEngine.JsonUtility.ToJson(json);
         itemList = new List<string>();
+        CollectItem("health_boost");
     }
     
     // Collect item when walking on it 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
                         Debug.LogWarning(o.name + " is not implemented");
                         break;
                 }
+                this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(o.buff.name, o.buff.value);
             }
         }
     }

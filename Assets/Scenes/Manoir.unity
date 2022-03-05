@@ -6397,11 +6397,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 2f18f6ff6364a7940b7307e3f2a1e8f3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1932406546
 MonoBehaviour:
@@ -6418,7 +6418,7 @@ MonoBehaviour:
   health: 200
   maxHealth: 200
   speed: 20
-  jumpForce: 5
+  jumpForce: 9
   attack: 10
   effectUI: {fileID: 0}
 --- !u!60 &1932406547

@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     private InputAction jump;
     private bool isLeft = true;
     private bool isPlayer1;
-    bool Grounded;
+    bool Grounded, Stuck;
 
     private void Awake()
     {
@@ -48,7 +48,8 @@ public class Movement : MonoBehaviour
         // Apply movement
         Vector2 axisInput = movement.ReadValue<Vector2>();
         float horizontalInput = axisInput.x;
-        rb.velocity = new Vector2(horizontalInput * gameObject.GetComponent<Player>().speed * Time.deltaTime*100, rb.velocity.y);
+
+        rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * gameObject.GetComponent<Player>().speed * Time.deltaTime*100 : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
         if(horizontalInput == 1.0f && isLeft){
@@ -68,21 +69,38 @@ public class Movement : MonoBehaviour
         Vector2 positionToCheck = transform.position;
         hits = Physics2D.RaycastAll (positionToCheck, new Vector2 (0, -1), 0.1f);
 
-        //if a collider was hit, we are grounded
-        if (hits.Length > 0) {
+        foreach (RaycastHit2D hit in hits) {
+            if (hits[0].collider.tag.EndsWith("Stair")) continue;
             return true;
         }
+
+        return false;
+    }
+
+    bool isStuck() {
+        RaycastHit2D[] hits;
+
+        Vector2 positionToCheck = transform.position + new Vector3(0, 2);
+        hits = Physics2D.RaycastAll (positionToCheck, rb.velocity, 0.1f);
+
+        foreach (RaycastHit2D hit in hits) {
+            if (hits[0].collider.tag.EndsWith("Stair")) continue;
+            return true;
+        }
+
         return false;
     }
     
     void OnCollisionStay2D(Collision2D collider)
     {
         Grounded = IsGrounded();
+        Stuck = isStuck();
     }
 
     void OnCollisionExit2D(Collision2D collider)
     {
         Grounded = false;
+        Stuck = false;
     }
 
     void DoJump(InputAction.CallbackContext context){

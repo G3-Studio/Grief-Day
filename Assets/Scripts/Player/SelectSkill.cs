@@ -31,7 +31,6 @@ public class SelectSkill : MonoBehaviour
     private void Interact()
     {
         if (!selectedShrine) {
-            Debug.Log("Interact : failed");
             return;
         }
         gameObject.GetComponent<Player>().inventory.AddSkill(selectedShrine.GetComponent<Shrine>().skill);

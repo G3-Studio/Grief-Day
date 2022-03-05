@@ -25,10 +25,7 @@ public class Player : MonoBehaviour
     
 
     // Collect item when walking on it 
-    public bool CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
-        if (inventory.isBuffInventoryFull()) {
-            return false;
-        }
+    public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
         inventory.AddBuff(buff);
         this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         switch (buff.buff.name)
@@ -50,13 +47,12 @@ public class Player : MonoBehaviour
                 Debug.LogWarning(buff.buff.name + " is not implemented");
                 break;
         }
-        return true;
     }
 
     // Add skill according to item
     public bool CollectItem(JsonUtils.CollectableItemJson.Skill skill)
     {
-        if (inventory.isBuffInventoryFull()) {
+        if (inventory.isSkillInventoryFull()) {
             return false;
         }
         inventory.AddSkill(skill);

@@ -6,7 +6,6 @@ public class Inventory
     private static JsonUtils.CollectableItemJson collectableItemJson = LoadItems();
     public static List<JsonUtils.CollectableItemJson.Buff> BUFFS = collectableItemJson.buff;
     public static List<JsonUtils.CollectableItemJson.Skill> SKILLS = collectableItemJson.skill;
-    private static int buffSlotCount = 2;
     private static int skillSlotCount = 2;
 
     private static JsonUtils.CollectableItemJson LoadItems() {
@@ -15,28 +14,24 @@ public class Inventory
         return JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json);
     }
     
-    private JsonUtils.CollectableItemJson.Buff[] buffs;
+    private List<JsonUtils.CollectableItemJson.Buff> buffs;
     private JsonUtils.CollectableItemJson.Skill[] skills;
     private int buffCount;
     private int skillCount;
 
     public Inventory() {
-        buffs = new JsonUtils.CollectableItemJson.Buff[3];
+        buffs = new List<JsonUtils.CollectableItemJson.Buff>();
         skills = new JsonUtils.CollectableItemJson.Skill[2];
         buffCount = 0;
         skillCount = 0;
     }
 
-    public bool isBuffInventoryFull() {
-        return buffCount == 2;
-    }
-
     public void AddBuff(JsonUtils.CollectableItemJson.Buff buff) {
-        buffs[buffCount++] = buff;
+        buffs.Add(buff);
     }
     
     public JsonUtils.CollectableItemJson.Buff GetBuffInSlot(int slot) {
-        return buffs[slot];
+        return slot < buffs.Count ? buffs[slot] : null;
     }
 
     public bool isSkillInventoryFull() {

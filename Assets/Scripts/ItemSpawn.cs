@@ -89,7 +89,8 @@ public class ItemSpawn : MonoBehaviour
                 GameObject item = (GameObject)Instantiate(buffPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
                 j++;
             }
-        }            
+        }
+            
     }
 
     void ClearCoins() {

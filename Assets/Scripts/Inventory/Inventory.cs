@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
-using UnityEngine;
 using Utils;
 
 public class Inventory
 {
-
     private static JsonUtils.CollectableItemJson collectableItemJson = LoadItems();
-    public static JsonUtils.CollectableItemJson.Buff[] BUFFS = collectableItemJson.buff;
-    public static JsonUtils.CollectableItemJson.Skill[] SKILLS = collectableItemJson.skill;
+    public static List<JsonUtils.CollectableItemJson.Buff> BUFFS = collectableItemJson.buff;
+    public static List<JsonUtils.CollectableItemJson.Skill> SKILLS = collectableItemJson.skill;
     private static int buffSlotCount = 2;
     private static int skillSlotCount = 2;
 
@@ -24,7 +21,7 @@ public class Inventory
     private int skillCount;
 
     public Inventory() {
-        buffs = new JsonUtils.CollectableItemJson.Buff[2];
+        buffs = new JsonUtils.CollectableItemJson.Buff[3];
         skills = new JsonUtils.CollectableItemJson.Skill[2];
         buffCount = 0;
         skillCount = 0;
@@ -37,6 +34,10 @@ public class Inventory
     public void AddBuff(JsonUtils.CollectableItemJson.Buff buff) {
         buffs[buffCount++] = buff;
     }
+    
+    public JsonUtils.CollectableItemJson.Buff GetBuffInSlot(int slot) {
+        return buffs[slot];
+    }
 
     public bool isSkillInventoryFull() {
         return skillCount == 2;
@@ -44,10 +45,6 @@ public class Inventory
 
     public void AddSkill(JsonUtils.CollectableItemJson.Skill skill) {
         skills[skillCount++] = skill;
-    }
-
-    public JsonUtils.CollectableItemJson.Buff GetBuffInSlot(int slot) {
-        return buffs[slot];
     }
 
     public bool HasSkill(JsonUtils.CollectableItemJson.Skill searchedSkill) {

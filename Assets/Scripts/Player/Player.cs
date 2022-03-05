@@ -18,18 +18,17 @@ public class Player : MonoBehaviour
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         inventory = new Inventory();
+        CollectItem(Inventory.BUFFS[0]);
     }
     
 
     // Collect item when walking on it 
-    public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
+    public bool CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
+        if (inventory.isBuffInventoryFull()) {
+            return false;
+        }
         inventory.AddBuff(buff);
         this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
-    }
-
-    // Add effect according to item
-    public void AddItemEffect(JsonUtils.CollectableItemJson.Buff buff)
-    {
         switch (buff.buff.name)
         {
             case "pv":
@@ -44,8 +43,20 @@ public class Player : MonoBehaviour
                 break;
             default:
                 Debug.LogWarning(buff.buff.name + " is not implemented");
+                break;
         }
-        this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(buff.buff.name, buff.buff.value);
+        return true;
+    }
+
+    // Add skill according to item
+    public bool CollectItem(JsonUtils.CollectableItemJson.Skill skill)
+    {
+        if (inventory.isBuffInventoryFull()) {
+            return false;
+        }
+        inventory.AddSkill(skill);
+        this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
+        return true;
     }
     
 

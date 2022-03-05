@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private StatsUI statsUI;
 
     public bool isPlayer1 { get; private set; }
-    private Inventory inventory;
+    public Inventory inventory;
 
     private void Awake()
     {

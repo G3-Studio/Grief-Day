@@ -35,7 +35,7 @@ public class ItemChoosing : MonoBehaviour
         player1.transform.position = new Vector3((float)-20, (float)4.37, player1.position.z);
         player2.transform.position = new Vector3((float)-5, (float)4.37, player1.position.z);
 
-        // TODO: disable inputs for Player2
+        player2.GetComponent<Movement>().canMove = false;
     }
 
     void phaseSuppression() {
@@ -46,8 +46,13 @@ public class ItemChoosing : MonoBehaviour
 
     public void skillSelected() {
         if(!firstPlayerChose) {
-            // TODO: TP first player, disable his movements, and enable other player movements
+            player1.GetComponent<Movement>().canMove = false;
+            player2.GetComponent<Movement>().canMove = true;
+            player1.transform.position = new Vector3((float)-20, (float)4.37, player1.position.z);
             firstPlayerChose = true;
+        } else {
+            player1.GetComponent<Movement>().canMove = true;
+            // TODO: make shrines disappear
         }
     }
 }

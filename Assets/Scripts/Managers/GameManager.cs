@@ -8,17 +8,19 @@ public class GameManager : MonoBehaviour
     public readonly Dictionary<int, GameState> stateTimings = new Dictionary<int, GameState>  // Create a dictionary with the State change timings
         {
             {5, GameState.Deny},
-            {5+90, GameState.Anger},
-            {5+90+30, GameState.Bargaining},
-            {5+90+30+90, GameState.Depression},
+            {5+90, GameState.AngerCoins},
+            {5+90+70, GameState.AngerTrade},
+            {5+90+70+20, GameState.Bargaining},
+            {5+90+70+20+90, GameState.Depression},
         };
     public readonly Dictionary<int, GameState> stateOrder = new Dictionary<int, GameState>  // Create a dictionary with the State change timings
         {
             {0, GameState.Overview},
             {1, GameState.Deny},
-            {2, GameState.Anger},
-            {3, GameState.Bargaining},
-            {4, GameState.Depression},
+            {2, GameState.AngerCoins},
+            {3, GameState.AngerTrade},
+            {4, GameState.Bargaining},
+            {5, GameState.Depression},
         };
     public static event Action<GameState> OnGameStateChanged;
 
@@ -43,7 +45,9 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Deny:
                 break;
-            case GameState.Anger:
+            case GameState.AngerCoins:
+                break;
+            case GameState.AngerTrade:
                 break;
             case GameState.Bargaining:
                 break;
@@ -72,7 +76,8 @@ public class GameManager : MonoBehaviour
 public enum GameState {
     Overview,
     Deny,
-    Anger,
+    AngerCoins,
+    AngerTrade,
     Bargaining,
     Depression
 }

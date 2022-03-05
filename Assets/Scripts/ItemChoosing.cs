@@ -13,11 +13,15 @@ public class ItemChoosing : MonoBehaviour
     ItemSpawn timer;
     private int time;
 
-    void Update()
-    {
-        time = TimeManager.Instance.timerSeconds;
-        if (time == 90)
-        {
+    void Awake() {
+        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+    }
+    void OnDestroy() {
+        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+    }
+
+    private void GameManagerOnGameStateChanged(GameState state) {
+        if(state == GameState.AngerTrade) {
             GameObject item = (GameObject)Instantiate(prefab, new Vector3((float)-15.63 , (float)4.37, -2), transform.rotation);
             GameObject item2 = (GameObject)Instantiate(prefab, new Vector3((float)-11.72, (float)4.37, -2), transform.rotation);
             GameObject item3 = (GameObject)Instantiate(prefab, new Vector3((float)-7.81,(float)4.37, -2), transform.rotation);

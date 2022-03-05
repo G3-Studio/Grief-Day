@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.007, y: 0.82, z: 0}
   m_LocalScale: {x: 0.57142854, y: 0.53327644, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9115356524671383952}
   m_RootOrder: 0
@@ -93,9 +94,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9115356524671383952}
   - component: {fileID: 3797889851813942374}
+  - component: {fileID: -274956508278043553}
+  - component: {fileID: 2394877478159875815}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: Shrine
+  m_TagString: Shrine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +113,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.63, y: 4.37, z: 0}
   m_LocalScale: {x: 1.75, y: 1.8752, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 880080882234299490}
   m_Father: {fileID: 0}
@@ -167,6 +171,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-274956508278043553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690162085929909511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470281b2f6161fa4d81e28a58d67a0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill:
+    name: 
+--- !u!61 &2394877478159875815
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690162085929909511}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01506412, y: 0.45690292}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7833452, y: 1.9138056}
+  m_EdgeRadius: 0
 --- !u!1001 &7082422332770022090
 PrefabInstance:
   m_ObjectHideFlags: 0

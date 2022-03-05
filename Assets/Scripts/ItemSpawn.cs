@@ -7,8 +7,7 @@ public class ItemSpawn : MonoBehaviour
 {
     [SerializeField] GameObject coinPrefab;
     [SerializeField] GameObject buffPrefab;
-    float[] yOffsets = new float[4] { -1.2f, 4.6f, 10.2f, 15.8f};
-
+    float[] yOffsets = new float[4] { -1.2f, 4.6f, 10.2f, 15.8f };
     void Awake() {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
@@ -92,7 +91,6 @@ public class ItemSpawn : MonoBehaviour
         }
             
     }
-
     void ClearCoins() {
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Coins");
         foreach(GameObject coin in coins) {
@@ -105,4 +103,5 @@ public class ItemSpawn : MonoBehaviour
             GameObject.Destroy(buff);
         }
     }
+
 }

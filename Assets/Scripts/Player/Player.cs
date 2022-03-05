@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] private int attack = 10;
+    [SerializeField] private GameObject effectUI;
 
     public bool isPlayer1 { get; private set; }
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         // For some reason, unity can only read objects as root types, not arrays
         itemDictionary = JsonUtils.LoadJsonArray<JsonUtils.CollectableItemJson>(json);
         itemList = new List<string>();
+        CollectItem("health_boost");
     }
     
     // Collect item when walking on it 
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
                         Debug.LogWarning(o.name + " is not implemented");
                         break;
                 }
+                this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(o.buff.name, o.buff.value);
             }
         }
     }

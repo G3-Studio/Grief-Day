@@ -30,11 +30,14 @@ public class NextPhaseText : MonoBehaviour
         if (GameManager.Instance.State == GameState.Deny) {  
             index = 1;
         }
-        if (GameManager.Instance.State == GameState.Anger) {
+        if (GameManager.Instance.State == GameState.AngerCoins) {
             index = 2;
         }
-        if (GameManager.Instance.State == GameState.Bargaining) {
+        if (GameManager.Instance.State == GameState.AngerTrade) {
             index = 3;
+        }
+        if (GameManager.Instance.State == GameState.Bargaining) {
+            index = 4;
         }
 
         if (index == -1) {  // Only true in depression phase

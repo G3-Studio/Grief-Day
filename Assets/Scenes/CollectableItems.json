@@ -1,16 +1,29 @@
-[
-  {
-    "name": "health_boost",
-    "buff": {
-      "name": "PV",
-      "value": 100
+{
+  "buff": [
+      {
+        "name": "health_boost",
+        "buff": {
+          "name": "pv",
+          "value": 100
+        }
+      },
+      {
+        "name": "swiftness_boots",
+        "buff": {
+          "name": "speed",
+          "value": 1
+        }
+      },
+      {
+        "name": "big_sword",
+        "buff": {
+          "name": "attack",
+          "value": 1
+        }
+      }],
+  "skill": [
+    {
+      "name": "double_jump"
     }
-  },
-  {
-    "name": "swiftness_boots",
-    "buff": {
-      "name": "speed",
-      "value": 1
-    }
-  }
-]
+  ]
+}

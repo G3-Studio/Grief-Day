@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ServiceModel.Description;
 using UnityEngine;
 using Utils;
 
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] private int attack = 10;
-    [SerializeField] private GameObject effectUI;
+    [SerializeField] private PlayerEffectUI effectUI;
+    [SerializeField] private StatsUI statsUI;
 
     public bool isPlayer1 { get; private set; }
     private Inventory inventory;
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         inventory = new Inventory();
+        this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
     }
     
 
@@ -27,18 +30,21 @@ public class Player : MonoBehaviour
             return false;
         }
         inventory.AddBuff(buff);
-        this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
+        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         switch (buff.buff.name)
         {
             case "pv":
                 health += buff.buff.value;
                 maxHealth += buff.buff.value;
+                statsUI.UpdatePV(health, maxHealth);
                 break;
             case "speed":
                 speed += buff.buff.value;
+                statsUI.UpdateSpeed(speed);
                 break;
             case "attack":
                 attack += buff.buff.value;
+                statsUI.UpdateSpeed(attack);
                 break;
             default:
                 Debug.LogWarning(buff.buff.name + " is not implemented");
@@ -54,7 +60,7 @@ public class Player : MonoBehaviour
             return false;
         }
         inventory.AddSkill(skill);
-        this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
+        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         return true;
     }
 }

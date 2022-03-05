@@ -9,27 +9,7 @@ using Utils;
 public class PlayerEffectUI : MonoBehaviour
 {
 
-    private static Dictionary<string, int> effectUIsIndex = new() {
-        {"PV", 2},
-    };
-
-    private static int effectIconSize = 50;
-    private static int gapSize = 10;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        //gameObject.
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Update(Inventory inventory) {
+    public void UpdateObject(Inventory inventory) {
         ReloadSlot(1, inventory.GetBuffInSlot(0)?.name);
         ReloadSlot(2, inventory.GetBuffInSlot(1)?.name);
         ReloadSlot(3, inventory.GetSkillInSlot(0)?.name);

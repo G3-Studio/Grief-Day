@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int health = 200;
     [SerializeField] private int maxHealth = 200;
+    [SerializeField] public float speed = 20.0f;
+    [SerializeField] private int attack = 10;
 
     public bool isPlayer1 { get; private set; }
 
@@ -39,6 +41,12 @@ public class Player : MonoBehaviour
                     case "PV":
                         health += o.buff.value;
                         maxHealth += o.buff.value;
+                        break;
+                    case "speed":
+                        speed += o.buff.value;
+                        break;
+                    case "attack":
+                        attack += o.buff.value;
                         break;
                     default:
                         Debug.LogWarning(o.name + " is not implemented");

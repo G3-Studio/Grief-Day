@@ -52,11 +52,11 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * gameObject.GetComponent<Player>().speed * Time.deltaTime*100 : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
-        if(horizontalInput == 1.0f && isLeft){
+        if(horizontalInput > 0f && isLeft){
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
         }
-        if(horizontalInput == -1.0f && !isLeft){
+        if(horizontalInput < 0f && !isLeft){
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
         }

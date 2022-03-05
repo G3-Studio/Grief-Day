@@ -16,23 +16,20 @@ namespace Utils
         }
 
         [Serializable]
-        public class CollectableItemsListJson
+        public class CollectableItemJson
         {
-            public CollectableItemJson[] array;
-
-            [Serializable]
-            public class CollectableItemJson
-            {
-                public string name;
-                public BuffJson buff;
-            }
-
+            public string name;
+            public BuffJson buff;
+            
             [Serializable]
             public class BuffJson
             {
                 public string name;
-                public string value;
+                public int value;
             }
+            
         }
+
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 namespace Utils
 {
@@ -14,6 +14,7 @@ namespace Utils
         public class CollectableItemJson
         {   
             public List<Buff> buff;
+            public List<Skill> skill;
 
             [Serializable]
             public class Buff {
@@ -28,12 +29,13 @@ namespace Utils
                 }
             }
             
-            public Skills skill;
-
             [Serializable]
-            public class Skills{
+            public class Skill{
                 public string name;
+
             }
+            
+
         }
 
         

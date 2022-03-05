@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5587963122245010226}
   m_Layer: 0
   m_Name: Buff
-  m_TagString: Untagged
+  m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901bcd3e632eaab48a46979e01ec332f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buff:
+    name: 
+    buff:
+      name: 
+      value: 0

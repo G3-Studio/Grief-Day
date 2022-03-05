@@ -18,7 +18,7 @@ public class ItemSpawn : MonoBehaviour
 
     private void GameManagerOnGameStateChanged(GameState state) {
         if(state == GameState.Deny) {
-            InvokeRepeating("SpawnBuffs", 0, 20);
+            InvokeRepeating("SpawnBuffs", 0, 30);
         } else if (state == GameState.AngerCoins) {
             CancelInvoke("SpawnBuffs");
             ClearBuffs();
@@ -89,8 +89,7 @@ public class ItemSpawn : MonoBehaviour
                 GameObject item = (GameObject)Instantiate(buffPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
                 j++;
             }
-        }
-            
+        }            
     }
 
     void ClearCoins() {
@@ -100,7 +99,7 @@ public class ItemSpawn : MonoBehaviour
         }
     }
     void ClearBuffs() {
-        GameObject[] buffs = GameObject.FindGameObjectsWithTag("Buffs");
+        GameObject[] buffs = GameObject.FindGameObjectsWithTag("Buff");
         foreach(GameObject buff in buffs) {
             GameObject.Destroy(buff);
         }

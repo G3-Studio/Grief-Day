@@ -12,26 +12,19 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject effectUI;
 
     public bool isPlayer1 { get; private set; }
-
-    // variables for CollectableItems
-    private List<JsonUtils.CollectableItemJson.Buff> itemList;
-    private JsonUtils.CollectableItemJson itemDictionary;
+    private Inventory inventory;
 
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
-        // Open JSON file & load content in itemDictionnary
-        string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
-        // For some reason, unity can only read objects as root types, not arrays
-        itemDictionary = JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json);
-        itemList = new List<JsonUtils.CollectableItemJson.Buff>();
+        inventory = new Inventory();
     }
     
+
     // Collect item when walking on it 
-    public void CollectItem(JsonUtils.CollectableItemJson.Buff buff)
-    {
-        itemList.Add(buff);
-        AddItemEffect(buff);
+    public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
+        inventory.AddBuff(buff);
+        this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
     }
 
     // Add effect according to item
@@ -51,8 +44,9 @@ public class Player : MonoBehaviour
                 break;
             default:
                 Debug.LogWarning(buff.buff.name + " is not implemented");
-                break;
         }
-        // TODO: this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(buff.buff.name, buff.buff.value);
-    }  
+        this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(buff.buff.name, buff.buff.value);
+    }
+    
+
 }

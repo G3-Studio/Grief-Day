@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Utils
 {
+
     public class JsonUtils
     {
-        public static CollectableItemJson LoadJson<CollectableItemJson> (string json) {
-            return UnityEngine.JsonUtility.FromJson<CollectableItemJson>(json);
+        public static T LoadJson<T> (string json) {
+            return UnityEngine.JsonUtility.FromJson<T>(json);
         }
 
         [Serializable]
         public class CollectableItemJson
-        {   
+        {
             public List<Buff> buff;
             public List<Skill> skill;
 

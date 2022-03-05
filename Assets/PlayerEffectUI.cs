@@ -1,14 +1,16 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Json;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 
 public class PlayerEffectUI : MonoBehaviour
 {
 
     private static Dictionary<string, int> effectUIsIndex = new() {
-        {"health_boost", 2},
+        {"PV", 2},
     };
 
     private static int effectIconSize = 50;
@@ -27,21 +29,41 @@ public class PlayerEffectUI : MonoBehaviour
         
     }
 
-    public void AddEffect(string name, int value) {
-        GameObject effectUi = this.gameObject.transform.parent.GetChild(effectUIsIndex[name]).gameObject;
-        GameObject newEffectUI = Instantiate(effectUi, this.gameObject.transform, true);
-        RearrangeIcons();
+    public void Update(Inventory inventory) {
+        ReloadBuffs(inventory);
+        ReloadSkills(inventory);
     }
 
-    private void RearrangeIcons() {
-        Vector3 position = this.transform.position;
-        Vector3 size = this.GetComponent<Renderer>().bounds.size;
-        int childCount = this.gameObject.transform.childCount;
-        int yOffset = (int) (size.x - (effectIconSize * childCount + gapSize * (childCount - 1))) / 2;
-        for (int i = 0; i < childCount; i++) {
-            this.gameObject.transform.GetChild(i).SetPositionAndRotation(
-                new Vector3(position.x, position.y + yOffset + effectIconSize * i + gapSize * (i - 1), 0),
-                new Quaternion(0, 0, 0, 0));
+    private void ReloadBuffs(Inventory inventory) {
+        Image slot1 = this.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        Image slot2 = this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        JsonUtils.CollectableItemJson.Buff buff1 = inventory.GetBuffInSlot(0);
+        JsonUtils.CollectableItemJson.Buff buff2 = inventory.GetBuffInSlot(1);
+        if (buff1 != null) {
+            slot1.enabled = true;
+            slot1.sprite = getSpriteOfBuff(buff1.name);
+        } else {
+            slot1.enabled = false;
+        }
+        if (buff2 != null) {
+            slot2.enabled = true;
+            slot2.sprite = getSpriteOfBuff(buff2.name);
+        } else {
+            slot2.enabled = false;
+        }
+    }
+
+    private void ReloadSkills(Inventory inventory) {
+        
+    }
+
+    private Sprite getSpriteOfBuff(string name) {
+        switch (name) {
+            case "health_boost": return Sprites.HEALTH_BOOST;
+            case "swiftness_boots": return Sprites.SWIFTNESS_BOOTS;
+            default:
+                Debug.LogWarning("This buff is not implemented");
+                return null;
         }
     }
 }

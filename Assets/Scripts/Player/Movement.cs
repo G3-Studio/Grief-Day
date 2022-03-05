@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private GameInputs inputs;
     private InputAction movement;
     private InputAction jump;
+    public bool canMove = true;
     private bool isLeft = true;
     private bool isPlayer1;
     bool Grounded, Stuck;
@@ -45,6 +46,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
         // Apply movement
         Vector2 axisInput = movement.ReadValue<Vector2>();
         float horizontalInput = axisInput.x;
@@ -104,6 +106,7 @@ public class Movement : MonoBehaviour
     }
 
     void DoJump(InputAction.CallbackContext context){
+        if (!canMove) return;
         if(IsGrounded()){
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
         }

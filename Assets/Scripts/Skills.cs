@@ -1,7 +1,5 @@
 using Utils;
-using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 public class Skills
 {
     public static List<JsonUtils.CollectableItemJson.Skill> skills;

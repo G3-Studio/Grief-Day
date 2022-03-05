@@ -1,9 +1,16 @@
 [
-    {
-        "name": "Bonjour",
-        "buff": {
-            "name": "PV",
-            "value": 100
-        }
+  {
+    "name": "health_boost",
+    "buff": {
+      "name": "PV",
+      "value": 100
     }
+  },
+  {
+    "name": "swiftness_boots",
+    "buff": {
+      "name": "speed",
+      "value": 1
+    }
+  }
 ]

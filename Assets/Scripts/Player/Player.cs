@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class Player : MonoBehaviour
 {
@@ -14,14 +14,15 @@ public class Player : MonoBehaviour
 
     // variables for CollectableItems
     private List<string> itemList;
-    private dynamic itemDictionary;
+    private JsonUtils.CollectableItemJson[] itemDictionary;
 
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         // Open JSON file & load content in itemDictionnary
         string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
-        itemDictionary = UnityEngine.JsonUtility.ToJson(json);
+        // For some reason, unity can only read objects as root types, not arrays
+        itemDictionary = JsonUtils.LoadJsonArray<JsonUtils.CollectableItemJson>(json);
         itemList = new List<string>();
     }
     
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     // Add effect according to item
     public void AddItemEffect(string name)
     {
-        foreach(dynamic o in itemDictionary){
+        foreach(JsonUtils.CollectableItemJson o in itemDictionary){
             if(o.name == name){
                 switch (o.buff.name)
                 {

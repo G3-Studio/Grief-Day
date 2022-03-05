@@ -14,6 +14,12 @@ public class CollectableItems : MonoBehaviour
             item = collision.gameObject;
             coinCount ++;
             Destroy(item);
+        } else if (collision.tag == "Buff") {
+            item = collision.gameObject;
+            gameObject.GetComponent<Player>().CollectItem(item.GetComponent<Buff>().buff);
+            Destroy(item);
         }
+
+
     }
 }

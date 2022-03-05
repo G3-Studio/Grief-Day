@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     public bool isPlayer1 { get; private set; }
 
     // variables for CollectableItems
-    private List<string> itemList;
-    private JsonUtils.CollectableItemJson[] itemDictionary;
+    private List<JsonUtils.CollectableItemJson.Buff> itemList;
+    private JsonUtils.CollectableItemJson itemDictionary;
 
     private void Awake()
     {
@@ -23,41 +23,36 @@ public class Player : MonoBehaviour
         // Open JSON file & load content in itemDictionnary
         string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
         // For some reason, unity can only read objects as root types, not arrays
-        itemDictionary = JsonUtils.LoadJsonArray<JsonUtils.CollectableItemJson>(json);
-        itemList = new List<string>();
-        CollectItem("health_boost");
+        itemDictionary = JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json);
+        itemList = new List<JsonUtils.CollectableItemJson.Buff>();
     }
     
     // Collect item when walking on it 
-    public void CollectItem(string name)
+    public void CollectItem(JsonUtils.CollectableItemJson.Buff buff)
     {
-        itemList.Add(name);
-        AddItemEffect(name);
+        itemList.Add(buff);
+        AddItemEffect(buff);
     }
 
     // Add effect according to item
-    public void AddItemEffect(string name)
+    public void AddItemEffect(JsonUtils.CollectableItemJson.Buff buff)
     {
-        foreach(JsonUtils.CollectableItemJson o in itemDictionary){
-            if(o.name == name){
-                switch (o.buff.name)
-                {
-                    case "PV":
-                        health += o.buff.value;
-                        maxHealth += o.buff.value;
-                        break;
-                    case "speed":
-                        speed += o.buff.value;
-                        break;
-                    case "attack":
-                        attack += o.buff.value;
-                        break;
-                    default:
-                        Debug.LogWarning(o.name + " is not implemented");
-                        break;
-                }
-                this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(o.buff.name, o.buff.value);
-            }
+        switch (buff.buff.name)
+        {
+            case "pv":
+                health += buff.buff.value;
+                maxHealth += buff.buff.value;
+                break;
+            case "speed":
+                speed += buff.buff.value;
+                break;
+            case "attack":
+                attack += buff.buff.value;
+                break;
+            default:
+                Debug.LogWarning(buff.buff.name + " is not implemented");
+                break;
         }
-    }
+        // TODO: this.effectUI.GetComponent<PlayerEffectUI>().AddEffect(buff.buff.name, buff.buff.value);
+    }  
 }

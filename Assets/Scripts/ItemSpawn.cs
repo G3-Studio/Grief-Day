@@ -79,7 +79,7 @@ public class ItemSpawn : MonoBehaviour
                 while(!validatedX) {
                     x = UnityEngine.Random.Range(-31, 9);
                     foreach(int prevPos in antiStacker) {
-                        validatedX = (Math.Abs(prevPos - x) > 10);
+                        validatedX = (Math.Abs(prevPos - x) > 2);
                         if (!validatedX) break;
                     } // if validateX is false for one value, stays false, else become true
                 }

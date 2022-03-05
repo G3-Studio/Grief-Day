@@ -10,7 +10,7 @@ public class ItemChoosing : MonoBehaviour
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
 
-    private bool firstPlayerChose = false;
+    private int validatedChoices = 0;
     private GameObject shrine1, shrine2, shrine3;
 
     void Awake() {
@@ -39,20 +39,21 @@ public class ItemChoosing : MonoBehaviour
     }
 
     void phaseSuppression() {
-        Destroy(shrine1);
-        Destroy(shrine2);
-        Destroy(shrine3);
+        
     }
 
     public void skillSelected() {
-        if(!firstPlayerChose) {
+        if(validatedChoices == 0) {
             player1.GetComponent<Movement>().canMove = false;
             player2.GetComponent<Movement>().canMove = true;
             player1.transform.position = new Vector3((float)-20, (float)4.37, player1.position.z);
-            firstPlayerChose = true;
-        } else {
+            validatedChoices += 1;
+        } else if (validatedChoices == 1){
             player1.GetComponent<Movement>().canMove = true;
-            // TODO: make shrines disappear
+            foreach(GameObject shrine in GameObject.FindGameObjectsWithTag("Shrine")) {
+                Destroy(shrine);
+            }
+            validatedChoices += 1;
         }
     }
 }

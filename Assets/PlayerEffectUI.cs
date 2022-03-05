@@ -34,30 +34,24 @@ public class PlayerEffectUI : MonoBehaviour
         ReloadBuffs(inventory);
     }
 
-    private void ReloadSkills(Inventory inventory) {
-        Image slot1 = this.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Image>();
-        Image slot2 = this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>();
-        JsonUtils.CollectableItemJson.Buff buff1 = inventory.GetBuffInSlot(0);
-        JsonUtils.CollectableItemJson.Buff buff2 = inventory.GetBuffInSlot(1);
-        if (buff1 != null) {
-            slot1.enabled = true;
-            slot1.sprite = getSpriteOfSkill(buff1.name);
-        } else {
-            slot1.enabled = false;
-        }
-        if (buff2 != null) {
-            slot2.enabled = true;
-            slot2.sprite = getSpriteOfSkill(buff2.name);
-        } else {
-            slot2.enabled = false;
-        }
-    }
-
     private void ReloadBuffs(Inventory inventory) {
-        
+        ReloadSlot(1, inventory.GetBuffInSlot(0)?.name);
+        ReloadSlot(2, inventory.GetBuffInSlot(1)?.name);
+        ReloadSlot(3, inventory.GetSkillInSlot(0)?.name);
+        ReloadSlot(4, inventory.GetSkillInSlot(1)?.name);
+    }
+    
+    private void ReloadSlot(int slotIndex, string spriteName) {
+        Image slot = this.gameObject.transform.GetChild(3).GetChild(0).GetComponent<Image>();
+        if (spriteName != null) {
+            slot.enabled = true;
+            slot.sprite = getSprite(spriteName);
+        } else {
+            slot.enabled = false;
+        }
     }
 
-    private Sprite getSpriteOfSkill(string name) {
+    private Sprite getSprite(string name) {
         switch (name) {
             case "health_boost": return Sprites.HEALTH_BOOST;
             case "swiftness_boots": return Sprites.SWIFTNESS_BOOTS;

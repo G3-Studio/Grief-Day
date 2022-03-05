@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         inventory = new Inventory();
-        CollectItem(Inventory.BUFFS[0]);
     }
     
 
@@ -58,6 +57,4 @@ public class Player : MonoBehaviour
         this.effectUI.GetComponent<PlayerEffectUI>().Update(inventory);
         return true;
     }
-    
-
 }

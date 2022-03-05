@@ -56,4 +56,7 @@ public class Inventory
         return false;
     }
 
+    public JsonUtils.CollectableItemJson.Skill GetSkillInSlot(int slot) {
+        return skills[slot];
+    }
 }

@@ -20,7 +20,7 @@ public class PlayerEffectUI : MonoBehaviour
     }
 
     private void ReloadSlot(int slotIndex, string spriteName) {
-        Image slot = this.gameObject.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>();
+        Image slot = this.gameObject.transform.GetChild(slotIndex).GetChild(1).GetComponent<Image>();
         if (spriteName != null) {
             slot.enabled = true;
             slot.sprite = getSprite(spriteName);

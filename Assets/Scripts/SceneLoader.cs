@@ -5,6 +5,9 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadNextScene()
     {
+        if (SystemInfo.operatingSystem.Contains("MAC")) {
+            SceneManager.LoadScene(5);
+        }
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
     }

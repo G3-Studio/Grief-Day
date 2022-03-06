@@ -1,6 +1,6 @@
 
 using System;
-using System.Windows.Forms.DataVisualization.Charting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     bool Grounded, Stuck;
     private DateTime stunedAt;
     private Vector2 axisInput;
+    private ArrayList skills = new ArrayList();
 
     private void Awake()
     {
@@ -26,6 +27,17 @@ public class Movement : MonoBehaviour
         axisInput = input;
     }
 
+    private void OnEnable()
+    {
+        // // Register skills and skill keybindings here
+        // SkillEffect dashSkill = new DashSkill();
+        // skills.Add(dashSkill);
+        // dash.performed += (InputAction.CallbackContext ctx) => {
+        //     dashSkill.execute(gameObject.GetComponent<Player>(), rb, movement);
+        // };
+        // dash.Enable();
+    }
+
     private void Update(){
         if (!canMove) return;
         float horizontalInput = 0f;
@@ -33,7 +45,8 @@ public class Movement : MonoBehaviour
             horizontalInput = axisInput.x;
         }
 
-        rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * gameObject.GetComponent<Player>().speed * Time.deltaTime*100 : 0, rb.velocity.y);
+        Player player = gameObject.GetComponent<Player>();
+        rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * player.speed : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
         if(horizontalInput > 0f && isLeft){
@@ -45,6 +58,9 @@ public class Movement : MonoBehaviour
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
         }
+
+        // Execute skills at the end of the movement update as it may update values
+        foreach (SkillEffect skill in this.skills) skill.update(player, rb, axisInput);
     }
 
     public void Jump(){

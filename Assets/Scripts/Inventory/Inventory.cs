@@ -52,6 +52,12 @@ public class Inventory
         return false;
     }
 
+    public bool HasSkill(string skillName) {
+        foreach (JsonUtils.CollectableItemJson.Skill skill in skills)
+            if (skill?.name == skillName) return true;
+        return false;
+    }
+
     public JsonUtils.CollectableItemJson.Skill GetSkillInSlot(int slot) {
         return skills[slot];
     }

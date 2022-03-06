@@ -11,23 +11,22 @@ public class PlayerInputHandler : MonoBehaviour
     private Movement mover; 
     private Stairs stairs;
     private SelectSkill selectSkill;
-    private Player player;
+    private GameObject player;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        player = FindObjectsOfType<Player>().FirstOrDefault();
 
-        var index = playerInput.playerIndex;
-        mover = FindObjectsOfType<Movement>().FirstOrDefault();
-        stairs = FindObjectsOfType<Stairs>().FirstOrDefault();
-        selectSkill = FindObjectsOfType<SelectSkill>().FirstOrDefault();
+        player = GameObject.FindGameObjectsWithTag("Player")[playerInput.playerIndex];
+
+        mover = player.GetComponent<Movement>();
+        stairs = player.GetComponent<Stairs>();
+        selectSkill = player.GetComponent<SelectSkill>();
     }
     
     void OnMove(InputValue value)
     {
-        if(mover != null)
-            mover.SetInputMoveVector(value.Get<Vector2>());
+        mover.SetInputMoveVector(value.Get<Vector2>());
     }
 
     void OnJump(InputValue value)
@@ -35,7 +34,7 @@ public class PlayerInputHandler : MonoBehaviour
         mover.Jump();
     }
 
-    public void OnInteract(InputValue value)
+    void OnInteract(InputValue value)
     {
         stairs.Interact();
         selectSkill.Interact();

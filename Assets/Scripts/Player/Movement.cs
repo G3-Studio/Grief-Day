@@ -26,9 +26,9 @@ public class Movement : MonoBehaviour
         axisInput = input;
     }
 
-    void Move(){
+    private void Update(){
         if (!canMove) return;
-        float horizontalInput = 0;
+        float horizontalInput = 0f;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
             horizontalInput = axisInput.x;
         }

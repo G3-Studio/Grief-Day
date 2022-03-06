@@ -61,10 +61,6 @@ jobs:
           name: Build
           path: build
 
-      - name: Return license
-        uses: game-ci/unity-return-license@main
-        if: always()
-
   release:
     needs: [build]
     name: "Create Github Release"

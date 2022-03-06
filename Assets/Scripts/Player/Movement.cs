@@ -8,54 +8,28 @@ public class Movement : MonoBehaviour
 {
     private static TimeSpan STUN_TIME = new TimeSpan(0, 0, 1);
     private Rigidbody2D rb;
-    private GameInputs inputs;
-    private InputAction movement;
-    private InputAction jump;
     public bool canMove = true;
     public bool additionalJumpAvailable = false;
     private bool isLeft = true;
-    private bool isPlayer1;
     bool Grounded, Stuck;
     private DateTime stunedAt;
+    private Vector2 axisInput;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        inputs = new GameInputs();
-
-        isPlayer1 = (gameObject.name == "Player 1");
         stunedAt = DateTime.MinValue;
     }
 
-    private void OnEnable()
+    public void SetInputMoveVector(Vector2 input)
     {
-        // Check which player is currently selected and check for the movement inputs
-        if(isPlayer1){
-            movement = inputs.Player1.Move;
-            jump = inputs.Player1.Jump;
-        }else{
-            movement = inputs.Player2.Move;
-            jump = inputs.Player2.Jump;
-        }
-        movement.Enable();
-
-        jump.performed += DoJump;
-        jump.Enable();
+        axisInput = input;
     }
 
-    private void OnDisable()
-    {
-        movement.Disable();
-        jump.Disable();
-    }
-
-    // Update is called once per frame
-    void Update() {
+    private void Update(){
         if (!canMove) return;
-        float horizontalInput = 0;
+        float horizontalInput = 0f;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
-            // Apply movement
-            Vector2 axisInput = movement.ReadValue<Vector2>();
             horizontalInput = axisInput.x;
         }
 
@@ -73,6 +47,19 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Jump(){
+        if (!canMove) return;
+        if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
+            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+            additionalJumpAvailable = true;
+        // TODO: isTranformed
+        // Double Jump
+        }else if(!IsGrounded() && additionalJumpAvailable){
+            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+            additionalJumpAvailable = false;
+        }
+    }
+
     bool IsGrounded() {
         RaycastHit2D[] hits;
 
@@ -82,6 +69,7 @@ public class Movement : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits) {
             if (hits[0].collider.tag.EndsWith("Stair")) continue;
+            if (hits[0].collider.tag.EndsWith("Player")) break;
             return true;
         }
 
@@ -112,18 +100,5 @@ public class Movement : MonoBehaviour
     {
         Grounded = false;
         Stuck = false;
-    }
-
-    void DoJump(InputAction.CallbackContext context){
-        if (!canMove) return;
-        if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
-            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            additionalJumpAvailable = true;
-        // TODO: isTranformed
-        // Double Jump
-        }else if(!IsGrounded() && additionalJumpAvailable){
-            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            additionalJumpAvailable = false;
-        }
     }
 }

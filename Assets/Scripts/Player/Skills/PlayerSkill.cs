@@ -23,7 +23,7 @@ public abstract class SkillEffect {
     }
 
     public void execute(Player player, Rigidbody2D rigidBody, Vector2 movement) {
-        if (!this.canExecute || (!player.inventory?.HasSkill(this.skillName) ?? false)) return;
+        if (!this.canExecute /*|| (!player.inventory?.HasSkill(this.skillName) ?? false)*/) return;
         this.triggerdAt = this.effectStart = DateTime.Now;
         this.tickStart(player, rigidBody, movement);
     }

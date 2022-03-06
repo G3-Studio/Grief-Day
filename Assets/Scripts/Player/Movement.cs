@@ -30,12 +30,8 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         // // Register skills and skill keybindings here
-        // SkillEffect dashSkill = new DashSkill();
-        // skills.Add(dashSkill);
-        // dash.performed += (InputAction.CallbackContext ctx) => {
-        //     dashSkill.execute(gameObject.GetComponent<Player>(), rb, movement);
-        // };
-        // dash.Enable();
+        SkillEffect dashSkill = new DashSkill();
+        skills.Add(dashSkill);
     }
 
     private void Update(){
@@ -74,6 +70,10 @@ public class Movement : MonoBehaviour
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
             additionalJumpAvailable = false;
         }
+    }
+
+    public void triggerSkill() {
+        (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
     }
 
     bool IsGrounded() {

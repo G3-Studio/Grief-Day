@@ -971,7 +971,6 @@ TextureImporter:
       HeavyBandit_2: 21300004
       HeavyBandit_16: 21300032
       HeavyBandit_1: 21300002
-      HeavyBandit_35: 21300070
       HeavyBandit_12: 21300024
       HeavyBandit_31: 21300062
       HeavyBandit_23: 21300046
@@ -992,14 +991,15 @@ TextureImporter:
       HeavyBandit_10: 21300020
       HeavyBandit_24: 21300048
       HeavyBandit_7: 21300014
-      HeavyBandit_11: 21300022
+      HeavyBandit_35: 21300070
       HeavyBandit_27: 21300054
-      HeavyBandit_32: 21300064
+      HeavyBandit_11: 21300022
       HeavyBandit_14: 21300028
+      HeavyBandit_32: 21300064
       HeavyBandit_29: 21300058
       HeavyBandit_5: 21300010
-      HeavyBandit_30: 21300060
       HeavyBandit_3: 21300006
+      HeavyBandit_30: 21300060
       HeavyBandit_8: 21300016
       HeavyBandit_19: 21300038
   spritePackingTag: 

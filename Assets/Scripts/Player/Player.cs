@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
     }
     
+    public int GetPlayerIndex()
+    {
+        return isPlayer1 ? 0 : 1;
+    }
 
     // Collect item when walking on it 
     public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {

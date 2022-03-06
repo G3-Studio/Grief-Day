@@ -11,24 +11,25 @@ public class Movement : MonoBehaviour
     public bool canMove = true;
     public bool additionalJumpAvailable = false;
     private bool isLeft = true;
-    private bool isPlayer1;
     bool Grounded, Stuck;
     private DateTime stunedAt;
+    private Vector2 axisInput;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        isPlayer1 = (gameObject.name == "Player 1");
         stunedAt = DateTime.MinValue;
     }
 
-    void OnMove(InputValue value){
+    public void SetInputMoveVector(Vector2 input)
+    {
+        axisInput = input;
+    }
+
+    void Move(){
         if (!canMove) return;
         float horizontalInput = 0;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
-            // Apply movement
-            Vector2 axisInput = value.Get<Vector2>();
             horizontalInput = axisInput.x;
         }
 
@@ -46,7 +47,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void OnJump(){
+    public void Jump(){
         if (!canMove) return;
         if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);

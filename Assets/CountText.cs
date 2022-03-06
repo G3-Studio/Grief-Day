@@ -17,7 +17,7 @@ public class CountText : MonoBehaviour
     {
         counterPlayer = player.GetComponent<CollectableItems>();
         countPlayer = counterPlayer.coinCount;
-        countDisplay.text = "Pièces : " +countPlayer.ToString(); 
+        countDisplay.text = "Pièces : " + countPlayer.ToString(); 
     }
 
 }

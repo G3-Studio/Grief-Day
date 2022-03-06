@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
                 break;
             case "attack":
                 attack += buff.buff.value;
-                statsUI.UpdateSpeed(attack);
+                statsUI.UpdateAttack(attack);
                 break;
             default:
                 Debug.LogWarning(buff.buff.name + " is not implemented");

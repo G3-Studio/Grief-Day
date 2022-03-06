@@ -2586,6 +2586,7 @@ GameObject:
   - component: {fileID: 614377537}
   - component: {fileID: 614377538}
   - component: {fileID: 614377539}
+  - component: {fileID: 614377540}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -2782,6 +2783,18 @@ MonoBehaviour:
   ItemName: 
   item: {fileID: 0}
   coinCount: 0
+--- !u!114 &614377540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ffc1defd939cb489ffc7d7f058fa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &642879640
 GameObject:
   m_ObjectHideFlags: 0
@@ -7958,6 +7971,7 @@ GameObject:
   - component: {fileID: 1932406549}
   - component: {fileID: 1932406550}
   - component: {fileID: 1932406551}
+  - component: {fileID: 1932406552}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -8165,6 +8179,18 @@ MonoBehaviour:
   ItemName: 
   item: {fileID: 0}
   coinCount: 0
+--- !u!114 &1932406552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ffc1defd939cb489ffc7d7f058fa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1957677851
 GameObject:
   m_ObjectHideFlags: 0

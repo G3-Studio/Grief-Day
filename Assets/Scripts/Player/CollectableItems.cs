@@ -25,7 +25,5 @@ public class CollectableItems : MonoBehaviour
             gameObject.GetComponent<Player>().inventory.AddSkill(item.GetComponent<Skill>().skill);
             Destroy(item);
         }
-
-
     }
 }

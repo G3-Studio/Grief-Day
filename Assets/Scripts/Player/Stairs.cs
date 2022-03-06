@@ -43,6 +43,7 @@ public class Stairs : MonoBehaviour
     }
 
     private void Interact() {
+        if (!gameObject.GetComponent<Movement>().canMove) return;
         if(upStairTarget != null) {  // The player will go upstairs
             this.gameObject.transform.position = new Vector3 (upStairTarget.GetComponent<Collider2D>().transform.position.x, upStairTarget.GetComponent<Collider2D>().transform.position.y - upStairTarget.GetComponent<Collider2D>().bounds.size.y / 2.05f, upStairTarget.GetComponent<Collider2D>().transform.position.z);
         } else if (downStairTarget != null) {  // The player will go downstair

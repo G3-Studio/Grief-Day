@@ -2585,6 +2585,7 @@ GameObject:
   - component: {fileID: 614377536}
   - component: {fileID: 614377537}
   - component: {fileID: 614377538}
+  - component: {fileID: 614377539}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -2737,9 +2738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e0c100c8b1a2e4e95f0fc69f06d3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Bonjour
-  item: {fileID: 0}
-  coinCount: 0
 --- !u!114 &614377537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +2750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  additionalJumpAvailable: 0
 --- !u!114 &614377538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,6 +2764,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede839d8426f4d24c9f5f3d5da587736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614377539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67c5a1a8b57d0f42944158f8b954736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemName: 
+  item: {fileID: 0}
+  coinCount: 0
 --- !u!1 &642879640
 GameObject:
   m_ObjectHideFlags: 0
@@ -7938,6 +7953,7 @@ GameObject:
   - component: {fileID: 1932406548}
   - component: {fileID: 1932406549}
   - component: {fileID: 1932406550}
+  - component: {fileID: 1932406551}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -8101,9 +8117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e0c100c8b1a2e4e95f0fc69f06d3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: 
-  item: {fileID: 0}
-  coinCount: 0
 --- !u!114 &1932406549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8116,6 +8129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  additionalJumpAvailable: 0
 --- !u!114 &1932406550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8128,6 +8143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede839d8426f4d24c9f5f3d5da587736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932406551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67c5a1a8b57d0f42944158f8b954736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemName: 
+  item: {fileID: 0}
+  coinCount: 0
 --- !u!1 &1957677851
 GameObject:
   m_ObjectHideFlags: 0

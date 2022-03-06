@@ -104,6 +104,7 @@ MonoBehaviour:
     buff:
       name: 
       value: 0
+  offset: 0
 --- !u!50 &6965047520645759505
 Rigidbody2D:
   serializedVersion: 4

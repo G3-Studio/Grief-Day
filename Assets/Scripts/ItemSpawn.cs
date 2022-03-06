@@ -56,7 +56,7 @@ public class ItemSpawn : MonoBehaviour
                 }
                 antiStacker[j] = x;
 
-                y = yOffsets[i];
+                y = yOffsets[i] + 0.15f;
                 GameObject item = (GameObject)Instantiate(coinPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
                 j++;
             }
@@ -76,7 +76,7 @@ public class ItemSpawn : MonoBehaviour
             }
             antiStacker[j] = x;
 
-            y = yOffsets[3];
+            y = yOffsets[3] + 0.15f;
             GameObject item = (GameObject)Instantiate(coinPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
             j++;
         }

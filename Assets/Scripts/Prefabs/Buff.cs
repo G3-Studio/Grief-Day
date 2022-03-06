@@ -19,7 +19,7 @@ public class Buff : MonoBehaviour
         if (buff.buff.name == "pv") {
             SpriteRenderer component = gameObject.GetComponent<SpriteRenderer>();
             component.sprite = Sprites.HEALTH_BOOST;
-            component.transform.position = new Vector3(component.transform.position.x, component.transform.position.y + 0.37f,
+            component.transform.position = new Vector3(component.transform.position.x, component.transform.position.y + 0.14f,
                 component.transform.position.z);
             component.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         } else if (buff.buff.name == "speed") {

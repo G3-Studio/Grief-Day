@@ -2734,10 +2734,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 614377530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e0c100c8b1a2e4e95f0fc69f06d3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: b67c5a1a8b57d0f42944158f8b954736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Bonjour
+  ItemName: 
   item: {fileID: 0}
   coinCount: 0
 --- !u!114 &614377537
@@ -2752,6 +2752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  additionalJumpAvailable: 0
 --- !u!114 &614377538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3314,6 +3316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 2842403830369421678, guid: 15175636d85fe694f82d094938b5584a, type: 3}
   buffPrefab: {fileID: 760047208406920064, guid: 8680ca61dc6971145ad28715e949c90e, type: 3}
+  skillPrefab: {fileID: 1594064560649759202, guid: 681da897458215346b257f308b743f24, type: 3}
 --- !u!114 &874049476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8098,7 +8101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932406542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e0c100c8b1a2e4e95f0fc69f06d3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: b67c5a1a8b57d0f42944158f8b954736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemName: 
@@ -8116,6 +8119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4dccd38c85c2c41869da07cd878481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  additionalJumpAvailable: 0
 --- !u!114 &1932406550
 MonoBehaviour:
   m_ObjectHideFlags: 0

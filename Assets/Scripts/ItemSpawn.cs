@@ -7,6 +7,7 @@ public class ItemSpawn : MonoBehaviour
 {
     [SerializeField] GameObject coinPrefab;
     [SerializeField] GameObject buffPrefab;
+    [SerializeField] GameObject skillPrefab;
     float[] yOffsets = new float[4] { -1.2f, 4.6f, 10.2f, 15.8f };
     void Awake() {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
@@ -21,6 +22,7 @@ public class ItemSpawn : MonoBehaviour
         } else if (state == GameState.AngerCoins) {
             CancelInvoke("SpawnBuffs");
             ClearBuffs();
+            ClearSkills();
             InvokeRepeating("SpawnCoins", 0, 20);
         } else {
             CancelInvoke("SpawnCoins");
@@ -30,6 +32,7 @@ public class ItemSpawn : MonoBehaviour
     }
     void SpawnCoins()
     {
+        Debug.Log("Spawn Coins");
         int x = 0;
         float y;
         int j = 0;
@@ -68,6 +71,8 @@ public class ItemSpawn : MonoBehaviour
         int[] antiStacker = new int[2];
         bool validatedX;
 
+        int time = TimeManager.Instance.timerSeconds;
+
         for (int i =0; i<4; i++)
         {
             j = 0;
@@ -88,6 +93,11 @@ public class ItemSpawn : MonoBehaviour
                 GameObject item = (GameObject)Instantiate(buffPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
                 j++;
             }
+
+        }
+        if (time >= 59) {
+            GameObject firstSkill = (GameObject)Instantiate(skillPrefab, new Vector3(-26, yOffsets[1], 0), transform.rotation, gameObject.transform);
+            GameObject secondSkill = (GameObject)Instantiate(skillPrefab, new Vector3(4, yOffsets[1], 0), transform.rotation, gameObject.transform);
         }
             
     }
@@ -101,6 +111,12 @@ public class ItemSpawn : MonoBehaviour
         GameObject[] buffs = GameObject.FindGameObjectsWithTag("Buff");
         foreach(GameObject buff in buffs) {
             GameObject.Destroy(buff);
+        }
+    }
+    void ClearSkills() {
+        GameObject[] skills = GameObject.FindGameObjectsWithTag("Skill");
+        foreach(GameObject skill in skills) {
+            GameObject.Destroy(skill);
         }
     }
 

@@ -10,13 +10,13 @@ public class PlayerEffectUI : MonoBehaviour
 {
 
     public void Awake() {
+        ReloadSlot(0, null);
         ReloadSlot(1, null);
-        ReloadSlot(2, null);
     }
     
     public void UpdateObject(Inventory inventory) {
-        ReloadSlot(1, inventory.GetSkillInSlot(0)?.name);
-        ReloadSlot(2, inventory.GetSkillInSlot(1)?.name);
+        ReloadSlot(0, inventory.GetSkillInSlot(0)?.name);
+        ReloadSlot(1, inventory.GetSkillInSlot(1)?.name);
     }
 
     private void ReloadSlot(int slotIndex, string spriteName) {

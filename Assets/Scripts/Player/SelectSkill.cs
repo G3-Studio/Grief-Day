@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectSkill : MonoBehaviour
 {
     private GameObject selectedShrine;
-
+    
     public void Interact()
     {
         if (!selectedShrine) {

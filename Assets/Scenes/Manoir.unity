@@ -3412,8 +3412,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawner: {fileID: 874049474}
   prefab: {fileID: 5690162085929909511, guid: 90bb3d8b208125b40ab8c1dc4859cfa4, type: 3}
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 614377532}
+  player2: {fileID: 1932406544}
 --- !u!4 &874049477
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - ColliderDownStair
   - Coins
   - Buff
+  - Skill
   layers:
   - Default
   - TransparentFX

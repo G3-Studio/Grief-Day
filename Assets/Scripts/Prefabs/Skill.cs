@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
-public class Shrine : MonoBehaviour
+public class Skill : MonoBehaviour
 {
     public JsonUtils.CollectableItemJson.Skill skill;
-
-    void Awake()
+void Awake()
     {
         skill = Skills.getSkill();
     }
-
-    
 }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class StatsUI : MonoBehaviour
 {
 
+    [SerializeField] public Gradient gradient;
+
     public void UpdateAll(int health, int maxHealth, float speed, float attack) {
         this.UpdatePV(health, maxHealth);
         this.UpdateSpeed(speed);
@@ -14,7 +16,13 @@ public class StatsUI : MonoBehaviour
     }
 
     public void UpdatePV(int health, int maxHealth) {
-        this.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PV : " + health + "/" + maxHealth;
+        Transform root = this.gameObject.transform.GetChild(0);
+        Transform sliderTransformation = root.GetChild(1);
+        Slider sliderComponent = sliderTransformation.GetComponent<Slider>();
+        sliderComponent.maxValue = maxHealth;
+        sliderComponent.value = health;
+        sliderTransformation.GetComponent<Image>().color = gradient.Evaluate(sliderComponent.normalizedValue);
+        root.GetChild(2).GetComponent<TextMeshProUGUI>().text = health + "/" + maxHealth;
     }
     
     public void UpdateSpeed(float speed) {

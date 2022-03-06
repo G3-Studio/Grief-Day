@@ -22,7 +22,7 @@ public class Inventory
 
     public Inventory() {
         buffs = new List<JsonUtils.CollectableItemJson.Buff>();
-        skills = new JsonUtils.CollectableItemJson.Skill[2];
+        skills = new JsonUtils.CollectableItemJson.Skill[skillSlotCount];
         buffCount = 0;
         skillCount = 0;
     }

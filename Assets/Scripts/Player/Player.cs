@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     // Collect item when walking on it 
     public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
+        Debug.Log("Collect buff !");
         inventory.AddBuff(buff);
         this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         switch (buff.buff.name)
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     // Add skill according to item
     public bool CollectItem(JsonUtils.CollectableItemJson.Skill skill)
     {
+        Debug.Log("Collect skill !");
         if (inventory.isSkillInventoryFull()) {
             return false;
         }

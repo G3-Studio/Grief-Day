@@ -15,7 +15,7 @@
       }
     },
     {
-      "name": "big_sword",
+      "name": "demon_finger",
       "buff": {
         "name": "attack",
         "value": 1
@@ -36,7 +36,7 @@
       "name": "fireball"
     },
     {
-      "name": "lacagederyze"
+      "name": "big_sword"
     }
   ]
 }

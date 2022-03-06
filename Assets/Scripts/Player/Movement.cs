@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     private InputAction movement;
     private InputAction jump;
     public bool canMove = true;
+    public bool additionalJumpAvailable = false;
     private bool isLeft = true;
     private bool isPlayer1;
     bool Grounded, Stuck;
@@ -117,6 +118,12 @@ public class Movement : MonoBehaviour
         if (!canMove) return;
         if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+            additionalJumpAvailable = true;
+        // TODO: isTranformed
+        // Double Jump
+        }else if(!IsGrounded() && additionalJumpAvailable){
+            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+            additionalJumpAvailable = false;
         }
     }
 }

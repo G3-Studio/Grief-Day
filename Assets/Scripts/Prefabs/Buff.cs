@@ -23,7 +23,11 @@ public class Buff : MonoBehaviour
                 component.transform.position.z);
             component.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         } else if (buff.buff.name == "speed") {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            SpriteRenderer component = gameObject.GetComponent<SpriteRenderer>();
+            component.sprite = Sprites.SWIFTNESS_BOOTS;
+            component.transform.position = new Vector3(component.transform.position.x, component.transform.position.y + 0.04f,
+                component.transform.position.z);
+            component.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         } else if (buff.buff.name == "attack") {
             SpriteRenderer component = gameObject.GetComponent<SpriteRenderer>();
             component.sprite = Sprites.DEMON_FINGER;

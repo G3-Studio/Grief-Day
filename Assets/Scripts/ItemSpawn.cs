@@ -9,6 +9,7 @@ public class ItemSpawn : MonoBehaviour
     [SerializeField] GameObject buffPrefab;
     [SerializeField] GameObject skillPrefab;
     float[] yOffsets = new float[4] { -1.2f, 4.6f, 10.2f, 15.8f };
+    private bool hasSkillsSpawned = false;
     void Awake() {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
@@ -32,7 +33,6 @@ public class ItemSpawn : MonoBehaviour
     }
     void SpawnCoins()
     {
-        Debug.Log("Spawn Coins");
         int x = 0;
         float y;
         int j = 0;
@@ -95,7 +95,8 @@ public class ItemSpawn : MonoBehaviour
             }
 
         }
-        if (time >= 59) {
+        if (time >= 59 && hasSkillsSpawned == false) {
+            hasSkillsSpawned = true;
             GameObject firstSkill = (GameObject)Instantiate(skillPrefab, new Vector3(-26, yOffsets[1], 0), transform.rotation, gameObject.transform);
             GameObject secondSkill = (GameObject)Instantiate(skillPrefab, new Vector3(4, yOffsets[1], 0), transform.rotation, gameObject.transform);
         }

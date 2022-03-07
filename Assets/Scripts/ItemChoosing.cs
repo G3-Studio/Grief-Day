@@ -5,7 +5,6 @@ using UnityEngine;
 public class ItemChoosing : MonoBehaviour
 {
     
-    [SerializeField] GameObject itemSpawner;
     [SerializeField] GameObject prefab;
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
@@ -31,15 +30,14 @@ public class ItemChoosing : MonoBehaviour
     }
 
     private void phaseInstallation() {
-        shrine1 = (GameObject)Instantiate(prefab, new Vector3((float)-10.82 , (float)7.86, 0), transform.rotation);
-        shrine2 = (GameObject)Instantiate(prefab, new Vector3((float)-6.82, (float)7.86, 0), transform.rotation);
-        shrine3 = (GameObject)Instantiate(prefab, new Vector3((float)-3,(float)7.86, 0), transform.rotation);
-        player1.transform.position = new Vector3((float)-3,(float)7.86, player1.position.z);
-        player2.transform.position = new Vector3((float)-3,(float)7.86, player1.position.z);
+        shrine1 = (GameObject)Instantiate(prefab, new Vector3((float)5.76 , (float)24.03, 0), transform.rotation);
+        shrine2 = (GameObject)Instantiate(prefab, new Vector3((float)1.34, (float)24.03, 0), transform.rotation);
+        shrine3 = (GameObject)Instantiate(prefab, new Vector3((float)-3.64,(float)24.03, 0), transform.rotation);
+        player1.transform.position = new Vector3((float)-7,(float)24.03, player1.position.z);
+        player2.transform.position = new Vector3((float)-7,(float)24.03, player1.position.z);
 
-
-        firstPlayer = (player1.GetComponent<CollectableItems>().coinCount > player2.GetComponent<CollectableItems>().coinCount) ? player1 : player2;
-        secondPlayer = (player1.GetComponent<CollectableItems>().coinCount > player2.GetComponent<CollectableItems>().coinCount) ? player2 : player1;
+        firstPlayer = (player1.GetComponent<CollectableItems>().coinCount >= player2.GetComponent<CollectableItems>().coinCount) ? player1 : player2;
+        secondPlayer = (player1.GetComponent<CollectableItems>().coinCount >= player2.GetComponent<CollectableItems>().coinCount) ? player2 : player1;
         secondPlayer.GetComponent<Movement>().canMove = false;
     }
 
@@ -69,7 +67,7 @@ public class ItemChoosing : MonoBehaviour
         if(validatedChoices == 0) {
             firstPlayer.GetComponent<Movement>().canMove = false;
             secondPlayer.GetComponent<Movement>().canMove = true;
-            firstPlayer.transform.position = new Vector3((float)-6.4, (float)-2.22, firstPlayer.position.z);
+            firstPlayer.transform.position = new Vector3((float)-7,(float)24.03, firstPlayer.position.z);
             validatedChoices += 1;
         } else if (validatedChoices == 1){
             firstPlayer.GetComponent<Movement>().canMove = true;

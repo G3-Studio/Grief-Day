@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int attack = 10;
     [SerializeField] private PlayerEffectUI effectUI;
     [SerializeField] private StatsUI statsUI;
+    [SerializeField] public float dashStrength = 10.0f;
 
     public bool isPlayer1 { get; private set; }
     public Inventory inventory;

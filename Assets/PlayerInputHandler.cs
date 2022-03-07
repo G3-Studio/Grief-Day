@@ -39,4 +39,12 @@ public class PlayerInputHandler : MonoBehaviour
         stairs.Interact();
         selectSkill.Interact();
     }
+
+    void OnSkill1(InputValue value) {
+        mover.triggerSkill();
+    }
+
+    void OnSkill2(InputValue value) {
+        mover.triggerSkill();
+    }
 }

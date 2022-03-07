@@ -21,6 +21,11 @@ public class SelectSkill : MonoBehaviour
             selectedShrine = other.gameObject;
         } 
     }
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.tag == "Shrine") {
+            selectedShrine = other.gameObject;
+        } 
+    }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Shrine") {
             selectedShrine = null;

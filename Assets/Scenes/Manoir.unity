@@ -1125,6 +1125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 376605780}
   - component: {fileID: 376605779}
+  - component: {fileID: 376605781}
   m_Layer: 0
   m_Name: F1UpStair
   m_TagString: ColliderUpStair
@@ -1173,6 +1174,18 @@ Transform:
   m_Father: {fileID: 587936498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376605781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376605777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &386723674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505396408}
   - component: {fileID: 505396409}
+  - component: {fileID: 505396410}
   m_Layer: 0
   m_Name: F2UpStair
   m_TagString: ColliderUpStair
@@ -1647,6 +1661,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7621114}
   m_EdgeRadius: 0
+--- !u!114 &505396410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505396407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &587936497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610726622}
   - component: {fileID: 610726623}
+  - component: {fileID: 610726624}
   m_Layer: 0
   m_Name: F3UpStair
   m_TagString: ColliderUpStair
@@ -1805,6 +1832,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0147086}
   m_EdgeRadius: 0
+--- !u!114 &610726624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610726621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &614377530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,6 +3794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262258406}
   - component: {fileID: 1262258407}
+  - component: {fileID: 1262258408}
   m_Layer: 0
   m_Name: F3DownStair
   m_TagString: ColliderDownStair
@@ -3808,6 +3848,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0200485}
   m_EdgeRadius: 0
+--- !u!114 &1262258408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262258405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1275152912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,6 +4408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524373132}
   - component: {fileID: 1524373131}
+  - component: {fileID: 1524373133}
   m_Layer: 0
   m_Name: F1DownStair
   m_TagString: ColliderDownStair
@@ -4409,6 +4462,18 @@ RectTransform:
   m_AnchoredPosition: {x: -1.57, y: -0.12}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1524373133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524373129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545934753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4729,6 +4794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1908969615}
   - component: {fileID: 1908969616}
+  - component: {fileID: 1908969617}
   m_Layer: 0
   m_Name: F2DownStair
   m_TagString: ColliderDownStair
@@ -4777,6 +4843,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.994112}
   m_EdgeRadius: 0
+--- !u!114 &1908969617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908969614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ca224b65ba0fb4fb497213dae206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1914784624
 GameObject:
   m_ObjectHideFlags: 0

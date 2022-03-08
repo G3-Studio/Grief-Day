@@ -8,9 +8,11 @@ public class Movement : MonoBehaviour
 {
     private static TimeSpan STUN_TIME = new TimeSpan(0, 0, 1);
     private Rigidbody2D rb;
+    private Animator animator;
     public bool canMove = true;
     public bool additionalJumpAvailable = false;
     private bool isLeft = true;
+    private bool isJumping = false;
     bool Grounded, Stuck;
     private DateTime stunedAt;
     private Vector2 axisInput;
@@ -19,6 +21,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         stunedAt = DateTime.MinValue;
     }
 
@@ -29,7 +32,7 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        // // Register skills and skill keybindings here
+        // Register skills and skill keybindings here
         SkillEffect dashSkill = new DashSkill();
         skills.Add(dashSkill);
     }
@@ -40,6 +43,11 @@ public class Movement : MonoBehaviour
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
             horizontalInput = axisInput.x;
         }
+
+        // Animate player
+        animator.SetBool("Running", horizontalInput != 0);
+        animator.SetBool("Grounded", Grounded);
+        animator.SetBool("Jumping", this.isJumping);
 
         Player player = gameObject.GetComponent<Player>();
         rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * player.speed : 0, rb.velocity.y);
@@ -64,11 +72,13 @@ public class Movement : MonoBehaviour
         if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
             additionalJumpAvailable = true;
+            this.isJumping = true;
         // TODO: isTranformed
         // Double Jump
         }else if(!IsGrounded() && additionalJumpAvailable){
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
             additionalJumpAvailable = false;
+            this.isJumping = true;
         }
     }
 
@@ -81,11 +91,11 @@ public class Movement : MonoBehaviour
 
         //We raycast down 1 pixel from this position to check for a collider
         Vector2 positionToCheck = transform.position;
-        hits = Physics2D.RaycastAll (positionToCheck, new Vector2 (0, -1), 0.1f);
+        hits = Physics2D.RaycastAll (positionToCheck + new Vector2(0, -1.5f), new Vector2(0, -1), 0.1f);
 
         foreach (RaycastHit2D hit in hits) {
             if (hits[0].collider.tag.EndsWith("Stair")) continue;
-            if (hits[0].collider.tag.EndsWith("Player")) break;
+            if (hits[0].collider.tag.EndsWith("Player")) continue;
             return true;
         }
 
@@ -95,7 +105,7 @@ public class Movement : MonoBehaviour
     bool isStuck() {
         RaycastHit2D[] hits;
 
-        Vector2 positionToCheck = transform.position + new Vector3(0, 2);
+        Vector2 positionToCheck = transform.position + new Vector3(rb.velocity.x > 0 ? 1 : -1, 2);
         hits = Physics2D.RaycastAll (positionToCheck, rb.velocity, 0.1f);
 
         foreach (RaycastHit2D hit in hits) {
@@ -110,6 +120,10 @@ public class Movement : MonoBehaviour
     {
         Grounded = IsGrounded();
         Stuck = isStuck();
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        this.isJumping = false;
     }
 
     void OnCollisionExit2D(Collision2D collider)

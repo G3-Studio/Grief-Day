@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 public class Stairs : MonoBehaviour
 {    
@@ -25,11 +24,23 @@ public class Stairs : MonoBehaviour
 
     public void Interact() {
         if (!gameObject.GetComponent<Movement>().canMove) return;
-        if(upStairTarget != null) {  // The player will go upstairs
-            this.gameObject.transform.position = new Vector3 (upStairTarget.GetComponent<Collider2D>().transform.position.x, upStairTarget.GetComponent<Collider2D>().transform.position.y - upStairTarget.GetComponent<Collider2D>().bounds.size.y / 2.05f, upStairTarget.GetComponent<Collider2D>().transform.position.z);
+        if(upStairTarget != null) {  // The player will go upstair
+            Collider2D collider = upStairTarget.GetComponent<Collider2D>();
+            Collider2D playerCollider = this.gameObject.GetComponent<Collider2D>();
+            this.gameObject.transform.position = new Vector3(
+                collider.bounds.center.x,
+                collider.bounds.center.y - collider.bounds.size.y / 2f + playerCollider.bounds.size.y / 2f,
+                collider.bounds.center.z
+            );
         } else if (downStairTarget != null) {  // The player will go downstair
-            this.gameObject.transform.position = new Vector3 (downStairTarget.GetComponent<Collider2D>().transform.position.x, downStairTarget.GetComponent<Collider2D>().transform.position.y - downStairTarget.GetComponent<Collider2D>().bounds.size.y / 2.05f, downStairTarget.GetComponent<Collider2D>().transform.position.z);;
-        }        
+            Collider2D collider = downStairTarget.GetComponent<Collider2D>();
+            Collider2D playerCollider = this.gameObject.GetComponent<Collider2D>();
+            this.gameObject.transform.position = new Vector3(
+                collider.bounds.center.x,
+                collider.bounds.center.y - collider.bounds.size.y / 2f + playerCollider.bounds.size.y / 2f,
+                collider.bounds.center.z
+            );
+        }
     }
 
     // When entering a collider, check if it's a ColliderUpStair or a ColliderDownStair, and set the teleport target accordingly

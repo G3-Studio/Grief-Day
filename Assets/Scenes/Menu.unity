@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 868493043}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &110613626
@@ -270,19 +270,19 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_PointAction: {fileID: -4742273105545978558, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_MoveAction: {fileID: 7166225737428243797, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_SubmitAction: {fileID: -8784616716620352709, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_CancelAction: {fileID: -487527909860469160, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_LeftClickAction: {fileID: -3209852103891528885, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_MiddleClickAction: {fileID: 8789686682996335317, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_RightClickAction: {fileID: 3465444658579490233, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_ScrollWheelAction: {fileID: 6121984519334534964, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -7034621151712479413, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -5119732783653595835, guid: aa0a097ca138e4a4cb276ccd5221d0ec, type: 3}
   m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_PointerBehavior: 2
 --- !u!1 &298127548
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +887,6 @@ GameObject:
   - component: {fileID: 868493047}
   - component: {fileID: 868493046}
   - component: {fileID: 868493045}
-  - component: {fileID: 868493048}
   m_Layer: 0
   m_Name: Manoir
   m_TagString: Untagged
@@ -1010,21 +1009,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868493043}
   m_CullTransparentMesh: 1
---- !u!114 &868493048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868493043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1 &963853968
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,4 +25,14 @@ public class CollectableItems : MonoBehaviour
             Destroy(item);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.tag == "Coins")
+        {
+            // collision.gameObject.GetComponent<Movement>().CollectItem(ItemName);
+            item = other.gameObject;
+            coinCount ++;
+            Destroy(item);
+        }
+    }
 }

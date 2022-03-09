@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,15 +15,15 @@ public class StatsUI : MonoBehaviour
     }
 
     public void UpdatePV(int health, int maxHealth) {
-        this.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "PV : " + health + "/" + maxHealth;
+        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = health.ToString();
     }
     
     public void UpdateSpeed(float speed) {
-        this.gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Speed : " + speed;
+        this.gameObject.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = speed.ToString();
     }
     
     public void UpdateAttack(float attack) {
-        this.gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Attack : " + attack;
+        this.gameObject.transform.GetChild(1).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = attack.ToString();
     }
 
 }

@@ -19,10 +19,10 @@ public class CollectableItems : MonoBehaviour
             gameObject.GetComponent<Player>().CollectItem(item.GetComponent<Buff>().buff);
             Destroy(item);
         } else if (collision.tag == "Skill") {
-            if (gameObject.GetComponent<Player>().inventory.GetSkillInSlot(0) != null) return;
             item = collision.gameObject;
-            gameObject.GetComponent<Player>().inventory.AddSkill(item.GetComponent<Skill>().skill);
-            Destroy(item);
+            if (gameObject.GetComponent<Player>().CollectItem(item.GetComponent<Skill>().skill)) {
+                Destroy(item);
+            }
         }
     }
 

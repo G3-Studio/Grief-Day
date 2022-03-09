@@ -116,21 +116,22 @@ public class ItemSpawn : MonoBehaviour
         }
 
         j = 0;
-        Array.Clear(antiStacker, 0, antiStacker.Length);   
-        while (j != 2)
-        {
+        Array.Clear(antiStacker, 0, antiStacker.Length);
+        while (j != 2) {
             validatedX = false;
-            while(!validatedX) {
+            while (!validatedX) {
                 x = UnityEngine.Random.Range(-22, 8);
-                foreach(int prevPos in antiStacker) {
+                foreach (int prevPos in antiStacker) {
                     validatedX = (Math.Abs(prevPos - x) > 2);
                     if (!validatedX) break;
                 } // if validateX is false for one value, stays false, else become true
             }
+
             antiStacker[j] = x;
 
             y = yOffsets[3];
-            GameObject item = (GameObject)Instantiate(buffPrefab, new Vector3(x, y, 0), transform.rotation, gameObject.transform);
+            GameObject item = (GameObject) Instantiate(buffPrefab, new Vector3(x, y, 0), transform.rotation,
+                gameObject.transform);
             j++;
         }
 

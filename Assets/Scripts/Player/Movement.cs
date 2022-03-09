@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,16 +14,19 @@ public class Movement : MonoBehaviour
     public bool additionalJumpAvailable = false;
     private bool isLeft = true;
     private bool isJumping = false;
-    bool Grounded, Stuck;
+    public bool Grounded { get; private set; }
+    private bool Stuck;
     private DateTime stunedAt;
     private Vector2 axisInput;
     private ArrayList skills = new ArrayList();
+    private DoubleJump doubleJump;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stunedAt = DateTime.MinValue;
+        doubleJump = new DoubleJump(this.GetComponent<Player>());
     }
 
     public void SetInputMoveVector(Vector2 input)
@@ -35,6 +39,7 @@ public class Movement : MonoBehaviour
         // Register skills and skill keybindings here
         SkillEffect dashSkill = new DashSkill();
         skills.Add(dashSkill);
+        skills.Add(new DoubleJump(this.GetComponent<Player>()));
     }
 
     private void Update(){
@@ -75,11 +80,19 @@ public class Movement : MonoBehaviour
             this.isJumping = true;
         // TODO: isTranformed
         // Double Jump
-        }else if(!IsGrounded() && additionalJumpAvailable){
-            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            additionalJumpAvailable = false;
-            this.isJumping = true;
+        }else if(!IsGrounded()/* && additionalJumpAvailable*/){
+            //rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+            //additionalJumpAvailable = false;
+            //this.isJumping = true;
+            this.doubleJump.execute(this.GetComponent<Player>(), rb, axisInput);
         }
+    }
+
+    // ApplyJump makes no test (except canMove, which can be avoided by setting force to true)
+    public void ApplyJump(bool force=false) {
+        if (!canMove && !force) return;
+        rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+        this.isJumping = true;
     }
 
     public void triggerSkill() {

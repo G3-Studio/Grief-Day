@@ -7,9 +7,9 @@ public class Skills
     public JsonUtils.CollectableItemJson.Skill skill;
 
     static Skills() {
-        string json = System.IO.File.ReadAllText("Assets/Resources/JSON/CollectableItems.json");
+        string json = Resources.Load<TextAsset>("JSON/CollectableItems").text;
         skills = JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json).skill;
-    } 
+    }
     public static JsonUtils.CollectableItemJson.Skill getSkill() 
     {
         JsonUtils.CollectableItemJson.Skill selectedSkill = skills[UnityEngine.Random.Range(0, skills.Count)];

@@ -39,7 +39,7 @@ public class PlayerEffectUI : MonoBehaviour
             case "health_boost": return Sprites.HEALTH_BOOST;
             case "swiftness_boots": return Sprites.SWIFTNESS_BOOTS;
             default:
-                Debug.LogWarning("This buff is not implemented");
+                Debug.LogWarning("This skill sprite is not implemented");
                 return null;
         }
     }

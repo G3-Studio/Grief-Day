@@ -1,10 +1,8 @@
-
 using System;
 using System.Collections;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviour {
     private static TimeSpan STUN_TIME = new TimeSpan(0, 0, 1);
     private Rigidbody2D rb;
     private Animator animator;
@@ -18,20 +16,17 @@ public class Movement : MonoBehaviour
     private Vector2 axisInput;
     private ArrayList skills = new ArrayList();
 
-    private void Awake()
-    {
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stunedAt = DateTime.MinValue;
     }
 
-    public void SetInputMoveVector(Vector2 input)
-    {
+    public void SetInputMoveVector(Vector2 input) {
         axisInput = input;
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         // Register skills and skill keybindings here
         SkillEffect dashSkill = new DashSkill();
         skills.Add(dashSkill);
@@ -54,7 +49,7 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(Stuck == 0 || Stuck != horizontalInput ? horizontalInput * player.speed : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
-        if(horizontalInput > 0f && isLeft){
+        if (horizontalInput > 0f && isLeft) {
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
         }
@@ -68,22 +63,28 @@ public class Movement : MonoBehaviour
         foreach (SkillEffect skill in this.skills) skill.update(player, rb, axisInput);
     }
 
-    public void Jump(){
+    public void Jump() {
         if (!canMove) return;
-        if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
+        if (IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
             additionalJumpAvailable = true;
             this.isJumping = true;
-        // TODO: isTranformed
-        // Double Jump
-        }else if(!IsGrounded() && additionalJumpAvailable){
+            // TODO: isTranformed
+            // Double Jump
+        }
+        else if (!IsGrounded() && additionalJumpAvailable) {
             rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
             additionalJumpAvailable = false;
             this.isJumping = true;
         }
     }
 
-    public void triggerSkill() {
+    public void triggerSkill(int skill) {
+        if (this.GetComponent<Collider2D>().)
+        if (other.gameObject.tag == "Demon") {
+            Demon demon = other.gameObject.transform.parent.GetComponent<Demon>();
+            other.gameObject.transform.GetSiblingIndex()
+        }
         (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
     }
 
@@ -122,7 +123,7 @@ public class Movement : MonoBehaviour
         Grounded = IsGrounded();
         isStuck(collision);
     }
-
+    
     void OnCollisionEnter2D(Collision2D other) {
         this.isJumping = false;
     }

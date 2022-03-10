@@ -41,10 +41,10 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     void OnSkill1(InputValue value) {
-        mover.triggerSkill();
+        mover.triggerSkill(0);
     }
 
     void OnSkill2(InputValue value) {
-        mover.triggerSkill();
+        mover.triggerSkill(1);
     }
 }

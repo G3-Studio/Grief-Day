@@ -7,7 +7,7 @@ class DashSkill : SkillEffect
     protected static TimeSpan SKILL_DURATION = new TimeSpan(0, 0, 0, 0, 100);
     protected static TimeSpan SKILL_COOLDOWN = new TimeSpan(0, 0, 2);
 
-    protected override string skillName => "dash";
+    public override string skillName => "dash";
     protected override TimeSpan duration => SKILL_DURATION;
     protected override TimeSpan cooldown => SKILL_COOLDOWN;
 

@@ -1,6 +1,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,14 +21,12 @@ public class Movement : MonoBehaviour
     private DateTime stunedAt;
     private Vector2 axisInput;
     private ArrayList skills = new ArrayList();
-    private DoubleJump doubleJump;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stunedAt = DateTime.MinValue;
-        doubleJump = new DoubleJump(this.GetComponent<Player>());
     }
 
     public void SetInputMoveVector(Vector2 input)
@@ -37,12 +37,12 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         // Register skills and skill keybindings here
-        SkillEffect dashSkill = new DashSkill();
-        skills.Add(dashSkill);
+        skills.Add(new DashSkill());
         skills.Add(new DoubleJump(this.GetComponent<Player>()));
+        skills.Add(new FireballSkill());
     }
 
-    private void Update(){
+    private void Update() {
         if (!canMove) return;
         float horizontalInput = 0f;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * player.speed : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
-        if(horizontalInput > 0f && isLeft){
+        if (horizontalInput > 0f && isLeft) {
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
         }
@@ -80,23 +80,28 @@ public class Movement : MonoBehaviour
             this.isJumping = true;
         // TODO: isTranformed
         // Double Jump
-        }else if(!IsGrounded()/* && additionalJumpAvailable*/){
-            //rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            //additionalJumpAvailable = false;
-            //this.isJumping = true;
-            this.doubleJump.execute(this.GetComponent<Player>(), rb, axisInput);
+        } else if(!IsGrounded()) {
+            this.TriggerSkill("double_jump");
         }
     }
 
-    // ApplyJump makes no test (except canMove, which can be avoided by setting force to true)
+    // ApplyJump makes no test (except canMove, which can be avoided by setting parameter "force" to true)
     public void ApplyJump(bool force=false) {
         if (!canMove && !force) return;
         rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
         this.isJumping = true;
     }
 
-    public void triggerSkill() {
-        (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
+    public void triggerSkill(int id) {
+        this.TriggerSkill(this.GetComponent<Player>().inventory.GetSkillInSlot(id)?.name);
+    }
+
+    private void TriggerSkill(string name) {
+        foreach (SkillEffect skill in this.skills) {
+            if (skill.skillName == name) {
+                skill.execute(gameObject.GetComponent<Player>(), rb, axisInput);
+            }
+        }
     }
 
     bool IsGrounded() {

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public abstract class SkillEffect {
     protected abstract TimeSpan duration { get; }
     protected abstract TimeSpan cooldown { get; }
-    protected abstract string skillName { get; }
+    public abstract string skillName { get; }
 
     private DateTime? triggerdAt;
     private DateTime? effectStart;
@@ -14,16 +14,16 @@ public abstract class SkillEffect {
     protected abstract void tick(Player player, Rigidbody2D rigidBody, Vector2 movement);
     protected abstract void tickEnd(Player player, Rigidbody2D rigidBody, Vector2 movement);
 
-    public bool isValid {
+    public virtual bool isValid {
         get => this.triggerdAt != null && this.triggerdAt + this.duration > DateTime.Now;
     }
 
-    public bool canExecute {
+    public virtual bool canExecute {
         get => this.effectStart == null || this.effectStart + this.cooldown < DateTime.Now;
     }
 
     public void execute(Player player, Rigidbody2D rigidBody, Vector2 movement) {
-        if (!this.canExecute || (!player.inventory?.HasSkill(this.skillName) ?? false)) return;
+        if (!this.canExecute/* || (!player.inventory?.HasSkill(this.skillName) ?? false)*/) return;
         this.triggerdAt = this.effectStart = DateTime.Now;
         this.tickStart(player, rigidBody, movement);
     }

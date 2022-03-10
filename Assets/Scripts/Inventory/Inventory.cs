@@ -11,7 +11,7 @@ public class Inventory
 
     private static JsonUtils.CollectableItemJson LoadItems() {
         // Open JSON file
-        string json = System.IO.File.ReadAllText("Assets/Resources/JSON/CollectableItems.json");
+        string json = Resources.Load<TextAsset>("JSON/CollectableItems").text;
         return JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json);
     }
     

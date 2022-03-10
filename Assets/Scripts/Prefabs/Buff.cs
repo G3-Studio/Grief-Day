@@ -10,7 +10,7 @@ public class Buff : MonoBehaviour
 
     void Awake()
     {
-        string json = System.IO.File.ReadAllText("Assets/Resources/JSON/CollectableItems.json");
+        string json = Resources.Load<TextAsset>("JSON/CollectableItems").text;
         buffList = JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json).buff;
     }
 

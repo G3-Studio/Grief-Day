@@ -7,7 +7,7 @@ public class Skills
     public JsonUtils.CollectableItemJson.Skill skill;
 
     static Skills() {
-        string json = System.IO.File.ReadAllText("Assets/Scenes/CollectableItems.json");
+        string json = System.IO.File.ReadAllText("Assets/Resources/JSON/CollectableItems.json");
         skills = JsonUtils.LoadJson<JsonUtils.CollectableItemJson>(json).skill;
     } 
     public static JsonUtils.CollectableItemJson.Skill getSkill() 

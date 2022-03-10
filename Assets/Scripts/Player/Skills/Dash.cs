@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 class DashSkill : SkillEffect
 {
@@ -14,6 +13,10 @@ class DashSkill : SkillEffect
     private float initialGravityScale;
     private Vector2 initialVelocity;
     private Vector2 dashForce;
+
+    public override bool canExecute(Player player) {
+        return base.canExecute(player) && player.GetComponent<Movement>().canMove;
+    }
 
     protected override void tickStart(Player player, Rigidbody2D rigidBody, Vector2 movement) {
         this.initialGravityScale = rigidBody.gravityScale;

@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class Movement : MonoBehaviour
     private Animator animator;
     public bool canMove = true;
     public bool additionalJumpAvailable = false;
-    private bool isLeft = true;
+    public bool isLeft = true;
     private bool isJumping = false;
     bool Grounded, Stuck;
     private DateTime stunedAt;
@@ -38,16 +37,17 @@ public class Movement : MonoBehaviour
     }
 
     private void Update(){
-        if (!canMove) return;
         float horizontalInput = 0f;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
-            horizontalInput = axisInput.x;
+            horizontalInput = Math.Sign(axisInput.x);
         }
 
         // Animate player
-        animator.SetBool("Running", horizontalInput != 0);
+        animator.SetBool("Running", horizontalInput != 0 && canMove);
         animator.SetBool("Grounded", Grounded);
         animator.SetBool("Jumping", this.isJumping);
+
+        if (!canMove) return;
 
         Player player = gameObject.GetComponent<Player>();
         rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * player.speed : 0, rb.velocity.y);

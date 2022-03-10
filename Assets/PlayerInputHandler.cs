@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerInputHandler : MonoBehaviour
@@ -46,5 +47,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnSkill2(InputValue value) {
         mover.triggerSkill();
+    }
+
+    void OnMenu(InputValue value) {
+        SceneManager.LoadScene(0);
     }
 }

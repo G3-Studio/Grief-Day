@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class SkillEffect {
     protected abstract TimeSpan duration { get; }
@@ -18,12 +17,12 @@ public abstract class SkillEffect {
         get => this.triggerdAt != null && this.triggerdAt + this.duration > DateTime.Now;
     }
 
-    public bool canExecute {
-        get => this.effectStart == null || this.effectStart + this.cooldown < DateTime.Now;
+    public virtual bool canExecute(Player movement) {
+        return this.effectStart == null || this.effectStart + this.cooldown < DateTime.Now;
     }
 
     public void execute(Player player, Rigidbody2D rigidBody, Vector2 movement) {
-        if (!this.canExecute /*|| (!player.inventory?.HasSkill(this.skillName) ?? false)*/) return;
+        if (!this.canExecute(player) /*|| (!player.inventory?.HasSkill(this.skillName) ?? false)*/) return;
         this.triggerdAt = this.effectStart = DateTime.Now;
         this.tickStart(player, rigidBody, movement);
     }

@@ -3,21 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Joueur
-  - ColliderUpStair
-  - ColliderDownStair
-  - Coins
-  - Buff
-  - Skill
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Coins
+  - 
   - 
   - 
   - 

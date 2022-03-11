@@ -21,7 +21,6 @@ public class CollectableItems : MonoBehaviour
         } else if (collision.tag == "Skill") {
             item = collision.gameObject;
             if (gameObject.GetComponent<Player>().inventory.GetSkillInSlot(0) == null) {
-                Debug.Log("taken");
                 gameObject.GetComponent<Player>().inventory.AddSkill(item.GetComponent<Skill>().skill);
                 Destroy(item);
             }

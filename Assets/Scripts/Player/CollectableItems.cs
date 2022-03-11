@@ -20,7 +20,9 @@ public class CollectableItems : MonoBehaviour
             Destroy(item);
         } else if (collision.tag == "Skill") {
             item = collision.gameObject;
-            if (gameObject.GetComponent<Player>().CollectItem(item.GetComponent<Skill>().skill)) {
+            if (gameObject.GetComponent<Player>().inventory.GetSkillInSlot(0) == null) {
+                Debug.Log("taken");
+                gameObject.GetComponent<Player>().inventory.AddSkill(item.GetComponent<Skill>().skill);
                 Destroy(item);
             }
         }

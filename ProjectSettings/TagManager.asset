@@ -10,6 +10,7 @@ TagManager:
   - Coins
   - Buff
   - Skill
+  - DebutMenu
   layers:
   - Default
   - TransparentFX

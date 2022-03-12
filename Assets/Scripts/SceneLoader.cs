@@ -3,15 +3,14 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 
+
 public class SceneLoader : MonoBehaviour
 {
     Animator TransitionAnimator ;
     
     public void LoadNextScene()
     {
-       
        StartCoroutine(LoadNextSc());
-       
     }
 
     IEnumerator LoadNextSc(){

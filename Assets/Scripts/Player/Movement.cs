@@ -12,7 +12,8 @@ public class Movement : MonoBehaviour
     public bool additionalJumpAvailable = false;
     public bool isLeft = true;
     private bool isJumping = false;
-    bool Grounded, Stuck;
+    bool Grounded;
+    int Stuck;
     private DateTime stunedAt;
     private Vector2 axisInput;
     private ArrayList skills = new ArrayList();
@@ -37,7 +38,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Update(){
-        float horizontalInput = 0f;
+        int horizontalInput = 0;
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
             horizontalInput = Math.Sign(axisInput.x);
         }
@@ -50,7 +51,7 @@ public class Movement : MonoBehaviour
         if (!canMove) return;
 
         Player player = gameObject.GetComponent<Player>();
-        rb.velocity = new Vector2(Grounded || !Stuck ? horizontalInput * player.speed : 0, rb.velocity.y);
+        rb.velocity = new Vector2(Stuck == 0 || Stuck != horizontalInput ? horizontalInput * player.speed : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
         if(horizontalInput > 0f && isLeft){
@@ -87,39 +88,39 @@ public class Movement : MonoBehaviour
     }
 
     bool IsGrounded() {
-        RaycastHit2D[] hits;
-
-        //We raycast down 1 pixel from this position to check for a collider
-        Vector2 positionToCheck = transform.position;
-        hits = Physics2D.RaycastAll (positionToCheck + new Vector2(0, -1.5f), new Vector2(0, -1), 0.1f);
-
-        foreach (RaycastHit2D hit in hits) {
-            if (hits[0].collider.tag.EndsWith("Stair")) continue;
-            if (hits[0].collider.tag.EndsWith("Player")) continue;
-            return true;
-        }
-
-        return false;
-    }
-
-    bool isStuck() {
-        RaycastHit2D[] hits;
-
-        Vector2 positionToCheck = transform.position + new Vector3(rb.velocity.x > 0 ? 1 : -1, 2);
-        hits = Physics2D.RaycastAll (positionToCheck, rb.velocity, 0.1f);
+        Collider2D collider = GetComponent<Collider2D>();
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            new Vector2(collider.bounds.center.x, collider.bounds.min.y),
+            new Vector2(0, -1),
+            0.1f
+        );
 
         foreach (RaycastHit2D hit in hits) {
-            if (hits[0].collider.tag.EndsWith("Stair")) continue;
+            if (hit.collider.tag.EndsWith("Stair")) continue;
+            if (hit.collider.tag == "Player") continue;
+            if (hit.collider.tag == "Shrine") continue;
             return true;
         }
 
         return false;
     }
     
-    void OnCollisionStay2D(Collision2D collider)
+    void isStuck(Collision2D collision) {
+        int relativeX = 0;
+        if (!collision.collider.tag.EndsWith("Stair") && collision.collider.tag != "Player" && collision.collider.tag != "Shrine") {
+            foreach (ContactPoint2D contactPoint in collision.contacts) {
+                int localRelativeX = Math.Sign(contactPoint.point.x - this.transform.position.x);
+                if (localRelativeX != relativeX && relativeX != 0) return;
+                relativeX = localRelativeX;
+            }
+            Stuck = relativeX;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
     {
         Grounded = IsGrounded();
-        Stuck = isStuck();
+        isStuck(collision);
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -128,7 +129,7 @@ public class Movement : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collider)
     {
-        Grounded = false;
-        Stuck = false;
+        Grounded = IsGrounded();
+        Stuck = 0;
     }
 }

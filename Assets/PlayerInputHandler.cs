@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private Movement mover; 
+    private Movement mover;
+    private SkillManager skillManager;
     private Stairs stairs;
     private SelectSkill selectSkill;
     private GameObject player;
     private bool gamePaused = false;
+    private Player playerScript;
 
     private void Awake()
     {
@@ -22,6 +20,8 @@ public class PlayerInputHandler : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player")[playerInput.playerIndex];
 
         mover = player.GetComponent<Movement>();
+        playerScript = player.GetComponent<Player>();
+        skillManager = player.GetComponent<SkillManager>();
         stairs = player.GetComponent<Stairs>();
         selectSkill = player.GetComponent<SelectSkill>();
     }
@@ -36,6 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (gamePaused) return;
         mover.Jump();
+        skillManager.GetSkill<DoubleJump>().Execute(playerScript);
     }
 
     void OnInteract(InputValue value)
@@ -47,12 +48,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnSkill1(InputValue value) {
         if (gamePaused) return;
-        mover.triggerSkill();
+        skillManager.TriggerSkill(0);
     }
 
     void OnSkill2(InputValue value) {
         if (gamePaused) return;
-        mover.triggerSkill();
+        skillManager.TriggerSkill(1);
     }
 
     void OnPause(InputValue value) {

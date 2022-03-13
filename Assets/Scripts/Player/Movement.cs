@@ -1,6 +1,5 @@
 
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -9,14 +8,12 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     public bool canMove = true;
-    public bool additionalJumpAvailable = false;
     public bool isLeft = true;
     private bool isJumping = false;
-    bool Grounded;
+    public bool Grounded { get; private set; }
     int Stuck;
     private DateTime stunedAt;
-    private Vector2 axisInput;
-    private ArrayList skills = new ArrayList();
+    public Vector2 axisInput;
 
     private void Awake()
     {
@@ -28,13 +25,6 @@ public class Movement : MonoBehaviour
     public void SetInputMoveVector(Vector2 input)
     {
         axisInput = input;
-    }
-
-    private void OnEnable()
-    {
-        // Register skills and skill keybindings here
-        SkillEffect dashSkill = new DashSkill();
-        skills.Add(dashSkill);
     }
 
     private void Update(){
@@ -63,28 +53,17 @@ public class Movement : MonoBehaviour
             isLeft = true;
             transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
         }
-
-        // Execute skills at the end of the movement update as it may update values
-        foreach (SkillEffect skill in this.skills) skill.update(player, rb, axisInput);
     }
 
     public void Jump(){
-        if (!canMove) return;
-        if(IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now) {
-            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            additionalJumpAvailable = true;
-            this.isJumping = true;
-        // TODO: isTranformed
-        // Double Jump
-        }else if(!IsGrounded() && additionalJumpAvailable){
-            rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
-            additionalJumpAvailable = false;
-            this.isJumping = true;
-        }
+        if(canMove && IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now)
+            this.ApplyJump(); // TODO: isTranformed
     }
 
-    public void triggerSkill() {
-        (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
+    /// <summary>ApplyJump makes no test</summary>
+    public void ApplyJump() {
+        rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
+        this.isJumping = true;
     }
 
     bool IsGrounded() {

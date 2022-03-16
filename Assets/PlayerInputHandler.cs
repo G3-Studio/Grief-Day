@@ -13,6 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Stairs stairs;
     private SelectSkill selectSkill;
     private GameObject player;
+    private bool gamePaused = false;
 
     private void Awake()
     {
@@ -27,29 +28,39 @@ public class PlayerInputHandler : MonoBehaviour
     
     void OnMove(InputValue value)
     {
+        if (gamePaused) return;
         mover.SetInputMoveVector(value.Get<Vector2>());
     }
 
     void OnJump(InputValue value)
     {
+        if (gamePaused) return;
         mover.Jump();
     }
 
     void OnInteract(InputValue value)
     {
+        if (gamePaused) return;
         stairs.Interact();
         selectSkill.Interact();
     }
 
     void OnSkill1(InputValue value) {
+        if (gamePaused) return;
         mover.triggerSkill();
     }
 
     void OnSkill2(InputValue value) {
+        if (gamePaused) return;
         mover.triggerSkill();
     }
 
-    void OnMenu(InputValue value) {
-        SceneManager.LoadScene(0);
+    void OnPause(InputValue value) {
+        if (gamePaused) {
+            TimeManager.Instance.Resume();
+        } else {
+            TimeManager.Instance.Pause();
+        }
+        gamePaused = !gamePaused;
     }
 }

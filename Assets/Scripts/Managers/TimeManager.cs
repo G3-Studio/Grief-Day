@@ -26,13 +26,13 @@ public class TimeManager : MonoBehaviour
 
     public void Pause()
     {
-        // pauseMenu.SetActive(true);
+        pauseMenu.SetActive(true);
         Time.timeScale= 0f;
     }
 
     public void Resume()
     {
-        // pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Time.timeScale= 1f;
     }
 

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class Stun : SkillEffect
 {
@@ -13,11 +14,12 @@ public class Stun : SkillEffect
     }
 
     public override bool CanExecute(Player player) {
-        return base.CanExecute(player) && player.reachablePlayers.Count > 0;
+        return base.CanExecute(player) && player.getCollidingPlayer() != null;
     }
 
     protected override void TickStart(Player player) {
-        Player playerTarget = player.reachablePlayers[(new Random()).Next(player.reachablePlayers.Count - 1)];
+        Player playerTarget = player.getCollidingPlayer();
+        // Not supposed to be null as CanExecute has been called before
         this.target = playerTarget.GetComponent<Movement>();
         this.target.canMove = false;
     }

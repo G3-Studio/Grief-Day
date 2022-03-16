@@ -14,6 +14,7 @@ public class SkillManager : MonoBehaviour
         // Register skills
         skills.Add(new DashSkill());
         skills.Add(new DoubleJump(this.player));
+        skills.Add(new Stun());
     }
 
     private void LateUpdate() {

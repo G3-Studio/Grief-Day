@@ -12,7 +12,7 @@ public class Skills
     }
     public static JsonUtils.CollectableItemJson.Skill getSkill() 
     {
-        JsonUtils.CollectableItemJson.Skill selectedSkill = skills[UnityEngine.Random.Range(0, skills.Count)];
+        JsonUtils.CollectableItemJson.Skill selectedSkill = skills[Random.Range(0, skills.Count)];
         skills.Remove(selectedSkill);
 
         return selectedSkill;

@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private static TimeSpan STUN_TIME = new TimeSpan(0, 0, 1);
     private Rigidbody2D rb;
     private Animator animator;
     public bool canMove = true;
     public bool isLeft = true;
     private bool isJumping = false;
     public bool Grounded { get; private set; }
-    int Stuck;
-    private DateTime stunedAt;
+    private int Stuck;
     public Vector2 axisInput;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        stunedAt = DateTime.MinValue;
     }
 
     public void SetInputMoveVector(Vector2 input)
@@ -28,10 +25,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Update(){
-        int horizontalInput = 0;
-        if (this.stunedAt + STUN_TIME < DateTime.Now) {
-            horizontalInput = Math.Sign(axisInput.x);
-        }
+        int horizontalInput = Math.Sign(axisInput.x);
 
         // Animate player
         animator.SetBool("Running", horizontalInput != 0 && canMove);
@@ -56,7 +50,7 @@ public class Movement : MonoBehaviour
     }
 
     public void Jump(){
-        if(canMove && IsGrounded() && this.stunedAt + STUN_TIME < DateTime.Now)
+        if(canMove && IsGrounded())
             this.ApplyJump(); // TODO: isTranformed
     }
 

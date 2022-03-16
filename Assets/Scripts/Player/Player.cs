@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public bool isPlayer1 { get; private set; }
     public Inventory inventory;
 
+    public readonly List<Player> reachablePlayers = new List<Player>();
+
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
@@ -64,5 +66,15 @@ public class Player : MonoBehaviour
         inventory.AddSkill(skill);
         this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         return true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Player")
+            this.reachablePlayers.Add(other.gameObject.GetComponent<Player>());
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Player")
+            this.reachablePlayers.Remove(other.gameObject.GetComponent<Player>());
     }
 }

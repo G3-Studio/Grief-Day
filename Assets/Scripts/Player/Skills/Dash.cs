@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
 
 class DashSkill : SkillEffect
 {
-    protected static readonly TimeSpan SKILL_DURATION = new TimeSpan(0, 0, 0, 0, 100);
-    protected static readonly TimeSpan SKILL_COOLDOWN = new TimeSpan(0, 0, 2);
+    protected const float SKILL_DURATION = 0.1f;
+    protected const float SKILL_COOLDOWN = 2f;
 
     public override string skillName => "dash";
-    protected override TimeSpan duration => SKILL_DURATION;
-    protected override TimeSpan cooldown => SKILL_COOLDOWN;
+    protected override float duration => SKILL_DURATION;
+    protected override float cooldown => SKILL_COOLDOWN;
 
     private float initialGravityScale;
     private Vector2 initialVelocity;

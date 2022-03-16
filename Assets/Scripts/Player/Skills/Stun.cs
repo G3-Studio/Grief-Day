@@ -1,10 +1,7 @@
-using System;
-using UnityEngine;
-
 public class Stun : SkillEffect
 {
-    protected override TimeSpan duration => new TimeSpan(0, 0, 2);
-    protected override TimeSpan cooldown => new TimeSpan(0, 0, 5);
+    protected override float duration => 2f;
+    protected override float cooldown => 5f;
     public override string skillName => "stun";
 
     private Movement target;

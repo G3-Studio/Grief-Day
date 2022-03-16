@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class DoubleJump : SkillEffect
 {
-    protected override TimeSpan duration => new TimeSpan(-1);
-    protected override TimeSpan cooldown => new TimeSpan(0);
+    protected override float duration => 0f;
+    protected override float cooldown => 0f;
     public override string skillName => "double_jump";
 
     public override bool isValid {

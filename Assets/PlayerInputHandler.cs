@@ -37,6 +37,10 @@ public class PlayerInputHandler : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
+            TradingManager.ConfirmChoice();
+            return;
+        }
         mover.Jump();
     }
 

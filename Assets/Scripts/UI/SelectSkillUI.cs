@@ -13,12 +13,19 @@ public class SelectSkillUI : MonoBehaviour {
 
     public void Enable(JsonUtils.CollectableItemJson.Skill skill1, JsonUtils.CollectableItemJson.Skill skill2) {
         this.gameObject.SetActive(true);
-        this.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
-        this.gameObject.transform.GetChild(1).GetComponent<Image>().enabled = false;
-        Debug.Log(this.gameObject.transform.GetChild(2));
-        Debug.Log(this.gameObject.transform.GetChild(2).GetComponent<Image>());
-        this.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = Sprites.FromName(skill1?.name);
-        this.gameObject.transform.GetChild(3).GetComponent<Image>().sprite = Sprites.FromName(skill2?.name);
+        this.EnableSide(0, skill1);
+        this.EnableSide(1, skill2);
+    }
+
+    private void EnableSide(int index, JsonUtils.CollectableItemJson.Skill skill) {
+        Transform child = this.transform.GetChild(index);
+        child.GetChild(0).GetComponent<Image>().enabled = index == 0;
+        if (skill != null) {
+            child.GetChild(1).GetComponent<Image>().enabled = true;
+            child.GetChild(1).GetComponent<Image>().sprite = Sprites.FromName(skill.name);
+        } else {
+            child.GetChild(1).GetComponent<Image>().enabled = false;
+        }
     }
 
     public void Disable() {
@@ -27,7 +34,7 @@ public class SelectSkillUI : MonoBehaviour {
 
     // If skill is 0, it selects left skill ; if skill is 1, it selects right skill
     public void SetSelectedSkill(int skill) {
-        this.gameObject.transform.GetChild(skill).gameObject.GetComponent<Image>().enabled = true;
-        this.gameObject.transform.GetChild((skill + 1) % 2).gameObject.GetComponent<Image>().enabled = false;
+        this.transform.GetChild(skill).GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+        this.transform.GetChild((skill + 1) % 2).GetChild(0).gameObject.GetComponent<Image>().enabled = false;
     }
 }

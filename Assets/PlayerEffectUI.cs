@@ -13,9 +13,9 @@ public class PlayerEffectUI : MonoBehaviour
         ReloadSlot(1, null);
     }
     
-    public void UpdateObject(Inventory inventory) {
-        ReloadSlot(0, inventory.GetSkillInSlot(0)?.name);
-        ReloadSlot(1, inventory.GetSkillInSlot(1)?.name);
+    public void UpdateObject(PlayerInventory playerInventory) {
+        ReloadSlot(0, playerInventory.GetSkillInSlot(0)?.name);
+        ReloadSlot(1, playerInventory.GetSkillInSlot(1)?.name);
     }
 
     private void ReloadSlot(int slotIndex, string spriteName) {

@@ -2,7 +2,7 @@
 using Utils;
 using UnityEngine;
 
-public class Inventory
+public class PlayerInventory
 {
     private static JsonUtils.CollectableItemJson collectableItemJson = LoadItems();
     public static List<JsonUtils.CollectableItemJson.Buff> BUFFS = collectableItemJson.buff;
@@ -20,7 +20,7 @@ public class Inventory
     private int buffCount;
     private int skillCount;
 
-    public Inventory() {
+    public PlayerInventory() {
         buffs = new List<JsonUtils.CollectableItemJson.Buff>();
         skills = new JsonUtils.CollectableItemJson.Skill[2];
         buffCount = 0;
@@ -60,5 +60,9 @@ public class Inventory
 
     public JsonUtils.CollectableItemJson.Skill GetSkillInSlot(int slot) {
         return skills[slot];
+    }
+
+    public void SetSkill(int i, JsonUtils.CollectableItemJson.Skill skill) {
+        this.skills[i] = skill;
     }
 }

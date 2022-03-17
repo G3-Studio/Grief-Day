@@ -39,9 +39,9 @@ public class Movement : MonoBehaviour {
         }
         if (this.gameObject.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
             if (horizontalInput > 0f) {
-                SelectSkillUI.instance.SetSelectedSkill(1);
+                TradingManager.ChangeSelection(1);
             } else if (horizontalInput < 0f) {
-                SelectSkillUI.instance.SetSelectedSkill(0);
+                TradingManager.ChangeSelection(0);
             }
             return;
         }

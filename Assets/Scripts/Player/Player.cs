@@ -16,15 +16,16 @@ public class Player : MonoBehaviour
     [SerializeField] public float dashStrength = 10.0f;
 
     public bool isPlayer1 { get; private set; }
-    public Inventory inventory;
+    public PlayerInventory inventory;
     public CurrentUI currentUI;
 
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
-        inventory = new Inventory();
+        inventory = new PlayerInventory();
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
         this.currentUI = CurrentUI.NONE;
+        this.inventory.AddSkill(Skills.getSkill());
     }
     
     public int GetPlayerIndex()

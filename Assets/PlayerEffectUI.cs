@@ -22,25 +22,11 @@ public class PlayerEffectUI : MonoBehaviour
         Image slot = this.gameObject.transform.GetChild(slotIndex).GetChild(1).GetComponent<Image>();
         if (spriteName != null) {
             slot.enabled = true;
-            slot.sprite = getSprite(spriteName);
+            slot.sprite = Sprites.FromName(spriteName);
         } else {
             slot.enabled = false;
         }
     }
 
-    private Sprite getSprite(string name) {
-        switch (name) {
-            case "big_sword": return Sprites.BIG_SWORD;
-            case "dash": return Sprites.DASH;
-            case "demon_finger": return Sprites.DEMON_FINGER;
-            case "double_jump": return Sprites.DOUBLE_JUMP;
-            case "estoc": return Sprites.ESTOC;
-            case "fireball": return Sprites.FIREBALL;
-            case "health_boost": return Sprites.HEALTH_BOOST;
-            case "swiftness_boots": return Sprites.SWIFTNESS_BOOTS;
-            default:
-                Debug.LogWarning("This skill sprite is not implemented");
-                return null;
-        }
-    }
+    
 }

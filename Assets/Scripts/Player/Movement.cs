@@ -37,6 +37,14 @@ public class Movement : MonoBehaviour {
         if (this.stunedAt + STUN_TIME < DateTime.Now) {
             horizontalInput = Math.Sign(axisInput.x);
         }
+        if (this.gameObject.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
+            if (horizontalInput > 0f) {
+                SelectSkillUI.instance.SetSelectedSkill(1);
+            } else if (horizontalInput < 0f) {
+                SelectSkillUI.instance.SetSelectedSkill(0);
+            }
+            return;
+        }
 
         // Animate player
         animator.SetBool("Running", horizontalInput != 0 && canMove);
@@ -79,12 +87,7 @@ public class Movement : MonoBehaviour {
         }
     }
 
-    public void triggerSkill(int skill) {
-        if (this.GetComponent<Collider2D>().)
-        if (other.gameObject.tag == "Demon") {
-            Demon demon = other.gameObject.transform.parent.GetComponent<Demon>();
-            other.gameObject.transform.GetSiblingIndex()
-        }
+    public void triggerSkill() {
         (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
     }
 

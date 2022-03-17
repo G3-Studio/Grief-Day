@@ -14,6 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
     private SelectSkill selectSkill;
     private GameObject player;
     private bool gamePaused = false;
+    private DemonDetector demon;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
         mover = player.GetComponent<Movement>();
         stairs = player.GetComponent<Stairs>();
         selectSkill = player.GetComponent<SelectSkill>();
+        demon = player.GetComponent<DemonDetector>();
     }
     
     void OnMove(InputValue value)
@@ -43,6 +45,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (gamePaused) return;
         stairs.Interact();
         selectSkill.Interact();
+        demon.Interact();
     }
 
     void OnSkill1(InputValue value) {

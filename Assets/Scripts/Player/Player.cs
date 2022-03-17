@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
 
     public bool isPlayer1 { get; private set; }
     public Inventory inventory;
+    public CurrentUI currentUI;
 
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         inventory = new Inventory();
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
+        this.currentUI = CurrentUI.NONE;
     }
     
     public int GetPlayerIndex()

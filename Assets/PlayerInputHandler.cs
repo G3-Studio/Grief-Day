@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnInteract(InputValue value)
     {
+        Debug.Log(player.GetComponent<Player>().currentUI);
         if (gamePaused) return;
         stairs.Interact();
         selectSkill.Interact();
@@ -54,11 +56,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnSkill1(InputValue value) {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) return;
         mover.triggerSkill();
     }
 
     void OnSkill2(InputValue value) {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) return;
         mover.triggerSkill();
     }
 

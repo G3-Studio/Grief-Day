@@ -39,6 +39,7 @@ public class TradingManager {
             demonInventory.SetSkill(sideSelected, playerSkillObject);
             playerInventory.SetSkill(sideSelected, demonSkillObject);
             SelectSkillUI.instance.Disable();
+            isTrading = false;
             player.currentUI = CurrentUI.NONE;
         }
     }

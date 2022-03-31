@@ -46,6 +46,13 @@ public class TradingManager {
         }
     }
 
+    /*
+     * Returns 0 if the player is choosing his skill, 1 if he is choosing the demon skill
+    */
+    public static int GetTradingPhase() {
+        return playerSkill == -1 ? 0 : 1;
+    }
+
 
 
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -15,10 +16,16 @@ public class SelectSkillUI : MonoBehaviour {
         this.gameObject.SetActive(true);
         this.EnableSide(0, skill1);
         this.EnableSide(1, skill2);
+        String textContent = (TradingManager.GetTradingPhase() == 0 ? "Choisissez le skill que vous voulez" : "Choisissez avec quel skill vous voulez l'echanger");
+        Debug.Log(this.transform);
+        Debug.Log(this.transform.GetChild(2));
+        Debug.Log(this.transform.GetChild(2).GetComponent<Text>());
+        this.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = textContent;
     }
 
     private void EnableSide(int index, JsonUtils.CollectableItemJson.Skill skill) {
         Transform child = this.transform.GetChild(index);
+        // By default, only enable left outline
         child.GetChild(0).GetComponent<Image>().enabled = index == 0;
         if (skill != null) {
             child.GetChild(1).GetComponent<Image>().enabled = true;

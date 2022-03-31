@@ -1,9 +1,8 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DemonSpawner : MonoBehaviour {
 
-    [CanBeNull] private GameObject demon;
+    private GameObject demon;
     
     void Awake() {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;

@@ -32,15 +32,17 @@ public class TradingManager {
         if (playerSkill == -1) {
             playerSkill = sideSelected;
             SelectSkillUI.instance.Enable(demonInventory.GetSkill(0), demonInventory.GetSkill(1));
+            sideSelected = 0;
         } else {
             demonSkill = sideSelected;
             JsonUtils.CollectableItemJson.Skill playerSkillObject = playerInventory.GetSkillInSlot(playerSkill);
             JsonUtils.CollectableItemJson.Skill demonSkillObject = demonInventory.GetSkill(demonSkill);
-            demonInventory.SetSkill(sideSelected, playerSkillObject);
-            playerInventory.SetSkill(sideSelected, demonSkillObject);
+            demonInventory.SetSkill(demonSkill, playerSkillObject);
+            playerInventory.SetSkill(playerSkill, demonSkillObject);
             SelectSkillUI.instance.Disable();
             isTrading = false;
             player.currentUI = CurrentUI.NONE;
+            sideSelected = 0;
         }
     }
 

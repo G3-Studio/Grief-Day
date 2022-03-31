@@ -11,6 +11,7 @@ TagManager:
   - Buff
   - Skill
   - DebutMenu
+  - Shrine
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - Coins
-  - 
+  - Items
+  - Background
   - 
   - 
   - 
@@ -47,4 +48,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4226451701
+    locked: 0
+  - name: Items
+    uniqueID: 988440911
+    locked: 0
+  - name: Player
+    uniqueID: 2960648047
     locked: 0

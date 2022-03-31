@@ -23,7 +23,7 @@ public class SelectSkillUI : MonoBehaviour {
     private void EnableSide(int index, JsonUtils.CollectableItemJson.Skill skill) {
         Transform child = this.transform.GetChild(index);
         // By default, only enable left outline
-        child.GetChild(0).GetComponent<Image>().enabled = index == 0;
+        child.GetChild(2).GetComponent<Image>().enabled = index == 0;
         if (skill != null) {
             child.GetChild(1).GetComponent<Image>().enabled = true;
             child.GetChild(1).GetComponent<Image>().sprite = Sprites.FromName(skill.name);
@@ -38,7 +38,7 @@ public class SelectSkillUI : MonoBehaviour {
 
     // If skill is 0, it selects left skill ; if skill is 1, it selects right skill
     public void SetSelectedSkill(int skill) {
-        this.transform.GetChild(skill).GetChild(0).gameObject.GetComponent<Image>().enabled = true;
-        this.transform.GetChild((skill + 1) % 2).GetChild(0).gameObject.GetComponent<Image>().enabled = false;
+        this.transform.GetChild(skill).GetChild(2).gameObject.GetComponent<Image>().enabled = true;
+        this.transform.GetChild((skill + 1) % 2).GetChild(2).gameObject.GetComponent<Image>().enabled = false;
     }
 }

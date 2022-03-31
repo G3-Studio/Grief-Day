@@ -9,16 +9,19 @@ public class TradingManager {
     public static int demonSkill { get; private set; }
     public static int sideSelected;
     public static PlayerInventory playerInventory;
+    public static Demon demon;
     public static DemonInventory demonInventory;
     public static Player player;
 
-    public static void StartTrading(Player pPlayer, DemonInventory pDemonInventory) {
+    public static void StartTrading(Player pPlayer, Demon pDemon) {
         isTrading = true;
         playerSkill = -1;
         demonSkill = -1;
         player = pPlayer;
         playerInventory = player.inventory;
-        demonInventory = pDemonInventory;
+        demon = pDemon;
+        demonInventory = demon.inventory;
+        Debug.Log(SelectSkillUI.instance);
         SelectSkillUI.instance.Enable(playerInventory.GetSkillInSlot(0), playerInventory.GetSkillInSlot(1));
         player.currentUI = CurrentUI.CHOOSE_DEMON_ITEM;
     }
@@ -40,6 +43,7 @@ public class TradingManager {
             demonInventory.SetSkill(demonSkill, playerSkillObject);
             playerInventory.SetSkill(playerSkill, demonSkillObject);
             SelectSkillUI.instance.Disable();
+            demon.UpdateInventoryUI();
             isTrading = false;
             player.currentUI = CurrentUI.NONE;
             sideSelected = 0;

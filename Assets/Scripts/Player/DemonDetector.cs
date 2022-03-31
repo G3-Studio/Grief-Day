@@ -8,7 +8,7 @@ public class DemonDetector : MonoBehaviour {
         if (demon == null) return;
         if (!gameObject.GetComponent<Movement>().canMove) return;
         if (TradingManager.isTrading) return;
-        TradingManager.StartTrading(this.gameObject.GetComponent<Player>(), demon.GetComponent<Demon>().inventory);
+        TradingManager.StartTrading(this.gameObject.GetComponent<Player>(), demon.GetComponent<Demon>());
     }
 
     // When entering a collider, check if it's a ColliderUpStair or a ColliderDownStair, and set the teleport target accordingly

@@ -22,10 +22,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
-        inventory = new PlayerInventory();
+        inventory = new PlayerInventory(this.effectUI);
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
         this.currentUI = CurrentUI.NONE;
-        this.inventory.AddSkill(Skills.getSkill());
     }
     
     public int GetPlayerIndex()
@@ -33,10 +32,15 @@ public class Player : MonoBehaviour
         return isPlayer1 ? 0 : 1;
     }
 
+    public void Update() {
+        if (this.inventory.GetSkillInSlot(0) == null) {
+            this.inventory.AddSkill(Skills.getSkill());
+        }
+    }
+
     // Collect item when walking on it 
     public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
         inventory.AddBuff(buff);
-        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         switch (buff.buff.name)
         {
             case "pv":
@@ -65,7 +69,6 @@ public class Player : MonoBehaviour
             return false;
         }
         inventory.AddSkill(skill);
-        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         return true;
     }
 }

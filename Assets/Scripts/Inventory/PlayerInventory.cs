@@ -19,12 +19,14 @@ public class PlayerInventory
     private JsonUtils.CollectableItemJson.Skill[] skills;
     private int buffCount;
     private int skillCount;
+    private PlayerEffectUI effectUI;
 
-    public PlayerInventory() {
+    public PlayerInventory(PlayerEffectUI effectUI) {
         buffs = new List<JsonUtils.CollectableItemJson.Buff>();
         skills = new JsonUtils.CollectableItemJson.Skill[2];
         buffCount = 0;
         skillCount = 0;
+        this.effectUI = effectUI;
     }
 
     public void AddBuff(JsonUtils.CollectableItemJson.Buff buff) {
@@ -41,6 +43,7 @@ public class PlayerInventory
 
     public void AddSkill(JsonUtils.CollectableItemJson.Skill skill) {
         skills[skillCount++] = skill;
+        this.effectUI.UpdateObject(this);
     }
 
     public bool HasSkill(JsonUtils.CollectableItemJson.Skill searchedSkill) {
@@ -64,5 +67,6 @@ public class PlayerInventory
 
     public void SetSkill(int i, JsonUtils.CollectableItemJson.Skill skill) {
         this.skills[i] = skill;
+        this.effectUI.UpdateObject(this);
     }
 }

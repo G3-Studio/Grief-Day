@@ -40,6 +40,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (gamePaused) return;
         if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
             TradingManager.ConfirmChoice();
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             return;
         }
         mover.Jump();
@@ -47,7 +48,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnInteract(InputValue value)
     {
-        Debug.Log(player.GetComponent<Player>().currentUI);
         if (gamePaused) return;
         stairs.Interact();
         selectSkill.Interact();

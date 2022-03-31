@@ -17,9 +17,6 @@ public class SelectSkillUI : MonoBehaviour {
         this.EnableSide(0, skill1);
         this.EnableSide(1, skill2);
         String textContent = (TradingManager.GetTradingPhase() == 0 ? "Choisissez le skill que vous voulez" : "Choisissez avec quel skill vous voulez l'echanger");
-        Debug.Log(this.transform);
-        Debug.Log(this.transform.GetChild(2));
-        Debug.Log(this.transform.GetChild(2).GetComponent<Text>());
         this.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = textContent;
     }
 

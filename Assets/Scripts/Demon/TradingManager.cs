@@ -21,7 +21,6 @@ public class TradingManager {
         playerInventory = player.inventory;
         demon = pDemon;
         demonInventory = demon.inventory;
-        Debug.Log(SelectSkillUI.instance);
         SelectSkillUI.instance.Enable(playerInventory.GetSkillInSlot(0), playerInventory.GetSkillInSlot(1));
         player.currentUI = CurrentUI.CHOOSE_DEMON_ITEM;
     }

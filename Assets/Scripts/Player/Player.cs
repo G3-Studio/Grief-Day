@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public bool isPlayer1 { get; private set; }
     public PlayerInventory inventory;
     public CurrentUI currentUI;
+    public bool hasAlreadyTraded { get; set; } = false;
 
     private void Awake()
     {

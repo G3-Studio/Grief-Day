@@ -14,9 +14,7 @@ public class Demon : MonoBehaviour {
 
     public void UpdateInventoryUI() {
         for (int i = 0; i < 2; i++) {
-            if (this.inventory.GetSkill(i) != null) {
-                this.transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().sprite = Sprites.FromName(this.inventory.GetSkill(i).name);
-            }
+            this.transform.GetChild(i).GetChild(1).GetComponent<SpriteRenderer>().sprite = Sprites.FromName(this.inventory.GetSkill(i)?.name);
         }
     }
 }

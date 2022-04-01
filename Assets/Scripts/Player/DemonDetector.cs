@@ -7,7 +7,12 @@ public class DemonDetector : MonoBehaviour {
     public void Interact() {
         if (demon == null) return;
         if (!gameObject.GetComponent<Movement>().canMove) return;
-        if (TradingManager.isTrading) return;
+        if (TradingManager.isTrading) {
+            if (this.GetComponent<Player>() != TradingManager.player) {
+                AlreadyTradingText.instance.Display();
+            }
+            return;
+        }
         if (this.gameObject.GetComponent<Player>().hasAlreadyTraded) return;
         TradingManager.StartTrading(this.gameObject.GetComponent<Player>(), demon.GetComponent<Demon>());
         this.gameObject.GetComponent<Player>().hasAlreadyTraded = true;

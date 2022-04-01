@@ -17,7 +17,6 @@ public class TradingTimer : MonoBehaviour
         TradingTimer.instance = this;
     }
 
-    // Update is called once per frame
     void Update() {
         if (!this.activated) {
             return;

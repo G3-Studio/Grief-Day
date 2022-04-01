@@ -21,7 +21,7 @@ public class TradingManager {
         playerInventory = player.inventory;
         demon = pDemon;
         demonInventory = demon.inventory;
-        SelectSkillUI.instance.Enable(playerInventory.GetSkillInSlot(0), playerInventory.GetSkillInSlot(1));
+        SelectSkillUI.instance.Enable(player.isPlayer1, playerInventory.GetSkillInSlot(0), playerInventory.GetSkillInSlot(1));
         player.currentUI = CurrentUI.CHOOSE_DEMON_ITEM;
     }
 
@@ -33,7 +33,7 @@ public class TradingManager {
     public static void ConfirmChoice() {
         if (playerSkill == -1) {
             playerSkill = sideSelected;
-            SelectSkillUI.instance.Enable(demonInventory.GetSkill(0), demonInventory.GetSkill(1));
+            SelectSkillUI.instance.Enable(player.isPlayer1, demonInventory.GetSkill(0), demonInventory.GetSkill(1));
             sideSelected = 0;
         } else {
             demonSkill = sideSelected;

@@ -12,12 +12,14 @@ public class SelectSkillUI : MonoBehaviour {
         SelectSkillUI.instance = this;
     }
 
-    public void Enable(JsonUtils.CollectableItemJson.Skill skill1, JsonUtils.CollectableItemJson.Skill skill2) {
+    public void Enable(bool isPlayer1, JsonUtils.CollectableItemJson.Skill skill1, JsonUtils.CollectableItemJson.Skill skill2) {
+        this.gameObject.transform.localPosition = new Vector3(1280/4 * (isPlayer1 ? -1 : 1), 0, 0);  // 1280 is the size of the canvas
         this.gameObject.SetActive(true);
         this.EnableSide(0, skill1);
         this.EnableSide(1, skill2);
         String textContent = (TradingManager.GetTradingPhase() == 0 ? "Choisissez le skill que vous voulez" : "Choisissez avec quel skill vous voulez l'echanger");
         this.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = textContent;
+        
     }
 
     private void EnableSide(int index, JsonUtils.CollectableItemJson.Skill skill) {

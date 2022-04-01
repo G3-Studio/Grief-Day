@@ -23,6 +23,7 @@ public class TradingManager {
         demonInventory = demon.inventory;
         SelectSkillUI.instance.Enable(player.isPlayer1, playerInventory.GetSkillInSlot(0), playerInventory.GetSkillInSlot(1));
         player.currentUI = CurrentUI.CHOOSE_DEMON_ITEM;
+        TradingTimer.instance.StartTimer();
     }
 
     public static void ChangeSelection(int side) {
@@ -41,12 +42,16 @@ public class TradingManager {
             JsonUtils.CollectableItemJson.Skill demonSkillObject = demonInventory.GetSkill(demonSkill);
             demonInventory.SetSkill(demonSkill, playerSkillObject);
             playerInventory.SetSkill(playerSkill, demonSkillObject);
-            SelectSkillUI.instance.Disable();
             demon.UpdateInventoryUI();
-            isTrading = false;
-            player.currentUI = CurrentUI.NONE;
-            sideSelected = 0;
+            Stop();
         }
+    }
+    
+    public static void Stop() {
+        isTrading = false;
+        player.currentUI = CurrentUI.NONE;
+        sideSelected = 0;
+        SelectSkillUI.instance.Disable();
     }
 
     /*

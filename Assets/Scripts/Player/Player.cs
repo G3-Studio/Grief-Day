@@ -71,4 +71,15 @@ public class Player : MonoBehaviour
         // TODO: Implement this method as part of the fight system
         return null;
     }
+
+    // Take Damage
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        // statsUI.UpdatePV(health, maxHealth);
+        if (health <= 0)
+        {
+            // Die();
+        }
+    }
 }

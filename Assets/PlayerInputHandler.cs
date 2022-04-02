@@ -12,6 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Movement mover;
     private SkillManager skillManager;
     private Stairs stairs;
+    private Attack attack;
     private SelectSkill selectSkill;
     private GameObject player;
     private bool gamePaused = false;
@@ -24,6 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         player = GameObject.FindGameObjectsWithTag("Player")[playerInput.playerIndex];
 
+        attack = player.GetComponent<Attack>();
         mover = player.GetComponent<Movement>();
         playerScript = player.GetComponent<Player>();
         skillManager = player.GetComponent<SkillManager>();
@@ -70,6 +72,18 @@ public class PlayerInputHandler : MonoBehaviour
         if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) return;
         
         skillManager.TriggerSkill(1);
+    }
+
+    void OnAttack(InputValue value) {
+        if (gamePaused) return;
+
+        attack.PerformAttack();
+    }
+
+    void OnBigAttack(InputValue value) {
+        if (gamePaused) return;
+
+        attack.PerformBigAttack();
     }
 
     void OnPause(InputValue value) {

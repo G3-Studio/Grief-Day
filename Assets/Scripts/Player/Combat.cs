@@ -92,7 +92,7 @@ public class Combat : MonoBehaviour
                     if(shieldLife < 0) {
                         damage += shieldLife;
                         shieldLife = 0;
-                        ReleaseShield();
+                        EnableActions();
                     }
                 }
 

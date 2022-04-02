@@ -65,4 +65,9 @@ public class Player : MonoBehaviour
         this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         return true;
     }
+
+    public Player getCollidingPlayer() {
+        // TODO: Implement this method as part of the fight system
+        return null;
+    }
 }

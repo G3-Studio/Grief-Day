@@ -65,10 +65,6 @@ public class Movement : MonoBehaviour
         rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
         this.isJumping = true;
     }
-    
-    public void triggerSkill() {
-        (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
-    }
 
     bool IsGrounded() {
         Collider2D collider = GetComponent<Collider2D>();

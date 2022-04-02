@@ -33,12 +33,6 @@ public class Player : MonoBehaviour
         return isPlayer1 ? 0 : 1;
     }
 
-    public void Update() {
-        if (this.inventory.GetSkillInSlot(0) == null) {
-            this.inventory.AddSkill(Skills.getSkill());
-        }
-    }
-
     // Collect item when walking on it 
     public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
         inventory.AddBuff(buff);

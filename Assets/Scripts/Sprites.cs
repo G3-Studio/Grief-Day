@@ -16,12 +16,9 @@ public class Sprites
     public static Sprite FromName(string name) {
         switch (name) {
             case null: return null;
-            case "big_sword": return Sprites.BIG_SWORD;
             case "dash": return Sprites.DASH;
             case "demon_finger": return Sprites.DEMON_FINGER;
             case "double_jump": return Sprites.DOUBLE_JUMP;
-            case "estoc": return Sprites.ESTOC;
-            case "fireball": return Sprites.FIREBALL;
             case "health_boost": return Sprites.HEALTH_BOOST;
             case "swiftness_boots": return Sprites.SWIFTNESS_BOOTS;
             default:

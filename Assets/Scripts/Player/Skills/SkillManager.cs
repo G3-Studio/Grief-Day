@@ -34,7 +34,7 @@ public class SkillManager : MonoBehaviour
      * </summary>
      */
     public void TriggerSkill(int slot) {
-        string skillName = this.player.inventory.GetSkillInSlot(slot % Inventory.skillSlotCount)?.name;
+        string skillName = this.player.inventory.GetSkillInSlot(slot % PlayerInventory.skillSlotCount)?.name;
         if (skillName == null) return;
         SkillEffect skill = GetSkill(skillName);
         if (skill?.hasBindings == true) skill.Execute(player);

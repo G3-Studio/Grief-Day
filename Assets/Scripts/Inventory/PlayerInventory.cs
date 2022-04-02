@@ -7,7 +7,7 @@ public class PlayerInventory
     private static JsonUtils.CollectableItemJson collectableItemJson = LoadItems();
     public static List<JsonUtils.CollectableItemJson.Buff> BUFFS = collectableItemJson.buff;
     public static List<JsonUtils.CollectableItemJson.Skill> SKILLS = collectableItemJson.skill;
-    private static int skillSlotCount = 2;
+    public const int skillSlotCount = 2;
 
     private static JsonUtils.CollectableItemJson LoadItems() {
         // Open JSON file
@@ -23,7 +23,7 @@ public class PlayerInventory
 
     public PlayerInventory(PlayerEffectUI effectUI) {
         buffs = new List<JsonUtils.CollectableItemJson.Buff>();
-        skills = new JsonUtils.CollectableItemJson.Skill[2];
+        skills = new JsonUtils.CollectableItemJson.Skill[skillSlotCount];
         buffCount = 0;
         skillCount = 0;
         this.effectUI = effectUI;
@@ -38,7 +38,7 @@ public class PlayerInventory
     }
 
     public bool isSkillInventoryFull() {
-        return skillCount == 2;
+        return skillCount == skillSlotCount;
     }
 
     public void AddSkill(JsonUtils.CollectableItemJson.Skill skill) {

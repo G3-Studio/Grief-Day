@@ -72,4 +72,9 @@ public class Player : MonoBehaviour
         inventory.AddSkill(skill);
         return true;
     }
+
+    public Player getCollidingPlayer() {
+        // TODO: Implement this method as part of the fight system
+        return null;
+    }
 }

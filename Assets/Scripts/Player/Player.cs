@@ -16,13 +16,16 @@ public class Player : MonoBehaviour
     [SerializeField] public float dashStrength = 10.0f;
 
     public bool isPlayer1 { get; private set; }
-    public Inventory inventory;
+    public PlayerInventory inventory;
+    public CurrentUI currentUI;
+    public bool hasAlreadyTraded { get; set; } = false;
 
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
-        inventory = new Inventory();
+        inventory = new PlayerInventory(this.effectUI);
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
+        this.currentUI = CurrentUI.NONE;
     }
     
     public int GetPlayerIndex()
@@ -30,10 +33,15 @@ public class Player : MonoBehaviour
         return isPlayer1 ? 0 : 1;
     }
 
+    public void Update() {
+        if (this.inventory.GetSkillInSlot(0) == null) {
+            this.inventory.AddSkill(Skills.getSkill());
+        }
+    }
+
     // Collect item when walking on it 
     public void CollectItem(JsonUtils.CollectableItemJson.Buff buff) {
         inventory.AddBuff(buff);
-        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         switch (buff.buff.name)
         {
             case "pv":
@@ -62,7 +70,6 @@ public class Player : MonoBehaviour
             return false;
         }
         inventory.AddSkill(skill);
-        this.effectUI.GetComponent<PlayerEffectUI>().UpdateObject(inventory);
         return true;
     }
 

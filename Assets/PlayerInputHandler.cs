@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,6 +15,7 @@ public class PlayerInputHandler : MonoBehaviour
     private SelectSkill selectSkill;
     private GameObject player;
     private bool gamePaused = false;
+    private DemonDetector demon;
     private Player playerScript;
 
     private void Awake()
@@ -24,6 +29,7 @@ public class PlayerInputHandler : MonoBehaviour
         skillManager = player.GetComponent<SkillManager>();
         stairs = player.GetComponent<Stairs>();
         selectSkill = player.GetComponent<SelectSkill>();
+        demon = player.GetComponent<DemonDetector>();
     }
     
     void OnMove(InputValue value)
@@ -35,6 +41,11 @@ public class PlayerInputHandler : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
+            TradingManager.ConfirmChoice();
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            return;
+        }
         mover.Jump();
         skillManager.GetSkill<DoubleJump>().Execute(playerScript);
     }
@@ -44,15 +55,20 @@ public class PlayerInputHandler : MonoBehaviour
         if (gamePaused) return;
         stairs.Interact();
         selectSkill.Interact();
+        demon.Interact();
     }
 
     void OnSkill1(InputValue value) {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) return;
+
         skillManager.TriggerSkill(0);
     }
 
     void OnSkill2(InputValue value) {
         if (gamePaused) return;
+        if (player.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) return;
+        
         skillManager.TriggerSkill(1);
     }
 

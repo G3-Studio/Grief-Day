@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -13,19 +12,26 @@ public class Movement : MonoBehaviour
     private int Stuck;
     public Vector2 axisInput;
 
-    private void Awake()
-    {
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    public void SetInputMoveVector(Vector2 input)
-    {
+    public void SetInputMoveVector(Vector2 input) {
         axisInput = input;
     }
 
     private void Update(){
         int horizontalInput = Math.Sign(axisInput.x);
+        
+        if (this.gameObject.GetComponent<Player>().currentUI == CurrentUI.CHOOSE_DEMON_ITEM) {
+            if (horizontalInput > 0f) {
+                TradingManager.ChangeSelection(1);
+            } else if (horizontalInput < 0f) {
+                TradingManager.ChangeSelection(0);
+            }
+            return;
+        }
 
         // Animate player
         animator.SetBool("Running", horizontalInput != 0 && canMove);
@@ -38,7 +44,7 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(Stuck == 0 || Stuck != horizontalInput ? horizontalInput * player.speed : 0, rb.velocity.y);
 
         // Rotate the player model left or right depending on the input
-        if(horizontalInput > 0f && isLeft){
+        if (horizontalInput > 0f && isLeft) {
             isLeft = false;
             transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
         }
@@ -58,6 +64,10 @@ public class Movement : MonoBehaviour
     public void ApplyJump() {
         rb.AddForce(Vector2.up * gameObject.GetComponent<Player>().jumpForce, ForceMode2D.Impulse);
         this.isJumping = true;
+    }
+    
+    public void triggerSkill() {
+        (this.skills[0] as SkillEffect).execute(gameObject.GetComponent<Player>(), rb, axisInput);
     }
 
     bool IsGrounded() {
@@ -95,7 +105,7 @@ public class Movement : MonoBehaviour
         Grounded = IsGrounded();
         isStuck(collision);
     }
-
+    
     void OnCollisionEnter2D(Collision2D other) {
         this.isJumping = false;
     }

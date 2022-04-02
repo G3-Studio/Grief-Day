@@ -98,6 +98,15 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c570794-83ad-45ca-a81f-bb79ff2df022"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -408,6 +417,28 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""action"": ""BigAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60f17b7b-fac9-41da-a808-1cb8a5e6b6a7"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""286ce9e3-9201-409b-98b9-7198ca0a0335"",
+                    ""path"": ""<Keyboard>/#(J)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -424,6 +455,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_BigAttack = m_Player.FindAction("BigAttack", throwIfNotFound: true);
+        m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -491,6 +523,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_BigAttack;
+    private readonly InputAction m_Player_Shield;
     public struct PlayerActions
     {
         private @GameInputs m_Wrapper;
@@ -503,6 +536,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @BigAttack => m_Wrapper.m_Player_BigAttack;
+        public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -536,6 +570,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @BigAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
                 @BigAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
                 @BigAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBigAttack;
+                @Shield.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
+                @Shield.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
+                @Shield.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -564,6 +601,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @BigAttack.started += instance.OnBigAttack;
                 @BigAttack.performed += instance.OnBigAttack;
                 @BigAttack.canceled += instance.OnBigAttack;
+                @Shield.started += instance.OnShield;
+                @Shield.performed += instance.OnShield;
+                @Shield.canceled += instance.OnShield;
             }
         }
     }
@@ -578,5 +618,6 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnBigAttack(InputAction.CallbackContext context);
+        void OnShield(InputAction.CallbackContext context);
     }
 }

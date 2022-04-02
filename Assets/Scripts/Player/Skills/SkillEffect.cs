@@ -17,7 +17,8 @@ public abstract class SkillEffect {
         get => this.triggerdAt >= 0 && this.triggerdAt + this.duration > Time.time;
     }
 
-    public virtual bool CanExecute(Player movement) {
+    public virtual bool CanExecute(Player player) {
+        if(player.cannotUseSkill) return false;
         return this.effectStart < 0 || this.effectStart + this.cooldown < Time.time;
     }
 

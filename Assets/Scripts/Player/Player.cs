@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxHealth = 200;
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
-    [SerializeField] private int attack = 10;
+    [SerializeField] public int attack = 10;
     [SerializeField] private PlayerEffectUI effectUI;
     [SerializeField] private StatsUI statsUI;
     [SerializeField] public float dashStrength = 10.0f;
+
+    public bool cannotUseSkill = false;
 
     public bool isPlayer1 { get; private set; }
     public PlayerInventory inventory;

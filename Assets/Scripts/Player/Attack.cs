@@ -20,12 +20,13 @@ public class Attack : MonoBehaviour
         // animator.SetTrigger("Attack");
 
         // Detect ennemies in range and deal damage
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRange);
+        Collider2D[] hitEnnemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
 
         foreach (Collider2D enemy in hitEnnemies)
         {
-            if (enemy.gameObject.tag == "Player")
+            if (enemy.name == "Player " + (GetComponent<Player>().isPlayer1 ? "2" : "1"))
             {
+                Debug.Log("Hit " + enemy.name);
                 enemy.gameObject.GetComponent<Player>().TakeDamage(20);
             }
         }

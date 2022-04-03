@@ -18,12 +18,12 @@ public class StatsUI : MonoBehaviour
         this.gameObject.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = health.ToString();
     }
     
-    public void UpdateSpeed(float speed) {
-        this.gameObject.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = speed.ToString();
-    }
-    
     public void UpdateAttack(float attack) {
-        this.gameObject.transform.GetChild(1).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = attack.ToString();
+        this.gameObject.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = attack.ToString();
     }
 
+    public void UpdateSpeed(float speed) {
+        this.gameObject.transform.GetChild(1).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = speed.ToString();
+    }
+    
 }

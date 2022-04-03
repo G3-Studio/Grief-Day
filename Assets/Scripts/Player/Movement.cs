@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public bool isLeft = true;
     private bool isJumping = false;
     public bool Grounded { get; private set; }
-    private int Stuck;
+    private int Stuck = 0;
     public Vector2 axisInput;
 
     private void Awake() {
@@ -85,14 +85,18 @@ public class Movement : MonoBehaviour
     }
     
     void isStuck(Collision2D collision) {
-        int relativeX = 0;
+        int currentStuck = 0;
+        bool initial = true;
         if (!collision.collider.tag.EndsWith("Stair") && collision.collider.tag != "Player" && collision.collider.tag != "Shrine") {
-            foreach (ContactPoint2D contactPoint in collision.contacts) {
-                int localRelativeX = Math.Sign(contactPoint.point.x - this.transform.position.x);
-                if (localRelativeX != relativeX && relativeX != 0) return;
-                relativeX = localRelativeX;
+            for (int i = 0; i < collision.contactCount; i++) {
+                // Not using Collision2D#contacts because it produces memory garbage
+                ContactPoint2D contactPoint = collision.GetContact(i);
+                int localStuck = -Math.Sign(contactPoint.normal.x);
+                if (!(contactPoint.normal.y < .1f) || (!initial && currentStuck != localStuck)) return;
+                currentStuck = localStuck;
+                initial = false;
             }
-            Stuck = relativeX;
+            Stuck = currentStuck;
         }
     }
 

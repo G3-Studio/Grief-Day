@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     public static TimeManager Instance { get; private set; }
-    private float rawTimer = 5+90+70+20+90-1f;
+    private float rawTimer = 0f;
     public int timerSeconds { get; private set; } = 0;
     // Start is called before the first frame update
     private void Awake() {

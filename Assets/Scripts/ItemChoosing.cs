@@ -1,14 +1,31 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
+using System.Web.UI;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing ;
+    
+
+
+
 
 public class ItemChoosing : MonoBehaviour
 {
-    
+    [SerializeField] float timescale  = 1f ;
     [SerializeField] GameObject prefab;
+    Vignette vignette;
+    
+    
+    [SerializeField] GameObject ParticlesEyes ;
     [SerializeField] Transform player1;
     [SerializeField] Transform player2;
 
+    [SerializeField] PostProcessVolume PostPVolume1;
+    [SerializeField] SpriteRenderer background ;
+    [SerializeField] Sprite DefaultBackground ;
+    [SerializeField] Sprite TradeBackground ;
     private Transform firstPlayer;
     private Transform secondPlayer;
     private int validatedChoices = 0;
@@ -16,6 +33,11 @@ public class ItemChoosing : MonoBehaviour
 
     void Awake() {
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+     
+       
+        PostPVolume1.profile.TryGetSettings(out  vignette);
+        
+
     }
     void OnDestroy() {
         GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
@@ -33,6 +55,9 @@ public class ItemChoosing : MonoBehaviour
         shrine1 = (GameObject)Instantiate(prefab, new Vector3((float)5.76 , (float)24.03, 0), transform.rotation);
         shrine2 = (GameObject)Instantiate(prefab, new Vector3((float)1.34, (float)24.03, 0), transform.rotation);
         shrine3 = (GameObject)Instantiate(prefab, new Vector3((float)-3.64,(float)24.03, 0), transform.rotation);
+        ParticlesEyes.SetActive(true);
+        vignette.enabled.value = true ;
+        background.sprite = TradeBackground ; 
         player1.transform.position = new Vector3((float)-7,(float)24.03, player1.position.z);
         player2.transform.position = new Vector3((float)-7,(float)24.03, player1.position.z);
 
@@ -42,6 +67,9 @@ public class ItemChoosing : MonoBehaviour
     }
 
     private void phaseSuppression() {
+        ParticlesEyes.SetActive(false);
+        vignette.enabled.value = false ;
+        background.sprite = DefaultBackground ;
         if (validatedChoices == 1) {
             chooseRandom();
         }
@@ -79,6 +107,7 @@ public class ItemChoosing : MonoBehaviour
     }
 
     private void Update() {
+        Time.timeScale = timescale ;
         int timer = TimeManager.Instance.timerSeconds;
         if(timer == 5+90+70+10 && validatedChoices == 0) chooseRandom(); 
     }

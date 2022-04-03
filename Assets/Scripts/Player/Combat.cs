@@ -61,10 +61,13 @@ public class Combat : MonoBehaviour
     public void PerformAttack()
     {
         if(cannotAttack) return;
+        DisableActions();
         // Play attack animation
         // animator.SetTrigger("Attack");
 
-        attack();
+        Attack();
+
+        EnableActions();
     }
 
     // ATTENTION : le code qui va suivre peut comporter des images choquantes
@@ -79,14 +82,14 @@ public class Combat : MonoBehaviour
         // Play attack animation
         // animator.SetTrigger("BigAttack");
 
-        attack(bigAttackMultiplier);
+        Attack(bigAttackMultiplier);
 
         EnableActions();
     }
 
 
 
-    public void attack(float multiplier = 1.0f){
+    public void Attack(float multiplier = 1.0f){
         Collider2D[] hitEnnemies;
         if(GetComponent<Movement>().axisInput.y == 0 && GetComponent<Movement>().axisInput.y == 0){
             hitEnnemies = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + (GetComponent<Movement>().isLeft ? -1 : 1) * axisInputNormalizeX, transform.position.y), GetComponent<Movement>().Grounded ? attackRange : attackRange / attackAirReduce);

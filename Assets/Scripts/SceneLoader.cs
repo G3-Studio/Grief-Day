@@ -9,9 +9,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadNextScene()
     {
-       
        StartCoroutine(LoadNextSc());
-       
     }
 
     IEnumerator LoadNextSc(){

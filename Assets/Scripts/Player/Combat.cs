@@ -22,6 +22,22 @@ public class Combat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        string[] array = { "Attack", "BigAttackIn", "BigAttackOut" };
+
+        for(int i=0; i<animator.runtimeAnimatorController.animationClips.Length; i++)
+        {
+            AnimationClip clip = animator.runtimeAnimatorController.animationClips[i];
+            if(array.Contains(clip.name))
+            {
+                AnimationEvent animationEndEvent = new AnimationEvent();
+                animationEndEvent.time = clip.length;
+                animationEndEvent.functionName = "AnimationCompleteHandler";
+                animationEndEvent.stringParameter = clip.name;
+                
+                clip.AddEvent(animationEndEvent);
+            } 
+        }
+        
         InvokeRepeating("RegenShield", 0, 1); // shield regen every second
     }
 
@@ -64,10 +80,7 @@ public class Combat : MonoBehaviour
         DisableActions();
         // Play attack animation
         // animator.SetTrigger("Attack");
-
         Attack();
-
-        EnableActions();
     }
 
     // ATTENTION : le code qui va suivre peut comporter des images choquantes
@@ -80,13 +93,32 @@ public class Combat : MonoBehaviour
         if(cannotAttack || !GetComponent<Movement>().Grounded) return;
         DisableActions();
         // Play attack animation
-        // animator.SetTrigger("BigAttack");
+        // animator.SetTrigger("BigAttackIn");
 
         Attack(bigAttackMultiplier);
 
         EnableActions();
     }
 
+
+    public void AnimationCompleteHandler(string name)
+    {
+        Debug.Log($"{name} animation complete.");
+        switch(name)
+        {
+            case "Attack":
+                EnableActions();
+                break;
+            case "BigAttackIn":
+                Attack(bigAttackMultiplier);
+                // Play attack animation
+                // animator.SetTrigger("BigAttackOut");
+                break;
+            case "BigAttackOut":
+                EnableActions();
+                break;
+        }
+    }
 
 
     public void Attack(float multiplier = 1.0f){

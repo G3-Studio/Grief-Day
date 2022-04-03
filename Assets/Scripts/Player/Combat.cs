@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    public float attackRange = 0.7f;
+    public float attackRange = 0.9f;
     public int shieldLife = 100;
     public int shieldLifeMax = 100;
     public int shieldLifeRegen = 1;
     public float attackAirReduce = 2f;
     public float bigAttackMultiplier = 1.5f;
     public bool cannotAttack = false;
-    public float axisInputNormalizeX = 0.75f;
-    public float axisInputNormalizeY = 0.75f;
+    public float axisInputNormalizeX = 0.7f;
+    public float axisInputNormalizeY = 1.5f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -88,8 +88,9 @@ public class Combat : MonoBehaviour
 
     public void attack(float multiplier = 1.0f){
         Collider2D[] hitEnnemies;
-
-        if(GetComponent<Movement>().axisInput.y == -1){
+        if(GetComponent<Movement>().axisInput.y == 0 && GetComponent<Movement>().axisInput.y == 0){
+            hitEnnemies = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + (GetComponent<Movement>().isLeft ? -1 : 1) * axisInputNormalizeX, transform.position.y), GetComponent<Movement>().Grounded ? attackRange : attackRange / attackAirReduce);
+        }else if(GetComponent<Movement>().axisInput.y == -1){
             // TODO: add things
             // Detect ennemies in range and deal damage
             hitEnnemies = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + GetComponent<Movement>().axisInput.x * axisInputNormalizeX, transform.position.y + GetComponent<Movement>().axisInput.y * axisInputNormalizeY), GetComponent<Movement>().Grounded ? attackRange : attackRange / attackAirReduce);

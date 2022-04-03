@@ -2682,6 +2682,7 @@ GameObject:
   - component: {fileID: 614377541}
   - component: {fileID: 614377542}
   - component: {fileID: 614377544}
+  - component: {fileID: 614377545}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -2797,6 +2798,7 @@ MonoBehaviour:
   effectUI: {fileID: 1914784626}
   statsUI: {fileID: 1557315816}
   dashStrength: 5
+  cannotUseSkill: 0
   currentUI: 0
 --- !u!114 &614377537
 MonoBehaviour:
@@ -2929,6 +2931,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e56e2407f49c249a6652acb330acce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614377545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316d8e44b697bc4591e5c929cacede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1.5
+  shieldLife: 100
+  shieldLifeMax: 100
+  shieldLifeRegen: 1
+  attackAirReduce: 2
+  bigAttackMultiplier: 1.5
+  cannotAttack: 0
+  axisInputNormalizeX: 0.75
+  axisInputNormalizeY: 0.75
 --- !u!1 &616537066
 GameObject:
   m_ObjectHideFlags: 0
@@ -8189,6 +8212,7 @@ GameObject:
   - component: {fileID: 1932406553}
   - component: {fileID: 1932406554}
   - component: {fileID: 1932406556}
+  - component: {fileID: 1932406557}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -8304,6 +8328,7 @@ MonoBehaviour:
   effectUI: {fileID: 1487977612}
   statsUI: {fileID: 1209152331}
   dashStrength: 5
+  cannotUseSkill: 0
   currentUI: 0
 --- !u!114 &1932406549
 MonoBehaviour:
@@ -8436,6 +8461,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e56e2407f49c249a6652acb330acce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932406557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316d8e44b697bc4591e5c929cacede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1.5
+  shieldLife: 100
+  shieldLifeMax: 100
+  shieldLifeRegen: 1
+  attackAirReduce: 2
+  bigAttackMultiplier: 1.5
+  cannotAttack: 0
+  axisInputNormalizeX: 0.75
+  axisInputNormalizeY: 0.75
 --- !u!1 &1937835998
 GameObject:
   m_ObjectHideFlags: 0

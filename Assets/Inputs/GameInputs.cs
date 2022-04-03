@@ -399,7 +399,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1aff267e-aceb-4133-8935-7fd31bc084fe"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""path"": ""<Keyboard>/#(G)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

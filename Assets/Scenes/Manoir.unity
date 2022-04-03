@@ -5828,8 +5828,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 614377530}
   player2: {fileID: 1932406542}
+  frameMiddle: {fileID: 1525047638}
+  cameraP1: {fileID: 390376321}
+  cameraP2: {fileID: 1367144304}
   teleportPosP1: {x: -1018, y: 1}
   teleportPosP2: {x: -1000, y: 1}
+  cameraSize: 11
 --- !u!1 &1235401656
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ using UnityEngine.Rendering.PostProcessing ;
 
 public class ItemChoosing : MonoBehaviour
 {
-    [SerializeField] float timescale  = 1f ;
     [SerializeField] GameObject prefab;
     Vignette vignette;
     
@@ -107,7 +106,6 @@ public class ItemChoosing : MonoBehaviour
     }
 
     private void Update() {
-        Time.timeScale = timescale ;
         int timer = TimeManager.Instance.timerSeconds;
         if(timer == 5+90+70+10 && validatedChoices == 0) chooseRandom(); 
     }

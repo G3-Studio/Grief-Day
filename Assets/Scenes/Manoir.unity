@@ -5427,7 +5427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &240399743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6046,7 +6046,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &345645612
@@ -7194,7 +7194,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &523240481
@@ -8218,13 +8218,14 @@ GameObject:
   - component: {fileID: 704088485}
   - component: {fileID: 704088488}
   - component: {fileID: 704088487}
+  - component: {fileID: 704088486}
   m_Layer: 5
   m_Name: Player1CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &704088485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8245,6 +8246,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &704088486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704088484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c9c9bea8148014283412101f1b7643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 614377530}
 --- !u!114 &704088487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9134,13 +9148,14 @@ GameObject:
   - component: {fileID: 768202279}
   - component: {fileID: 768202282}
   - component: {fileID: 768202281}
+  - component: {fileID: 768202280}
   m_Layer: 5
   m_Name: Player2CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &768202279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9161,6 +9176,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &768202280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768202278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c9c9bea8148014283412101f1b7643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1932406542}
 --- !u!114 &768202281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9843,6 +9871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641d0341a461a874998be787fb2f46ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timescale: 1
   prefab: {fileID: 5690162085929909511, guid: 90bb3d8b208125b40ab8c1dc4859cfa4, type: 3}
   ParticlesEyes: {fileID: 2020684564}
   player1: {fileID: 614377532}
@@ -10379,7 +10408,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1000241613
@@ -10572,7 +10601,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1049099347
@@ -11774,7 +11803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1248596571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12053,7 +12082,7 @@ SpriteRenderer:
   m_Size: {x: 38.4, y: 21.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1320266001
@@ -12977,7 +13006,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1569820337
@@ -13028,7 +13057,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1573848454}
-  - component: {fileID: 1573848455}
   m_Layer: 5
   m_Name: Player2Coins
   m_TagString: Untagged
@@ -13058,19 +13086,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1573848455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573848453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c9c9bea8148014283412101f1b7643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1932406542}
 --- !u!1 &1580639066
 GameObject:
   m_ObjectHideFlags: 0
@@ -13603,7 +13618,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706832301}
-  - component: {fileID: 1706832302}
   m_Layer: 5
   m_Name: Player1Coins
   m_TagString: Untagged
@@ -13633,19 +13647,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1706832302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706832300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c9c9bea8148014283412101f1b7643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 614377530}
 --- !u!1 &1730233331
 GameObject:
   m_ObjectHideFlags: 0
@@ -14014,7 +14015,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1843591496

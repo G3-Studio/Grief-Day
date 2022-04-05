@@ -1,5 +1,4 @@
-﻿using System.Resources;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Utils {
     

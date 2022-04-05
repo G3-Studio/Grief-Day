@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System;
-using System.Globalization;
 
 public class GameTimerText : MonoBehaviour
 {

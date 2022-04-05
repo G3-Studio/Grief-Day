@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
-using Utils;
+﻿using Utils;
 
 public class TradingManager {
 

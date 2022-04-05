@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ServiceModel.Description;
-using UnityEngine;
+﻿using UnityEngine;
 using Utils;
 
 public class Player : MonoBehaviour

@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Web.WebPages.Razor.Configuration;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI_test : MonoBehaviour
 {

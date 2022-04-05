@@ -1,15 +1,5 @@
-
-
-using System.Collections;
-using System.Collections.Generic;
-using System.Web.UI;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing ;
-    
-
-
-
 
 public class ItemChoosing : MonoBehaviour
 {

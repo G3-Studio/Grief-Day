@@ -53,7 +53,7 @@ public class Combat : MonoBehaviour
     public void PerformShield(float value)
     {
         if(value == 1f && GetComponent<Movement>().Grounded && shieldLife > 0){
-            // TODO: decomment once animations are implemented DisableActions();
+            DisableActions();
 
             if(shielded) {
                 shield.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -63,11 +63,8 @@ public class Combat : MonoBehaviour
                 shielded = true;
             }
 
-            // Play attack animation
-            // animator.SetTrigger("Shield");
-
-
-            // TODO: add UI for shield life
+            // Play shield animation
+            animator.SetTrigger("Shield");
         }else{
             Destroy(shield);
             shielded = false;
@@ -97,9 +94,10 @@ public class Combat : MonoBehaviour
     public void PerformAttack()
     {
         if(cannotAttack) return;
-        // TODO: decomment once animations are implemented DisableActions();
+        DisableActions();
+        
         // Play attack animation
-        // animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
         Attack();
     }
 
@@ -109,15 +107,13 @@ public class Combat : MonoBehaviour
 
     public void PerformBigAttack()
     {
-        // TODO: add timer
         if(cannotAttack || !GetComponent<Movement>().Grounded) return;
-        // TODO: decomment once animations are implemented DisableActions();
+        DisableActions();
+        
         // Play attack animation
-        // animator.SetTrigger("BigAttackIn");
+        animator.SetTrigger("BigAttackIn");
 
         Attack(bigAttackMultiplier);
-
-        EnableActions();
     }
 
 
@@ -132,7 +128,7 @@ public class Combat : MonoBehaviour
             case "BigAttackIn":
                 Attack(bigAttackMultiplier);
                 // Play attack animation
-                // animator.SetTrigger("BigAttackOut");
+                animator.SetTrigger("BigAttackOut");
                 break;
             case "BigAttackOut":
                 EnableActions();
@@ -146,7 +142,7 @@ public class Combat : MonoBehaviour
         if(GetComponent<Movement>().axisInput.y == 0 && GetComponent<Movement>().axisInput.y == 0){
             hitEnnemies = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + (GetComponent<Movement>().isLeft ? -1 : 1) * axisInputNormalizeX, transform.position.y), GetComponent<Movement>().Grounded ? attackRange : attackRange / attackAirReduce);
         }else if(GetComponent<Movement>().axisInput.y == -1){
-            // TODO: add things
+            // TODO: add things -> balayette
             // Detect ennemies in range and deal damage
             hitEnnemies = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + GetComponent<Movement>().axisInput.x * axisInputNormalizeX, transform.position.y + GetComponent<Movement>().axisInput.y * axisInputNormalizeY), GetComponent<Movement>().Grounded ? attackRange : attackRange / attackAirReduce);
         }else{

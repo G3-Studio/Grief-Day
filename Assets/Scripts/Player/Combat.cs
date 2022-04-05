@@ -16,6 +16,8 @@ public class Combat : MonoBehaviour
     public float axisInputNormalizeX = 0.7f;
     public float axisInputNormalizeY = 1.5f;
 
+    [SerializeField] Color32 flashColor;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -45,7 +47,7 @@ public class Combat : MonoBehaviour
     public void PerformShield(float value)
     {
         if(value == 1f && GetComponent<Movement>().Grounded){
-            DisableActions();
+            // TODO: decomment once animations are implemented DisableActions();
 
             // Play attack animation
             // animator.SetTrigger("Shield");
@@ -78,7 +80,7 @@ public class Combat : MonoBehaviour
     public void PerformAttack()
     {
         if(cannotAttack) return;
-        DisableActions();
+        // TODO: decomment once animations are implemented DisableActions();
         // Play attack animation
         // animator.SetTrigger("Attack");
         Attack();
@@ -92,7 +94,7 @@ public class Combat : MonoBehaviour
     {
         // TODO: add timer
         if(cannotAttack || !GetComponent<Movement>().Grounded) return;
-        DisableActions();
+        // TODO: decomment once animations are implemented DisableActions();
         // Play attack animation
         // animator.SetTrigger("BigAttackIn");
 
@@ -140,6 +142,7 @@ public class Combat : MonoBehaviour
             if (enemy.name == "Player " + (GetComponent<Player>().isPlayer1 ? "2" : "1"))
             {   
                 Debug.Log("Hit " + enemy.name);
+                enemy.GetComponent<FlashEffect>().Flash(flashColor);
                 int damage = (int) Math.Round(GetComponent<Player>().attack * multiplier);
                 if(shieldLife > 0) {
                     shieldLife -= damage;

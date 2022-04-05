@@ -2683,6 +2683,7 @@ GameObject:
   - component: {fileID: 614377542}
   - component: {fileID: 614377544}
   - component: {fileID: 614377545}
+  - component: {fileID: 614377546}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -2952,6 +2953,23 @@ MonoBehaviour:
   cannotAttack: 0
   axisInputNormalizeX: 0.75
   axisInputNormalizeY: 0.75
+  flashColor:
+    serializedVersion: 2
+    rgba: 3524268256
+--- !u!114 &614377546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4964058a6dd310e4b91802a6ba5321fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3d3fba51c9ad1724793e6f2df88d15df, type: 2}
+  duration: 0.08
 --- !u!1 &616537066
 GameObject:
   m_ObjectHideFlags: 0
@@ -8213,6 +8231,7 @@ GameObject:
   - component: {fileID: 1932406554}
   - component: {fileID: 1932406556}
   - component: {fileID: 1932406557}
+  - component: {fileID: 1932406558}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -8482,6 +8501,23 @@ MonoBehaviour:
   cannotAttack: 0
   axisInputNormalizeX: 0.75
   axisInputNormalizeY: 0.75
+  flashColor:
+    serializedVersion: 2
+    rgba: 3524268256
+--- !u!114 &1932406558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4964058a6dd310e4b91802a6ba5321fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3d3fba51c9ad1724793e6f2df88d15df, type: 2}
+  duration: 0.08
 --- !u!1 &1937835998
 GameObject:
   m_ObjectHideFlags: 0

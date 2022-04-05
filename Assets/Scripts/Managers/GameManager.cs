@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-        if (this.player1.hasAlreadyTraded && this.player2.hasAlreadyTraded && !TradingManager.isTrading) {
+        if (State != GameState.Depression && this.player1.hasAlreadyTraded && this.player2.hasAlreadyTraded && !TradingManager.isTrading) {
             UpdateGameState(GameState.Depression);
         }
     }

@@ -13,6 +13,10 @@ public class TimeManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start() {
+        Time.timeScale = 1f;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -22,6 +26,7 @@ public class TimeManager : MonoBehaviour
         int minutes = Convert.ToInt32(Math.Floor(rawTimer / 60) % 60);
 
         timerSeconds = seconds + minutes*60;
+
     }
 
     public void Pause()

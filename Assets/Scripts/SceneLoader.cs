@@ -1,16 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
-
+using System.Collections;
 
 public class SceneLoader : MonoBehaviour
 {
+    Animator TransitionAnimator ;
+    
     public void LoadNextScene()
     {
        
+       StartCoroutine(LoadNextSc());
        
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    IEnumerator LoadNextSc(){
+        TransitionAnimator.SetTrigger("Transitrig");
+        yield return new WaitForSeconds(1f);
+         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadSceneAsync(currentSceneIndex + 1);
+        
     }
     public void LoadStartScene()
     {
@@ -29,5 +38,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-    
+    void Awake(){
+            TransitionAnimator = FindObjectOfType<Animator>();
+
+    }
 }

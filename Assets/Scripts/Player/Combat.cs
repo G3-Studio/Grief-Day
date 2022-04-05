@@ -18,6 +18,8 @@ public class Combat : MonoBehaviour
 
     [SerializeField] Color32 flashColor;
     [SerializeField] GameObject shieldPrefab;
+    [SerializeField] int knockbackX;
+    [SerializeField] int knockbackY;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -177,6 +179,18 @@ public class Combat : MonoBehaviour
                 if (damage > 0) {
                     enemy.GetComponent<FlashEffect>().Flash(flashColor);
                     enemy.gameObject.GetComponent<Player>().TakeDamage(damage);
+
+                    float rotation;
+                    if (transform.transform.eulerAngles.y <= 180f) {
+                        rotation = transform.eulerAngles.y;
+                    }
+                    else{
+                        rotation = transform.eulerAngles.y - 360f;
+                    }
+                    rotation = rotation > 0 ? 1 : -1;
+                    Vector3 knockback = new Vector3(knockbackX*rotation, knockbackY, 0);
+                    enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    enemy.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Force);
                 }
             }
         }

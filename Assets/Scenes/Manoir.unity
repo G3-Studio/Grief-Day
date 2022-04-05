@@ -2957,6 +2957,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 3524268256
   shieldPrefab: {fileID: 1333885279565732494, guid: d607bc038e8770c46ae76ce8847d424d, type: 3}
+  knockbackX: 800
+  knockbackY: 200
+  shielded: 0
 --- !u!114 &614377546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8506,6 +8509,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 3524268256
   shieldPrefab: {fileID: 1333885279565732494, guid: d607bc038e8770c46ae76ce8847d424d, type: 3}
+  knockbackX: 800
+  knockbackY: 200
+  shielded: 0
 --- !u!114 &1932406558
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
-using System.Collections;
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Combat : MonoBehaviour
@@ -28,6 +26,8 @@ public class Combat : MonoBehaviour
     public bool shielded = false;
 
     private void Awake() {
+        GameManager.OnGameStateChanged += OnGameStateChanged;
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -48,6 +48,14 @@ public class Combat : MonoBehaviour
         }
         
         InvokeRepeating("RegenShield", 0, 1); // shield regen every second
+    }
+
+    void OnDestroy() {
+        GameManager.OnGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState state) {
+        if(state == GameState.Depression) this.animator.SetBool("isDemon", true);
     }
 
     public void PerformShield(float value)

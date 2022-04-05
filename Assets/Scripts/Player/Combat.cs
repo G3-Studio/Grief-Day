@@ -17,9 +17,13 @@ public class Combat : MonoBehaviour
     public float axisInputNormalizeY = 1.5f;
 
     [SerializeField] Color32 flashColor;
+    [SerializeField] GameObject shieldPrefab;
 
     private Rigidbody2D rb;
     private Animator animator;
+
+    private GameObject shield;
+    public bool shielded = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -46,14 +50,25 @@ public class Combat : MonoBehaviour
 
     public void PerformShield(float value)
     {
-        if(value == 1f && GetComponent<Movement>().Grounded){
+        if(value == 1f && GetComponent<Movement>().Grounded && shieldLife > 0){
             // TODO: decomment once animations are implemented DisableActions();
+
+            if(shielded) {
+                shield.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            } else {
+                shield = (GameObject)Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation, gameObject.transform);
+                shield.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+                shielded = true;
+            }
 
             // Play attack animation
             // animator.SetTrigger("Shield");
 
+
             // TODO: add UI for shield life
         }else{
+            Destroy(shield);
+            shielded = false;
             EnableActions();
         }
     }
@@ -142,19 +157,30 @@ public class Combat : MonoBehaviour
             if (enemy.name == "Player " + (GetComponent<Player>().isPlayer1 ? "2" : "1"))
             {   
                 Debug.Log("Hit " + enemy.name);
-                enemy.GetComponent<FlashEffect>().Flash(flashColor);
                 int damage = (int) Math.Round(GetComponent<Player>().attack * multiplier);
-                if(shieldLife > 0) {
-                    shieldLife -= damage;
-                    if(shieldLife < 0) {
-                        damage += shieldLife;
-                        shieldLife = 0;
-                        EnableActions();
+
+                // enemy is blocking
+                if (enemy.GetComponent<Combat>().shielded) {
+                    enemy.GetComponent<Combat>().shieldLife -= damage;
+                    if(enemy.GetComponent<Combat>().shieldLife < 0) {
+                        damage = -enemy.GetComponent<Combat>().shieldLife;
+                        enemy.GetComponent<Combat>().shieldLife = -3; // cooldown before enemy can use shield again * (-1)
+                        enemy.GetComponent<Combat>().shielded = false;
+                        Destroy(enemy.GetComponent<Combat>().shield);
+                    } else {
+                        damage = 0;
                     }
                 }
 
-                enemy.gameObject.GetComponent<Player>().TakeDamage(damage);
+                Debug.Log("Dealt " + damage + " damages.");
+
+                if (damage > 0) {
+                    enemy.GetComponent<FlashEffect>().Flash(flashColor);
+                    enemy.gameObject.GetComponent<Player>().TakeDamage(damage);
+                }
             }
         }
+
+        EnableActions();
     }
 }

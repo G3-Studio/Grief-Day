@@ -67,7 +67,7 @@ public class Combat : MonoBehaviour
                 shield.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             } else {
                 shield = (GameObject)Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation, gameObject.transform);
-                shield.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+                shield.transform.localScale = new Vector3(0.3f*(shieldLife/shieldLifeMax), 0.3f*(shieldLife/shieldLifeMax), 1);
                 shielded = true;
             }
 

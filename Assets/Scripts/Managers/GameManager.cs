@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public Player player1;
     [SerializeField] public Player player2;
+    [SerializeField] public GameObject playersCoins;
+    [SerializeField] public GameObject healthBars;
 
     public GameState State { get; private set; }
     public readonly Dictionary<int, GameState> stateTimings = new Dictionary<int, GameState>  // Create a dictionary with the State change timings
@@ -45,17 +47,21 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {   
+            // TODO: Remove that and make it better
             case GameState.Overview:
                 break;
             case GameState.Deny:
                 break;
             case GameState.AngerCoins:
+                playersCoins.SetActive(true);
                 break;
             case GameState.AngerTrade:
+                playersCoins.SetActive(false);
                 break;
             case GameState.Bargaining:
                 break;
             case GameState.Depression:
+                healthBars.SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

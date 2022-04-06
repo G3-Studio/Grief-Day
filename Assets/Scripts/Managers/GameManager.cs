@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public Player player1;
     [SerializeField] public Player player2;
+
+    [SerializeField] public GameObject player2Object;
     [SerializeField] public GameObject playersCoins;
     [SerializeField] public GameObject healthBars;
 
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Depression:
                 healthBars.SetActive(true);
+                player2Object.layer = LayerMask.NameToLayer("Player");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

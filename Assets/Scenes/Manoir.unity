@@ -6598,6 +6598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 614377534}
   player2: {fileID: 1932406546}
+  player2Object: {fileID: 1932406542}
   playersCoins: {fileID: 1081795507}
   healthBars: {fileID: 557333187}
 --- !u!1 &436093062
@@ -7547,7 +7548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586988949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.958007, y: 19.066626, z: -0.24618196}
+  m_LocalPosition: {x: -14.05, y: 18.4, z: -0.24618196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7787,7 +7788,7 @@ GameObject:
   - component: {fileID: 614377544}
   - component: {fileID: 614377545}
   - component: {fileID: 614377546}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10824,7 +10825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000241613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.788006, y: 2.0266256, z: -0.24618196}
+  m_LocalPosition: {x: -17.42, y: 2.0266256, z: -0.24618196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13075,7 +13076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423442862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.928007, y: 25.456625, z: -0.24618196}
+  m_LocalPosition: {x: -14.1, y: 25.456625, z: -0.24618196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19641,7 +19642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894353535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.088007, y: 9.226625, z: -0.24618196}
+  m_LocalPosition: {x: -9.2, y: 9.75, z: -0.24618196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19853,7 +19854,7 @@ GameObject:
   - component: {fileID: 1932406556}
   - component: {fileID: 1932406557}
   - component: {fileID: 1932406558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 2
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -3,8 +3,8 @@ using Utils;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int health = 200;
-    [SerializeField] private int maxHealth = 200;
+    [SerializeField] private int health = 500;
+    [SerializeField] private int maxHealth = 500;
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] public int attack = 10;
@@ -19,12 +19,22 @@ public class Player : MonoBehaviour
     public CurrentUI currentUI;
     public bool hasAlreadyTraded { get; set; } = false;
 
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         isPlayer1 = this.gameObject.name == "Player 1";
         inventory = new PlayerInventory(this.effectUI);
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
         this.currentUI = CurrentUI.NONE;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+    private void Update() {
+        if (GameManager.Instance.State == GameState.Depression) {
+            if (gameObject.name == "Player 2") {
+                spriteRenderer.color = new Color(0, 41, 255, 255);
+            }
+        }
     }
     public int GetCurrentHealth(){
         return health;

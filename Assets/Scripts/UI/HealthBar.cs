@@ -33,7 +33,6 @@ public class HealthBar : MonoBehaviour
         MaxHealth = player.GetMaxHealth() ;
         Health = player.GetCurrentHealth() ; 
         fill.color = gradient.Evaluate(slider.normalizedValue);
-        Debug.Log(slider.normalizedValue);
         SetMaxHealth(MaxHealth);
         SetHealth(Health);
     }

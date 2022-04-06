@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Movement mover;
     private SkillManager skillManager;
     private Stairs stairs;
+    private Combat combat;
     private SelectSkill selectSkill;
     private GameObject player;
     private bool gamePaused = false;
@@ -19,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         player = GameObject.FindGameObjectsWithTag("Player")[playerInput.playerIndex];
 
+        combat = player.GetComponent<Combat>();
         mover = player.GetComponent<Movement>();
         playerScript = player.GetComponent<Player>();
         skillManager = player.GetComponent<SkillManager>();
@@ -66,6 +68,25 @@ public class PlayerInputHandler : MonoBehaviour
         
         skillManager.TriggerSkill(1);
     }
+
+    void OnAttack(InputValue value) {
+        if (gamePaused) return;
+
+        combat.PerformAttack();
+    }
+
+    void OnBigAttack(InputValue value) {
+        if (gamePaused) return;
+
+        combat.PerformBigAttack();
+    }
+
+    void OnShield(InputValue value) {
+        if (gamePaused) return;
+
+        combat.PerformShield(value.Get<float>());
+    }
+
 
     void OnPause(InputValue value) {
         if (gamePaused) {

@@ -3,8 +3,8 @@ using Utils;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int health = 200;
-    [SerializeField] private int maxHealth = 200;
+    [SerializeField] private int health = 500;
+    [SerializeField] private int maxHealth = 500;
     [SerializeField] public float speed = 20.0f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] public int attack = 10;

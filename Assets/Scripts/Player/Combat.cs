@@ -58,6 +58,11 @@ public class Combat : MonoBehaviour
         if(state == GameState.Depression) this.animator.SetBool("isDemon", true);
     }
 
+
+    private void Update() {
+        if(shielded) shield.transform.localScale = new Vector3(0.4f*(shieldLife*1f/shieldLifeMax), 0.4f*(shieldLife*1f/shieldLifeMax), 1);
+    }
+
     public void PerformShield(float value)
     {
         if(value == 1f && GetComponent<Movement>().Grounded && shieldLife > 0){
@@ -67,7 +72,6 @@ public class Combat : MonoBehaviour
                 shield.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             } else {
                 shield = (GameObject)Instantiate(shieldPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation, gameObject.transform);
-                shield.transform.localScale = new Vector3(0.3f*(shieldLife/shieldLifeMax), 0.3f*(shieldLife/shieldLifeMax), 1);
                 shielded = true;
             }
 

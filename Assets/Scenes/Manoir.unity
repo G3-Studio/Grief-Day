@@ -7745,6 +7745,8 @@ GameObject:
   - component: {fileID: 614377541}
   - component: {fileID: 614377542}
   - component: {fileID: 614377544}
+  - component: {fileID: 614377545}
+  - component: {fileID: 614377546}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -7860,6 +7862,7 @@ MonoBehaviour:
   effectUI: {fileID: 2075852972}
   statsUI: {fileID: 1174579546}
   dashStrength: 5
+  cannotUseSkill: 0
   currentUI: 0
 --- !u!114 &614377537
 MonoBehaviour:
@@ -7992,6 +7995,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e56e2407f49c249a6652acb330acce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614377545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316d8e44b697bc4591e5c929cacede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0.9
+  shieldLife: 100
+  shieldLifeMax: 100
+  shieldLifeRegen: 1
+  attackAirReduce: 2
+  bigAttackMultiplier: 1.5
+  cannotAttack: 0
+  axisInputNormalizeX: 0.7
+  axisInputNormalizeY: 1.5
+  flashColor:
+    serializedVersion: 2
+    rgba: 2080374996
+  shieldPrefab: {fileID: 1333885279565732494, guid: d607bc038e8770c46ae76ce8847d424d, type: 3}
+  knockbackX: 800
+  knockbackY: 200
+  shielded: 0
+--- !u!114 &614377546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614377530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4964058a6dd310e4b91802a6ba5321fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3d3fba51c9ad1724793e6f2df88d15df, type: 2}
+  duration: 0.08
 --- !u!1 &616537066
 GameObject:
   m_ObjectHideFlags: 0
@@ -19767,6 +19812,8 @@ GameObject:
   - component: {fileID: 1932406553}
   - component: {fileID: 1932406554}
   - component: {fileID: 1932406556}
+  - component: {fileID: 1932406557}
+  - component: {fileID: 1932406558}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -19882,6 +19929,7 @@ MonoBehaviour:
   effectUI: {fileID: 697515310}
   statsUI: {fileID: 1432178639}
   dashStrength: 5
+  cannotUseSkill: 0
   currentUI: 0
 --- !u!114 &1932406549
 MonoBehaviour:
@@ -20014,6 +20062,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e56e2407f49c249a6652acb330acce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932406557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316d8e44b697bc4591e5c929cacede3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0.9
+  shieldLife: 100
+  shieldLifeMax: 100
+  shieldLifeRegen: 1
+  attackAirReduce: 2
+  bigAttackMultiplier: 1.5
+  cannotAttack: 0
+  axisInputNormalizeX: 0.7
+  axisInputNormalizeY: 1.5
+  flashColor:
+    serializedVersion: 2
+    rgba: 2080374996
+  shieldPrefab: {fileID: 1333885279565732494, guid: d607bc038e8770c46ae76ce8847d424d, type: 3}
+  knockbackX: 800
+  knockbackY: 200
+  shielded: 0
+--- !u!114 &1932406558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932406542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4964058a6dd310e4b91802a6ba5321fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3d3fba51c9ad1724793e6f2df88d15df, type: 2}
+  duration: 0.08
 --- !u!1 &1955390039
 GameObject:
   m_ObjectHideFlags: 0
@@ -20273,7 +20363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2c06f09211f450e4f941ff6a5bf0b5f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ecb966984d586542abba84aea2391d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

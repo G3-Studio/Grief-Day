@@ -10,8 +10,8 @@ public class InteractionUI : MonoBehaviour
     
     private static float boxWidth =Screen.height *0.1f;
     private static float boxHeight = Screen.height *0.1f ;
-    private Rect player1Rect = new Rect((Screen.width / 2) - (boxWidth + 300), Screen.height -150, boxWidth,boxHeight );
-    private Rect player2Rect = new Rect((Screen.width / 2) + 90, Screen.height- 150 , boxWidth, boxHeight);
+    private Rect player1Rect = new Rect((Screen.width / 2) - (boxWidth*3.1f), Screen.height *0.85f, boxWidth,boxHeight );
+    private Rect player2Rect = new Rect((Screen.width / 2)*1.12f, Screen.height*0.85f , boxWidth, boxHeight);
      [SerializeField] Font GUIfont;
         
     

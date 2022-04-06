@@ -71,19 +71,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnAttack(InputValue value) {
         if (gamePaused) return;
-
+        if (GameManager.Instance.State != GameState.Depression) return;
         combat.PerformAttack();
     }
 
     void OnBigAttack(InputValue value) {
         if (gamePaused) return;
-
+        if (GameManager.Instance.State != GameState.Depression) return;
         combat.PerformBigAttack();
     }
 
     void OnShield(InputValue value) {
         if (gamePaused) return;
-
+        if (GameManager.Instance.State != GameState.Depression) return;
         combat.PerformShield(value.Get<float>());
     }
 

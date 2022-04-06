@@ -16,7 +16,7 @@ public class InteractionUI : MonoBehaviour
     void OnGUI()
     {
          GUIStyle myStyle = new GUIStyle(); 
-         myStyle.fontSize = 100;
+         myStyle.fontSize = 0;
          myStyle.font= GUIfont;
          myStyle.normal.textColor= new Color(255,255,255) ;
         

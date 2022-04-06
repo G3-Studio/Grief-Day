@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class InteractionUI : MonoBehaviour
 {
@@ -7,16 +8,17 @@ public class InteractionUI : MonoBehaviour
     private string labelText = "Interact";
 
     
-    private static float boxWidth = 70;
-    private Rect player1Rect = new Rect((Screen.width / 2) - (boxWidth + 300), Screen.height -100, boxWidth,100 );
-    private Rect player2Rect = new Rect((Screen.width / 2) + 90, Screen.height- 110 , boxWidth, 100);
+    private static float boxWidth =Screen.height *0.1f;
+    private static float boxHeight = Screen.height *0.1f ;
+    private Rect player1Rect = new Rect((Screen.width / 2) - (boxWidth + 300), Screen.height -150, boxWidth,boxHeight );
+    private Rect player2Rect = new Rect((Screen.width / 2) + 90, Screen.height- 150 , boxWidth, boxHeight);
      [SerializeField] Font GUIfont;
         
     
     void OnGUI()
     {
          GUIStyle myStyle = new GUIStyle(); 
-         myStyle.fontSize = 100;
+         myStyle.fontSize = Mathf.FloorToInt(Screen.height *0.1f);
          myStyle.font= GUIfont;
          myStyle.normal.textColor= new Color(255,255,255) ;
         

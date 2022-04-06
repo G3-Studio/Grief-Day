@@ -24,7 +24,12 @@ public class Player : MonoBehaviour
         this.statsUI.UpdateAll(this.health, this.maxHealth, this.speed, this.attack);
         this.currentUI = CurrentUI.NONE;
     }
-    
+    public int GetCurrentHealth(){
+        return health;
+    }
+    public int GetMaxHealth(){
+        return maxHealth;
+    }
     public int GetPlayerIndex()
     {
         return isPlayer1 ? 0 : 1;

@@ -40,6 +40,9 @@ public class FightManager : MonoBehaviour
 
             float size = (MathF.Abs(posP1.x - posP2.x))*0.5f;
             if (size > 8f) cameraP1.transform.GetChild(0).GetComponent<Camera>().orthographicSize = size;
+            if (player1.GetComponent<Player>().GetCurrentHealth() <= 0 || player2.GetComponent<Player>().GetCurrentHealth() <= 0) {
+                GameObject.Find("TransitionAnimation/SceneLoader").GetComponent<SceneLoader>().LoadStartScene();
+            }
         }
     }
 }
